@@ -4,6 +4,7 @@ module system(output [3:0] LEDs, input [3:0] switch, input reset, clock);
 	wire [31:0]	data_fromCPU;
 	wire we;
 
+	// TODO: Rewrite the memory controller
 	memoryIO_282 mem1(
 		.data_out	( data_toCPU ),
 		.data_in		( data_fromCPU ),
