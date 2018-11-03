@@ -18,8 +18,8 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
 	assign data_out = AC;
 
 	always @(posedge clock, negedge reset) begin
-		// Active-low reset
-		if (!reset) begin
+		// Active HIGH reset
+		if (reset) begin
 			// On reset, set to fetch initially and start fetching from 0 (PC=0)
 			fetch_or_execute <=0;
 			PC <= 16'h0000;
