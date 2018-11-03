@@ -6,5 +6,5 @@ Run:
 ```
 iverilog -o out.o CPU.v memory_controller.v Mux4to1.v RAM.v ROM.v system.v system_tb.v
 vvp out.o
-gtkwave
+gtkwave system.vcd
 ```

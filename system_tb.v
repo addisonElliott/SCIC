@@ -1,4 +1,4 @@
-`timescale 1 ns / 1 ps
+`timescale 1 ns / 1 ns
 
 module system_tb();
     wire [3:0] LEDs;
