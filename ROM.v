@@ -3,6 +3,7 @@ module ROM(output reg [31:0] data_out, input [5:0] address, input chip_select);
     reg [31:0] memory [0:31];
 
     // Load in data to ROM from separate file
+    // This file makes it extremely flexible to add new programs to the CPU by simply referencing a different mem file
     initial begin
 		$readmemh("program1.mem", memory, 0, 31);
 	end

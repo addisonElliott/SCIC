@@ -11,6 +11,11 @@ module memory_controller(output [31:0] data_out, output [3:0] io_out, input [31:
     //      Otherwise return 0s
     // Note: Placed the memory on byte boundaries to make it easy to synthesize the logic for this, but I am not sure if these if statements will synthesize that way
     // @(*) is a combinational block but you are not required to use an assign statement for wires
+    // data_select is basically an enumeration as such:
+    //      0 = ROM
+    //      1 = I/O
+    //      2 = RAM
+    //      3 = Otherwise
     always @(*) begin
         if (address <= 16'h001f) begin
             data_select = 2'b00;
@@ -27,15 +32,18 @@ module memory_controller(output [31:0] data_out, output [3:0] io_out, input [31:
     end
 
     // Wires for if a particular memory module is selected
+    // This is essentially a behavioral description of a demultiplexor
     assign select_rom = (data_select == 2'b00);
     assign select_io = (data_select == 2'b01);
     assign select_ram = (data_select == 2'b10);
 
+    // ROM, I/O & RAM module instantiations
     ROM rom_inst(rom_data_out, address[5:0], select_rom);
     io_controller_bidirectional io_controller_bidirectional_inst(io_data_out, io_out, data_in, address[5:0], io_in, select_io, we, clock);
     RAM ram_inst(ram_data_out, data_in, address[10:0], we, select_ram, clock);
 
     // data_out wire is set to be whichever address range we are speaking to
+    // In the case of an unknown address space being specified, the value returned is all zeros
     Mux4to1 #(32) data_mux_inst(data_out, rom_data_out, io_data_out, ram_data_out, 32'd0, data_select);
 endmodule
 
@@ -49,7 +57,8 @@ module io_controller_bidirectional(output reg [31:0] data_out, output reg [3:0] 
     // if chip_select is set and we is enabled, then set values at that memory location
 	// assign data_out = {32'b0000_0000_0000_0000_0000_0000_0000, io_in};
 
-    // TODO: Need to figure out this module
+    // TODO Need to figure out how to get this module working correctly.
+    // Not sure what is the best way to go about this. Originally in the 282 design, the address space for this module was only 1 word (32-bit) but I made it longer so it would align on a byte boundary. The general workflow of this code should be to set data_out to high impedance if unknown address, and to assign a value to io_out & io_in if given.
 	always @(negedge clock) begin
         if (chip_select) begin
             if (we) begin

@@ -14,6 +14,7 @@ module system_tb();
         clock <= 1'b0;
         switches <= 4'b0000;
 
+        // This dumps state to VCD file that can be used to view simulation results
         $dumpfile("system.vcd");
         $dumpvars(0, system_tb);
 
@@ -23,6 +24,7 @@ module system_tb();
         end
     end
 
+    // TODO: Write a better testbench when a good program is entered into the module
     initial begin
         #7 reset <= 1'b0;
         #100 $finish();

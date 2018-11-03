@@ -1,3 +1,5 @@
+// NOTE: OLD CODE FOR REFERENCE, NOT USED
+
 //Stimulus for testing 
 module tb;
   reg CLK,RST;  //inputs for circuit
