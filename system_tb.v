@@ -14,6 +14,9 @@ module system_tb();
         clock <= 1'b0;
         switches <= 4'b0000;
 
+        $dumpfile("system.vcd");
+        $dumpvars(0, system_tb);
+
         forever begin
             // 5ns = 1/2 * period for 100MHz clock
             #5 clock <= ~clock;

@@ -1,2 +1,5 @@
 # Ignore output files
 *.o
+
+# Ignore VCD files
+*.vcd
