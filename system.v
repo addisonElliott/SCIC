@@ -1,19 +1,9 @@
-module system(output [3:0] LEDs, input [3:0] switch, input reset, clock);
-	wire [15:0]	addr;
+module system(output [3:0] LEDs, input [3:0] switches, input reset, clock);
+	wire [15:0]	address;
 	wire [31:0]	data_toCPU;
 	wire [31:0]	data_fromCPU;
 	wire we;
 
-	// TODO: Rewrite the memory controller
-	memoryIO_282 mem1(
-		.data_out	( data_toCPU ),
-		.data_in		( data_fromCPU ),
-		.address		( addr ),
-		.we			( we ),
-		.clock			( sys_clock ),
-		.io_in		(switch),
-		.io_out		(LEDs)
-	); 
-
-	CPU cpu_inst(data_fromCPU, addr, we, data_toCPU, reset, clock);
+	memory_controller memory_controller_inst(data_toCPU, LEDs, data_fromCPU, address, switches, we, clock);
+	CPU cpu_inst(data_fromCPU, address, we, data_toCPU, reset, clock);
 endmodule
