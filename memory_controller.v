@@ -28,35 +28,38 @@ module memory_controller(output [31:0] data_out, output [3:0] io_out, input [31:
     assign select_io = (data_select == 2'b01);
     assign select_ram = (data_select == 2'b10);
 
-    ROM rom_inst(rom_data_out, address, select_rom);
-
-    // TODO: Need to mess around with these modules and get them created
-    bidirectionalIOPort sys_IO(io_data_out, data_in, select_io, we, clk, io_in, io_out);
-	
+    ROM rom_inst(rom_data_out, address[5:0], select_rom);
+    io_controller_bidirectional io_controller_bidirectional_inst(io_data_out, io_out, data_in, address[5:0], io_in, select_io, we, clock);
     RAM ram_inst(ram_data_out, data_in, address[10:0], we, select_ram, clock);
 
     // data_out wire is set to be whichever address range we are speaking to
     Mux4to1 #(32) data_mux_inst(data_out, rom_data_out, io_data_out, ram_data_out, 32'd0, data_select);
 endmodule
 
-module io_controller_bidirectional(output [31:0] data_out, output reg [3:0] io_out, input [31:0] data_in, input [31:0] address, input [3:0] io_in, input chip_select, we, clock);
-    wire [31:0] wire_in [0:31];
-    wire [31:0] wire_out [0:31];
+module io_controller_bidirectional(output reg [31:0] data_out, output reg [3:0] io_out, input [31:0] data_in, input [5:0] address, input [3:0] io_in, input chip_select, we, clock);
+    // wire [31:0] wire_in [0:31];
+    // wire [31:0] wire_out [0:31];
 
-    wire_out[12][31:0] = 32'h0;
+    // wire_out[12][31:0] = 32'h0;
 
     // if chip_select is set, then return data_out = memory at address location
     // if chip_select is set and we is enabled, then set values at that memory location
-	assign data_out = {32'b0000_0000_0000_0000_0000_0000_0000, io_in};
+	// assign data_out = {32'b0000_0000_0000_0000_0000_0000_0000, io_in};
 
+    // TODO: Need to figure out this module
 	always @(negedge clock) begin
-        if (~we && chip_select) begin
-            // TODO: How to do this?
-            data_out <= 32'h0;
+        if (chip_select) begin
+            if (we) begin
+                // TODO: How to do this?
+                io_out <= data_in[3:0];
+            end
+            else begin
+                // TODO: How to do this?
+                data_out <= 32'h0;            
+            end
         end
-        else if (we && chip_select) begin
-            // TODO: How to do this?
-            io_out <= data_in[3:0];
+        else begin
+            data_out <= 32'bz;
         end
     end
 endmodule
