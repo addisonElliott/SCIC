@@ -12,7 +12,7 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
 	assign address = fetch_or_execute ? IR[15:0] : PC;
 
 	// Enable write line when executing a store command (opcode = 4'b0111)
-	assign we = fetch_or_execute & (IR[31:28] == 4'b0111)
+	assign we = fetch_or_execute & (IR[31:28] == 4'b0111);
 
 	// Wire is only used when write enable (we) is high, when this happens we want to store the AC values
 	assign data_out = AC;
@@ -22,7 +22,7 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
 		if (!reset) begin
 			// On reset, set to fetch initially and start fetching from 0 (PC=0)
 			fetch_or_execute <=0;
-			PC <= 4'h0000;
+			PC <= 16'h0000;
 		end
 		else begin
 			if (!fetch_or_execute) begin
@@ -63,7 +63,7 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
 
 			// Toggle the fetch_or_execute on each clock cycle
 			// Fetch, Execute, Fetch, Execute, ...
-			fetch_or_execute = ~fetch_or_execute
+			fetch_or_execute = ~fetch_or_execute;
 		end
 	end
 endmodule
