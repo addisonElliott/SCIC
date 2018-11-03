@@ -1,4 +1,4 @@
-module ROM(output reg [31:0] data_out, input [31:0] address);
+module ROM(output reg [31:0] data_out, input [5:0] address, input chip_select);
     // Memory elements, 32 words (1KiB)
     reg [31:0] memory [0:31];
 
@@ -8,7 +8,12 @@ module ROM(output reg [31:0] data_out, input [31:0] address);
 	end
 
     // When address changes, set data_out to new value in memory
-	always @(address) begin
-		data_out <= memory[address[5:0];
+	always @(chip_select or address) begin
+        if (chip_select) begin
+    		data_out <= memory[address[5:0];
+        end
+        else begin
+            data_out <= 32'bz;
+        end
 	end
 endmodule
