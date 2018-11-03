@@ -4,18 +4,19 @@ module memory_controller(output [31:0] data_out, output [3:0] io_out, input [31:
     wire [1:0] data_select;
 
     // Address Map:
-    //      Range       Item    Size (words)
-    //      0000-001F   ROM     32
-    //      0020-002F   I/O     16
-    //      0030-082F   RAM     2048
+    //      Range       Item    Size (words)    Binary Range
+    //      0000-001F   ROM     32              0000 0000 0000 0000 -> 0000 0000 0001 1111
+    //      0020-003F   I/O     32              0000 0000 0010 0000 -> 0000 0000 0011 1111
+    //      0800-0FFF   RAM     2048            0000 1000 0000 0000 -> 0000 1111 1111 1111
     //      Otherwise return 0s
+    // Note: Placed the memory on byte boundaries to make it easy to synthesize the logic for this, but I am not sure if these if statements will synthesize that way
     if (address <=16'h001F) begin
         data_select = 2'b00;
     end
-    else if (address <=16'h002F) begin
+    else if (address <=16'h003F) begin
         data_select = 2'b01;
     end
-    else if (address <= 16'h082F) begin
+    else if (address >= 16'h0800 && address <= 16'h0FFF) begin
         data_select = 2'b10;
     end
     else begin
