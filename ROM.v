@@ -1,4 +1,4 @@
-module ROM(output reg [31:0] data_out, input [5:0] address, input chip_select);
+module ROM(output reg [31:0] data_out, input [4:0] address, input chip_select);
     // Memory elements, 32 words (1KiB)
     reg [31:0] memory [0:31];
 

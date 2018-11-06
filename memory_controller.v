@@ -38,8 +38,8 @@ module memory_controller(output [31:0] data_out, output [3:0] io_out, input [31:
     assign select_ram = (data_select == 2'b10);
 
     // ROM, I/O & RAM module instantiations
-    ROM rom_inst(rom_data_out, address[5:0], select_rom);
-    io_controller_bidirectional io_controller_bidirectional_inst(io_data_out, io_out, data_in, address[5:0], io_in, select_io, we, clock);
+    ROM rom_inst(rom_data_out, address[4:0], select_rom);
+    io_controller_bidirectional io_controller_bidirectional_inst(io_data_out, io_out, data_in, address[4:0], io_in, select_io, we, clock);
     RAM ram_inst(ram_data_out, data_in, address[10:0], we, select_ram, clock);
 
     // data_out wire is set to be whichever address range we are speaking to
@@ -47,7 +47,7 @@ module memory_controller(output [31:0] data_out, output [3:0] io_out, input [31:
     Mux4to1 #(32) data_mux_inst(data_out, rom_data_out, io_data_out, ram_data_out, 32'd0, data_select);
 endmodule
 
-module io_controller_bidirectional(output reg [31:0] data_out, output reg [3:0] io_out, input [31:0] data_in, input [5:0] address, input [3:0] io_in, input chip_select, we, clock);
+module io_controller_bidirectional(output reg [31:0] data_out, output reg [3:0] io_out, input [31:0] data_in, input [4:0] address, input [3:0] io_in, input chip_select, we, clock);
     // wire [31:0] wire_in [0:31];
     // wire [31:0] wire_out [0:31];
 
