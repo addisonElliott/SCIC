@@ -15,7 +15,6 @@ module tb;
 always @ ( posedge CLK )
     clk_count <= clk_count + 1'd1;
 
-  // TODO: Rewrite test bench
   system u_system (RST, CLK, led, switch);  // instantiate circuit
   initial
      begin

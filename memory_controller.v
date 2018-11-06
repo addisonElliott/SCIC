@@ -48,29 +48,35 @@ module memory_controller(output [31:0] data_out, output [3:0] io_out, input [31:
 endmodule
 
 module io_controller_bidirectional(output reg [31:0] data_out, output reg [3:0] io_out, input [31:0] data_in, input [4:0] address, input [3:0] io_in, input chip_select, we, clock);
-    // wire [31:0] wire_in [0:31];
-    // wire [31:0] wire_out [0:31];
-
-    // wire_out[12][31:0] = 32'h0;
-
-    // if chip_select is set, then return data_out = memory at address location
-    // if chip_select is set and we is enabled, then set values at that memory location
-	// assign data_out = {32'b0000_0000_0000_0000_0000_0000_0000, io_in};
-
-    // TODO Need to figure out how to get this module working correctly.
-    // Not sure what is the best way to go about this. Originally in the 282 design, the address space for this module was only 1 word (32-bit) but I made it longer so it would align on a byte boundary. The general workflow of this code should be to set data_out to high impedance if unknown address, and to assign a value to io_out & io_in if given.
 	always @(negedge clock) begin
+        // Only do stuff when this chip is selected
         if (chip_select) begin
+            // If write enabled is set, then write to io_out, otherwise read from io_in
             if (we) begin
-                // TODO: How to do this?
-                io_out <= data_in[3:0];
+                // Switch the address value
+				case (address)
+                    // Write to LEDs
+					4'b0000: begin
+                        io_out <= data_in[3:0];
+					end
+
+					default: io_out <= 4'dx;
+				endcase
             end
             else begin
-                // TODO: How to do this?
-                data_out <= 32'h0;            
+                // Switch the address value
+                case (address)
+                    // Read from switches
+					4'b0000: begin
+                        data_out <= {28'd0, io_in};
+					end
+
+					default: data_out <= 32'dz;
+				endcase
             end
         end
         else begin
+            // data_out is high impedance state when not selected
             data_out <= 32'bz;
         end
     end
