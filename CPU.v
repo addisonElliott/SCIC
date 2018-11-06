@@ -21,8 +21,10 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
 		// Active HIGH reset
 		if (reset) begin
 			// On reset, set to fetch initially and start fetching from 0 (PC=0)
+			// set AC to 0 by default
 			fetch_or_execute <= 0;
 			PC <= 16'h0000;
+			AC <= 32'd0;
 		end
 		else begin
 			if (!fetch_or_execute) begin
@@ -30,7 +32,6 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
 				// Load in the instruction to the IR and increment PC for next time
 				IR <= data_in;
 				PC <= PC + 1;
-				AC <= 32'd0;
 			end
 			else begin
 				// Execute instruction
