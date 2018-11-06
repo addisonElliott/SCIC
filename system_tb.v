@@ -27,6 +27,6 @@ module system_tb();
     // TODO: Write a better testbench when a good program is entered into the module
     initial begin
         #7 reset <= 1'b0;
-        #100 $finish();
+        #200 $finish();
     end
 endmodule
