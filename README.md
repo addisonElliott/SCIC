@@ -4,7 +4,7 @@ Project of Addison Elliott and Dan Ashbaugh to create IC layout of 32-bit custom
 # Simulating with Icarus
 Run:
 ```
-iverilog -o out.o CPU.v memory_controller.v Mux4to1.v RAM.v ROM.v system.v system_tb.v
+iverilog -o out.o CPU.v memory_controller.v Mux4to1.v RAM.v ROM.v system.v io_controller.v system_tb.v
 vvp out.o
 gtkwave system.vcd
 ```

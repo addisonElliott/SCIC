@@ -46,38 +46,3 @@ module memory_controller(output [31:0] data_out, output [3:0] io_out, input [31:
     // In the case of an unknown address space being specified, the value returned is all zeros
     Mux4to1 #(32) data_mux_inst(data_out, rom_data_out, io_data_out, ram_data_out, 32'd0, data_select);
 endmodule
-
-module io_controller_bidirectional(output reg [31:0] data_out, output reg [3:0] io_out, input [31:0] data_in, input [4:0] address, input [3:0] io_in, input chip_select, we, clock);
-	always @(negedge clock) begin
-        // Only do stuff when this chip is selected
-        if (chip_select) begin
-            // If write enabled is set, then write to io_out, otherwise read from io_in
-            if (we) begin
-                // Switch the address value
-				case (address)
-                    // Write to LEDs
-					4'b0000: begin
-                        io_out <= data_in[3:0];
-					end
-
-					default: io_out <= 4'dx;
-				endcase
-            end
-            else begin
-                // Switch the address value
-                case (address)
-                    // Read from switches
-					4'b0000: begin
-                        data_out <= {28'd0, io_in};
-					end
-
-					default: data_out <= 32'dz;
-				endcase
-            end
-        end
-        else begin
-            // data_out is high impedance state when not selected
-            data_out <= 32'bz;
-        end
-    end
-endmodule
