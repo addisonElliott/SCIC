@@ -17,7 +17,7 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
 	// Wire is only used when write enable (we) is high, when this happens we want to store the AC values
 	assign data_out = AC;
 
-	always @(posedge clock, negedge reset) begin
+	always @(posedge clock, posedge reset) begin
 		// Active HIGH reset
 		if (reset) begin
 			// On reset, set to fetch initially and start fetching from 0 (PC=0)
