@@ -8,9 +8,6 @@ module ROM(output reg [31:0] data_out, input [4:0] address, input chip_select);
         // Program that adds 16 to accumulator over and over forever
 		// $readmemh("programs/simple_counter.mem", memory, 0, 31);
 
-        // Program that reads from the 4 switches and writes that value to the LEDs
-		$readmemh("programs/read_and_write_io.mem", memory, 0, 31);
-
         // TODO Not sure what this program does
 		// $readmemh("programs/program1.mem", memory, 0, 31);
 	end
