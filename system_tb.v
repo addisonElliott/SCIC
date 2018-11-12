@@ -25,11 +25,12 @@ module system_tb();
     end
 
     // General testbench that does not rely on changing switches
-    // initial begin
-    //     #7 reset <= 1'b0;
-    //     #200 $finish();
-    // end
+    initial begin
+         #7 reset <= 1'b0;
+         #10000 $finish();
+     end
 
+/*
     // Test bench used for read_and_write_io program
     initial begin
         #7 reset <= 1'b0;
@@ -52,4 +53,6 @@ module system_tb();
         #60 switches <= 4'b1111;
         #1000 $finish();
     end
+
+    */
 endmodule

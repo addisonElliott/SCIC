@@ -1,4 +1,4 @@
-module io_controller_bidirectional(output reg [31:0] data_out, output reg [3:0] io_out, input [31:0] data_in, input [4:0] address, input [3:0] io_in, input chip_select, we, clock);
+module io_controller(output reg [31:0] data_out, output reg [3:0] io_out, input [31:0] data_in, input [4:0] address, input [3:0] io_in, input chip_select, we, clock);
 	always @(negedge clock) begin
         // Only do stuff when this chip is selected
         if (chip_select) begin

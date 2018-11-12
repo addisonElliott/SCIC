@@ -42,6 +42,16 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
 						AC <= AC + data_in;
 					end
 
+					// Shift AC <= AC << mem(IR[15:0]) DLA NEW STUFF!!!!!!!!!!!!!!
+					4'b0010: begin
+						AC <= AC << data_in;
+					end
+
+					// Shift AC <= AC >> mem(IR[15:0]) DLA NEW STUFF!!!!!!!!!!!!!!
+					4'b0011: begin
+						AC <= AC >> data_in;
+					end
+
 					// Load AC immediate AC <= IR[15:0]
 					4'b0100: begin
 						AC <= {16'd0, IR[15:0]};
@@ -50,6 +60,11 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
 					// Load AC <= mem(IR[15:0])
 					4'b0101: begin
 						AC <= data_in;
+					end
+							
+					// AC <= AC | mem(IR[15:0]) DLA NEW STUFF!!!!!!!!!!!!!!
+					4'b0110: begin
+						AC <= AC | data_in;
 					end
 
 					// Store mem(IR[15:0]) <= AC
@@ -61,6 +76,11 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
 					// Branch PC <= IR[15: 0]
 					4'b1000: begin 
 						PC <= IR[15:0];
+					end
+
+					// AC <= AC & mem(IR[15:0]) DLA NEW STUFF!!!!!!!!!!!!!!
+					4'b1001: begin
+						AC <= AC & data_in;
 					end
 
 					// Default is to do nothing

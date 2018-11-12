@@ -1,0 +1,52 @@
+// Memory values listed below are in hexadecimal
+// Instruction format for CPU is as follows:
+//      31----28------------16-15----------------0
+//       Opcode    Unused            Operand
+//
+// Opcodes:
+//      1     Add to accum
+//      2     Shift accum Left
+//      3     Shift accum Right
+//      4     Load immediate to accum
+//      5     Load accum
+//      6     Bitwise OR of accum
+//      7     Store accum to accum (do nothing)
+//      8     Branch
+//      9     Bitwise AND of accum
+
+// test the store to rom and add to accum
+4000000f // LI 000f
+70000fff // ST 0fff
+40000001 // LI 0001
+10000fff // ADD 0fff
+// results should be 10
+
+// test teh shift Left
+40000001 // LI 0001
+70000fff // ST 0fff
+4000ffff // LI ffff
+20000fff // SHL 0fff
+// results should be fffe
+
+// test the shift right
+40000001 // LI 0001
+70000fff // ST 0fff
+4000ffff // LI ffff
+30000fff // SHR 0fff
+// results should be 7fff
+
+// test the load into accum/OR bitwise
+4000f0f0 // LI f0f0
+70000fff // ST 0fff
+40000000 // LI 0000
+60000fff // OR 0fff
+// results should be f0f0
+
+// test the load into accum/AND bitwise
+40000f0f // LI ffff
+70000fff // ST 0fff
+400000f0 // LI ffff
+90000fff // AND ffff
+// results should be 00000
+
+80000000 // BR 0
