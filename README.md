@@ -2,8 +2,10 @@
 Project of Addison Elliott and Dan Ashbaugh to create IC layout of 32-bit custom CPU used in teaching digital design at SIUE.
 
 # Simulating and Synthesizing with Cadence Tools
+# Cadence Tools
 **Note:** This was run using Dr. Engel's special setup with TCL scripts and such. You must do this using the lab machines with their custom scripts.
 
+## Setup
 Begin by logging into a VLSI lab machine in EB3009 and then open a terminal. Run the following commands to get your terminal setup with Dr. Engel's custom scripts. These commands only need to be run once each time you open a Terminal to setup your environment correctly.
 ```
 cds_ams
@@ -28,7 +30,10 @@ ln -s $PHOME/verilog.src/SCIC/SCIC.sdc $PHOME/verilog.src/sdc/
 If you want to verify that the symlinks were made, take a look at the figure below where I used the `ll` (alias to `ls -l`) command to achieve this. You can see that the output shows a symlink pointing to the repository location.
 **TODO: Place image here Screenshot-2.png**
 
-Next, we need to edit the TCL file to set the simulation mode: rtl, syn or pnr. When designing an IC, you typically start with the 'rtl' mode, then run with 'syn' and finally run it with 'pnr'. From left to right, the simulation mode starts with the least amount of information and then begins to add more and more. For example, rtl mode is simulating your Verilog design in the same way that Icarus Verilog simulates your code. It does not know anything about propagation delay between gates, gate size, etc. The 'syn' mode adds a bit more information by including timing delay for the gates and running a timing analysis. Finally, the 'pnr' mode (Place-n-Route) will actually place the gates on a chip and run an analysis with that.
+## Simulating
+The first step of any design is to simulate the Verilog code using a testbench to ensure that it is **functionally** working correctly. There is no point in worrying about propagation delay, timing constraints, capacitance, resistances until you know that your design does what it is supposed to in the first place. This is the purpose of running a simulation is to verify that the design does what it is supposed to.
+
+We need to edit the TCL file to set the simulation mode: rtl, syn or pnr. When designing an IC, you typically start with the 'rtl' mode, then run with 'syn' and finally run it with 'pnr'. From left to right, the simulation mode starts with the least amount of information and then begins to add more and more. For example, rtl mode is simulating your Verilog design in the same way that Icarus Verilog simulates your code. It does not know anything about propagation delay between gates, gate size, etc. The 'syn' mode adds a bit more information by including timing delay for the gates and running a timing analysis. Finally, the 'pnr' mode (Place-n-Route) will actually place the gates on a chip and run an analysis with that.
 
 Editing the env.SCIC.tcl file can be done using your favorite text editor (gedit, vim, nano, etc). Change the line `SIM_MODE` to `rtl`. In the remainder of this document, we will tell you to change the SIM_MODE to a different value and you will need to open this file using a text editor and change the value appropriately.
 
@@ -42,6 +47,14 @@ sim
 Cadence's simulator software *SimVision* should pop up. There will not be a detailed discussion on using SimVision, since it is fairly self explanatory. You can navigate through the Design Browser on the left to find wires that you want to add to the waveform window. You can add them by right-clicking and select "Send to Waveform Window". Once you have all the wires you want in the Waveform Window, you cans elect the "Play" icon in the toolbar to run the simulation. There is a bar at the bottom that can be dragged to change at what point of time you are viewing. See screenshots below for details on the process described.
 
 **TODO: Attach screenshots here...**
+
+## Synthesis
+
+TODO: Do this
+
+## Synthesis with Place & Route
+
+TODO: Do this
 
 # Simulating with Icarus Verilog
 **Note:** If this is your first time installing [Icarus Verilog](http://iverilog.icarus.com/), then you will need to make sure that the binary path is in your PATH variable. This will allow you to run the commands *iverilog*, *vvp* and *gtkwave* in your repository path. During installation, you will want to check the option to install gtkwave as well. Icarus Verilog must **not** be installed in a path with spaces or else the commands will fail. The following two paths must be added to your PATH variable:
