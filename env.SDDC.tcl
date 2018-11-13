@@ -2,40 +2,43 @@
 # Env file for a simple accumulator design used in ece484
 #
 
-set     HOME        $env(HOME)
+set     HOME        	$env(HOME);
 set   	PHOME		$env(PHOME) ; 	# Get the project home directory
 
 # Specify simulaton mode!!!!!!!
 
-set	    SIM_MODE	    syn ;		# Simulation mode: rtl, syn, or pnr
+set	SIM_MODE	rtl;		# Simulation mode: rtl, syn, or pnr
 
 # Specify basename
 	
-set 	BASENAME	    accu   ; 	# Set the root cell	
+set 	BASENAME	SIUE-DigitalDesign-CPU-IC; 		# Set the root cell	
 
 # Controls what rc_synthesis script does
 
 set 	RC_ELAB_ONLY	false		; # Stop after elaborating
-set	    RC_LOAD_DSN	    false		; # Only want to load a design
-set	    ENC_LOAD_DSN	false		; # Only want to load a design
+set	RC_LOAD_DSN	false		; # Only want to load a design
+set	ENC_LOAD_DSN	false		; # Only want to load a design
 
 # Let the place and route tool know which modules have been placed and routed
 
-set	    MODULE_LIST	    ""
+set	MODULE_LIST	    ""
 
 #
 # Source the file containing the standard options
 # we would like to employ
 #
 
-source $env(EDI_TCL_DIR)/defaults.tcl
+source 	$env(EDI_TCL_DIR)/defaults.tcl
 
 # ---------------------------------------------------------------------------
 
 # Point to key source directories
 
-set     DSN 		${SRC}/accu/design
-set     TB         	${SRC}/accu/testbench
+#set     DSN 	${SRC}/accu/design
+#set     TB   	${SRC}/accu/testbench
+
+# Create a basedirectory variable
+set 	BASE_DIR	${SRC}/SIUE-DigitalDesign-CPU-IC
 
 #
 # These files are used for RTL simulations (sim rtl)
@@ -44,20 +47,26 @@ set     TB         	${SRC}/accu/testbench
 #
 
 set 	RTL_VLOG_FILES 	"\
-$DSN/accu.v \
+$BASE_DIR/CPU.v \
+$BASE_DIR/io_controller.v \
+$BASE_DIR/memory_controller.v \
+$BASE_DIR/Mux4to1.v \
+$BASE_DIR/RAM.v \
+$BASE_DIR/ROM.v \
+$BASE_DIR/system.v \
 "
 
 # These files are used by the synthesis tool
 
-set	    NET		        $PHOME/syn_dir/netlists
+set	NET		$PHOME/syn_dir/netlists
 set 	SYN_VLOG_FILES 	${RTL_VLOG_FILES}
 
 
 # Point to the testbench files to be used
 
-set RTL_TB_FILE	    ${TB}/${BASENAME}_tb.v
-set	SYN_TB_FILE	    ${TB}/${BASENAME}_syn_tb.v
-set	PNR_TB_FILE	    ${TB}/${BASENAME}_pnr_tb.v
+set 	RTL_TB_FILE	    $BASE_DIR/system_tb.v
+set	SYN_TB_FILE	    $BASE_DIR/system_tb.v
+set	PNR_TB_FILE	    $BASE_DIR/system_tb.v
 
 #
 # Choreograph RTL compiler flow
@@ -71,7 +80,7 @@ ${TCL_DIR}/rc/rc_synthesis.tcl \
 # enc_hitkit.tcl performs place and route
 # edi2ic converts gdsii file to OA lib
 
-set  ENC_TO_DO_LIST  {\
+set  	ENC_TO_DO_LIST {\
 $TCL_DIR/enc/enc_hitkit.tcl \
 }
 
@@ -81,21 +90,21 @@ $TCL_DIR/enc/enc_hitkit.tcl \
 
 # Provide X and Y dimensions of the core
 
-set	CORE_X			1000
-set	CORE_Y			2000
+set	CORE_X		1000
+set	CORE_Y		2000
 
 # Set the aspect ratio for the layout
 # A values less than 1.0 means wide and not so high!
 
-set	ASPECT			  0.25
+set	ASPECT		 0.25
 
 # Establish a boundary outside of the core area 
 
-set	CORE_TO_BOUND		15
+set	CORE_TO_BOUND	15
 
 # Utilization
 
-set	UTILIZATION		   0.6
+set	UTILIZATION	0.6
 
 # Pin assignments
 
@@ -105,7 +114,7 @@ set     E_PINS  {clk}
 set     W_PINS  {reset}
 
 # Spacing in microns between the pins
-
+file:///usr/share/doc/HTML/index.html
 set     N_SPACING   10
 set     S_SPACING   10
 set     E_SPACING   10
@@ -125,25 +134,25 @@ set     W_LAYER     3
 # For the add power ring command
 # Width of the metal as well as the separation between gnd and vdd rings
 
-set	CORE_RING_SPACING		1
-set	CORE_RING_WIDTH		    3
-set CORE_RING_OFFSET        1
+set	CORE_RING_SPACING	1
+set	CORE_RING_WIDTH		3
+set 	CORE_RING_OFFSET        1
 
 # Desired metal layer for the power rings
 
-set	PWR_HORIZ_MET		metal1
-set	PWR_VERT_MET		metal2
+set	PWR_HORIZ_MET	metal1
+set	PWR_VERT_MET	metal2
 
 # Power stripes
 
-set	STRIPE_WIDTH		5
-set	STRIPE_SPACE		300
-set	STRIPE_LAYER		metal2
+set	STRIPE_WIDTH	5
+set	STRIPE_SPACE	300
+set	STRIPE_LAYER	metal2
 
 
 # Name of OA lib we want to export to
 
-set 	MY_OA_LIB           "ediLib"
+set 	MY_OA_LIB 	"ediLib"
 
 ##############################################################
 
@@ -152,7 +161,7 @@ set 	MY_OA_LIB           "ediLib"
 # since we don't have an include directory
 
 set	NCVLOG_OPTS	"-cdslib ${CDS_LIB} \
-			    -hdlvar  ${HDL_VAR} \
+		-hdlvar  ${HDL_VAR} \
                 -errormax ${ERR_MAX} \
                 -update \
                 -linedebug \
