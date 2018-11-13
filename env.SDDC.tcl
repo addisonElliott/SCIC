@@ -1,19 +1,25 @@
 #
 # Env file for a simple accumulator design used in ece484
 #
-set HOME $env(HOME);
-set PHOME $env(PHOME);      # Get the project home directory
+
+# Retrieve the user's home directory (HOME) and project home directory (PHOME) from environment variables
+set HOME $env(HOME)
+set PHOME $env(PHOME)
 
 # Specify simulaton mode!!!!!!!
-set SIM_MODE syn;           # Simulation mode: rtl, syn, or pnr
+# Simulation mode: rtl, syn, or pnr
+set SIM_MODE syn
 
 # Specify basename
 set BASENAME SDDC;          # Set the root cell	
 
 # Controls what rc_synthesis script does
-set RC_ELAB_ONLY false		; # Stop after elaborating
-set RC_LOAD_DSN	false		; # Only want to load a design
-set ENC_LOAD_DSN false		; # Only want to load a design
+# Stop after elaborating if true
+set RC_ELAB_ONLY false
+# Only want to load a design
+set RC_LOAD_DSN	false
+# Only want to load a design
+set ENC_LOAD_DSN false
 
 # Let the place and route tool know which modules have been placed and routed
 set MODULE_LIST ""
@@ -27,7 +33,7 @@ source $env(EDI_TCL_DIR)/defaults.tcl
 # ---------------------------------------------------------------------------
 
 # Point to key source directories
-set BASE_DIR ${SRC}/SDDC
+set BASE_DIR $SRC/$BASENAME
 
 #
 # These files are used for RTL simulations (sim rtl)
@@ -46,7 +52,7 @@ $BASE_DIR/system.v \
 
 # These files are used by the synthesis tool
 set NET $PHOME/syn_dir/netlists
-set SYN_VLOG_FILES ${RTL_VLOG_FILES}
+set SYN_VLOG_FILES $RTL_VLOG_FILES
 
 # Point to the testbench files to be used
 set RTL_TB_FILE $BASE_DIR/system_tb.v
@@ -57,7 +63,7 @@ set PNR_TB_FILE $BASE_DIR/system_tb.v
 # Choreograph RTL compiler flow
 #
 set RC_TO_DO_LIST { \
-${TCL_DIR}/rc/rc_synthesis.tcl \
+$TCL_DIR/rc/rc_synthesis.tcl \
 }
 
 # Choreograph encounter flow
@@ -68,9 +74,9 @@ set ENC_TO_DO_LIST { \
 $TCL_DIR/enc/enc_hitkit.tcl \
 }
 
-# &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+# ---------------------------------------------------------------------------
 # Floorplanning
-# &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+# ---------------------------------------------------------------------------
 
 # Provide X and Y dimensions of the core
 set CORE_X 1000
@@ -105,9 +111,9 @@ set S_LAYER 2
 set E_LAYER 3
 set W_LAYER 3
 
-# &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+# ---------------------------------------------------------------------------
 # Power planning
-# &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+# ---------------------------------------------------------------------------
 
 # For the add power ring command
 # Width of the metal as well as the separation between gnd and vdd rings
@@ -132,10 +138,9 @@ set MY_OA_LIB "ediLib"
 
 # We need to do something special with the ncvlog opts
 # since we don't have an include directory
-
-set NCVLOG_OPTS	"-cdslib ${CDS_LIB} \
-		-hdlvar  ${HDL_VAR} \
-                -errormax ${ERR_MAX} \
+set NCVLOG_OPTS	"-cdslib $CDS_LIB \
+                -hdlvar  $HDL_VAR \
+                -errormax $ERR_MAX \
                 -update \
                 -linedebug \
                 -status "
