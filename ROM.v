@@ -5,6 +5,11 @@ module ROM(output reg [31:0] data_out, input [4:0] address, input chip_select);
     // Load in data to ROM from separate file
     // This file makes it extremely flexible to add new programs to the CPU by simply referencing a different mem file
     initial begin
+        // Uncomment the $readmemh command containing the program you want to load the ROM with
+        // There are two separate $readmemh commands, one to use for Icarus simulation and the other is for Cadence
+        // simulation. You must uncomment the appropriate one depending on how you are simulating the project.
+        // The one containing $PHOME environment variable is to use for Cadence tools
+
         // Program that adds 16 to accumulator over and over forever
         // $readmemh("programs/simple_counter.mem", memory, 0, 31);
         // $readmemh("$PHOME/verilog.src/SDDC/programs/simple_counter.mem", memory, 0, 31);
