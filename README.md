@@ -1,11 +1,11 @@
 # SIUE CPU IC (SCIC)
 Project of Addison Elliott and Dan Ashbaugh to create IC layout of 32-bit custom CPU used in teaching digital design at SIUE.
 
-# Simulating and Synthesizing with Cadence Tools
 # Cadence Tools
 **Note:** This was run using Dr. Engel's special setup with TCL scripts and such. You must do this using the lab machines with their custom scripts.
 
 ## Setup
+
 Begin by logging into a VLSI lab machine in EB3009 and then open a terminal. Run the following commands to get your terminal setup with Dr. Engel's custom scripts. These commands only need to be run once each time you open a Terminal to setup your environment correctly.
 ```
 cds_ams
@@ -30,7 +30,8 @@ ln -s $PHOME/verilog.src/SCIC/SCIC.sdc $PHOME/verilog.src/sdc/
 If you want to verify that the symlinks were made, take a look at the figure below where I used the `ll` (alias to `ls -l`) command to achieve this. You can see that the output shows a symlink pointing to the repository location.
 **TODO: Place image here Screenshot-2.png**
 
-## Simulating
+## Simulation
+
 The first step of any design is to simulate the Verilog code using a testbench to ensure that it is **functionally** working correctly. There is no point in worrying about propagation delay, timing constraints, capacitance, resistances until you know that your design does what it is supposed to in the first place. This is the purpose of running a simulation is to verify that the design does what it is supposed to.
 
 We need to edit the TCL file to set the simulation mode: rtl, syn or pnr. When designing an IC, you typically start with the 'rtl' mode, then run with 'syn' and finally run it with 'pnr'. From left to right, the simulation mode starts with the least amount of information and then begins to add more and more. For example, rtl mode is simulating your Verilog design in the same way that Icarus Verilog simulates your code. It does not know anything about propagation delay between gates, gate size, etc. The 'syn' mode adds a bit more information by including timing delay for the gates and running a timing analysis. Finally, the 'pnr' mode (Place-n-Route) will actually place the gates on a chip and run an analysis with that.
