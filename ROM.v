@@ -7,12 +7,12 @@ module ROM(output reg [31:0] data_out, input [4:0] address, input chip_select);
     initial begin
         // Program that adds 16 to accumulator over and over forever
         // $readmemh("programs/simple_counter.mem", memory, 0, 31);
-        $readmemh("$PHOME/verilog.src/SDDC/programs/simple_counter.mem", memory, 0, 31);
+        // $readmemh("$PHOME/verilog.src/SDDC/programs/simple_counter.mem", memory, 0, 31);
 
         // Program that reads from switches and writes to LEDs repeatedly
         // This program tests the bidirectional I/O controller
         // $readmemh("programs/read_and_write_io.mem", memory, 0, 31);
-        $readmemh("$PHOME/verilog.src/SDDC/programs/read_and_write_io.mem", memory, 0, 31);
+        // $readmemh("$PHOME/verilog.src/SDDC/programs/read_and_write_io.mem", memory, 0, 31);
 
         // Program that tests all instructions
         // $readmemh("programs/test_new_ops.mem", memory, 0, 31);
