@@ -1,6 +1,32 @@
 # SIUE-DigitalDesign-CPU-IC
 Project of Addison Elliott and Dan Ashbaugh to create IC layout of 32-bit custom CPU used in teaching digital design at SIUE.
 
+# Simulating and Synthesizing with Cadence Tools
+**Note:** This was run using Dr. Engel's special setup with TCL scripts and such. You must do this using the lab machines with their custom scripts.
+
+Begin by logging into a VLSI lab machine in EB3009 and then open a terminal. Run the following commands to get your terminal setup with Dr. Engel's custom scripts. These commands only need to be run once each time you open a Terminal to setup your environment correctly.
+```
+cds_ams
+cd $PHOME
+setup_edi
+```
+
+Navigate into *verilog.src* and clone the project repository with the following commands. **Note:** If you are wanting to push changes back to the repository eventually (requires write access), then you must use the following URL rather than the one given below `https://<GITHUB_USERNAME>@github.com/addisonElliott/SIUE-DigitalDesign-CPU-IC.git`.
+```
+cd verilog.src
+git clone https://github.com/addisonElliott/SIUE-DigitalDesign-CPU-IC.git
+```
+
+The directory `verilog.src` contains all Verilog projects that are going to be simulated or synthesized using Cadence. This is a custom directory structure setup by Dr. Engel to adhere to his specific workflow. The purpose is to standardize where projects are located for ease of use. Cloning the repository only needs to be done once because afterwards it will be stored on your machine. But, if you want to pull new changes from the repository, you can do so with the command `git pull origin master`.
+
+Next, one more once-per-machine step must be done. There is a TCL and SDC file that is expected to be in a different directory to adhere to Dr. Engel's workflow. Since we wanted to make these files tracked by our GitHub repository, we place these files in the repository and create symbolic links (A.K.A. symlinks) to these locations. Run the following two commands to create symlinks for the TCL and SDC file in the appropriate directory.
+```
+ln -s $PHOME/verilog.src/SIUE-DigitalDesign-CPU-IC/env.SIUE-DigitalDesign-CPU-IC.tcl $PHOME/env_files/
+ln -s $PHOME/verilog.src/SIUE-DigitalDesign-CPU-IC/SIUE-DigitalDesign-CPU-IC.sdc $PHOME/verilog.src/sdc/
+```
+
+XXX
+
 # Simulating with Icarus Verilog
 **Note:** If this is your first time installing [Icarus Verilog](http://iverilog.icarus.com/), then you will need to make sure that the binary path is in your PATH variable. This will allow you to run the commands *iverilog*, *vvp* and *gtkwave* in your repository path. During installation, you will want to check the option to install gtkwave as well. Icarus Verilog must **not** be installed in a path with spaces or else the commands will fail. The following two paths must be added to your PATH variable:
 * <IVERILOG PATH>/bin (e.g. C:/iverilog/bin)
