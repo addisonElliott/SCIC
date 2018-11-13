@@ -1,6 +1,6 @@
 `timescale 1 ns / 1 ns
 
-module SDDC_tb();
+module SCIC_tb();
     wire [3:0] LEDs;
 
     reg reset, clock;
@@ -16,7 +16,7 @@ module SDDC_tb();
 
         // This dumps state to VCD file that can be used to view simulation results
         $dumpfile("system.vcd");
-        $dumpvars(0, SDDC_tb);
+        $dumpvars(0, SCIC_tb);
 
         forever begin
             // 5ns = 1/2 * period for 100MHz clock

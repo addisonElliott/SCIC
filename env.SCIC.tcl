@@ -11,7 +11,7 @@ set PHOME $env(PHOME)
 set SIM_MODE syn
 
 # Specify basename
-set BASENAME SDDC;          # Set the root cell	
+set BASENAME SCIC
 
 # Controls what rc_synthesis script does
 # Stop after elaborating if true

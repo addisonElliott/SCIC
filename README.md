@@ -1,4 +1,4 @@
-# SIUE-DigitalDesign-CPU-IC
+# SIUE CPU IC (SCIC)
 Project of Addison Elliott and Dan Ashbaugh to create IC layout of 32-bit custom CPU used in teaching digital design at SIUE.
 
 # Simulating and Synthesizing with Cadence Tools
@@ -11,18 +11,28 @@ cd $PHOME
 setup_edi
 ```
 
-Navigate into *verilog.src* and clone the project repository with the following commands. **Note:** If you are wanting to push changes back to the repository eventually (requires write access), then you must use the following URL rather than the one given below `https://<GITHUB_USERNAME>@github.com/addisonElliott/SIUE-DigitalDesign-CPU-IC.git`.
+Navigate into *verilog.src* and clone the project repository with the following commands. **Note:** If you are wanting to push changes back to the repository eventually (requires write access), then you must use the following URL rather than the one given below `https://<GITHUB_USERNAME>@github.com/addisonElliott/SCIC.git`.
 ```
 cd verilog.src
-git clone https://github.com/addisonElliott/SIUE-DigitalDesign-CPU-IC.git
+git clone https://github.com/addisonElliott/SCIC.git
 ```
 
-The directory `verilog.src` contains all Verilog projects that are going to be simulated or synthesized using Cadence. This is a custom directory structure setup by Dr. Engel to adhere to his specific workflow. The purpose is to standardize where projects are located for ease of use. Cloning the repository only needs to be done once because afterwards it will be stored on your machine. But, if you want to pull new changes from the repository, you can do so with the command `git pull origin master`.
+The directory `verilog.src` contains all Verilog projects that are going to be simulated or synthesized using Cadence. This is a custom directory structure setup by Dr. Engel to adhere to his specific workflow. The purpose is to standardize where projects are located for ease of use. Cloning the repository only needs to be done once because afterwards it will be stored on your machine. But, if you want to pull new changes from the repository, you can do so with the command `git pull origin master`. You must be inside the directory to run the git command (or any git commands for that matter).
 
 Next, one more once-per-machine step must be done. There is a TCL and SDC file that is expected to be in a different directory to adhere to Dr. Engel's workflow. Since we wanted to make these files tracked by our GitHub repository, we place these files in the repository and create symbolic links (A.K.A. symlinks) to these locations. Run the following two commands to create symlinks for the TCL and SDC file in the appropriate directory.
 ```
-ln -s $PHOME/verilog.src/SIUE-DigitalDesign-CPU-IC/env.SIUE-DigitalDesign-CPU-IC.tcl $PHOME/env_files/
-ln -s $PHOME/verilog.src/SIUE-DigitalDesign-CPU-IC/SIUE-DigitalDesign-CPU-IC.sdc $PHOME/verilog.src/sdc/
+ln -s $PHOME/verilog.src/SCIC/env.SCIC.tcl $PHOME/env_files/
+ln -s $PHOME/verilog.src/SCIC/SCIC.sdc $PHOME/verilog.src/sdc/
+```
+
+If you want to verify that the symlinks were made, take a look at the figure below where I used the `ll` (alias to `ls -l`) command to achieve this. You can see that the output shows a symlink pointing to the repository location.
+**TODO: Place image here Screenshot-1.png**
+
+XXX
+```
+cd $PHOME
+sb SIUE-DigitalDesign-CPU-IC
+sim
 ```
 
 XXX
