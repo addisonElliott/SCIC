@@ -2,9 +2,7 @@
 # SDC file for counter design
 #
 
-#
 # Period and fanout information in global.tcl file
-#
 set CLK "clk"
 set MAX_FAN_OUT 50
 set CLOCK_PERIOD 100
@@ -21,6 +19,6 @@ create_clock    -name $CLK  \
 set_input_delay 5 -clock $CLK [remove_from_collection [all_inputs] $CLK]
 set_output_delay 5 -clock $CLK [all_outputs]
 
-#set_false_path  -from  [get_ports {$SEL0 $SEL1}]
+# set_false_path  -from  [get_ports {$SEL0 $SEL1}]
 
 
