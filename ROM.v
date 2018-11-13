@@ -1,10 +1,10 @@
 module ROM(output reg [31:0] data_out, input [4:0] address, input chip_select);
-    // Memory elements, 32 words (1KiB)
-    reg [31:0] memory [0:31];
+	// Memory elements, 32 words (1KiB)
+	reg [31:0] memory [0:31];
 
-    // Load in data to ROM from separate file
-    // This file makes it extremely flexible to add new programs to the CPU by simply referencing a different mem file
-    initial begin
+	// Load in data to ROM from separate file
+	// This file makes it extremely flexible to add new programs to the CPU by simply referencing a different mem file
+	initial begin
 		// Program that adds 16 to accumulator over and over forever
 		// $readmemh("programs/simple_counter.mem", memory, 0, 31);
 		$readmemh("$PHOME/verilog.src/SDDC/programs/simple_counter.mem", memory, 0, 31);
