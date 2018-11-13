@@ -42,12 +42,12 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
 						AC <= AC + data_in;
 					end
 
-					// Shift AC <= AC << mem(IR[15:0]) DLA NEW STUFF!!!!!!!!!!!!!!
+					// Shift AC <= AC << mem(IR[15:0])
 					4'b0010: begin
 						AC <= AC << data_in;
 					end
 
-					// Shift AC <= AC >> mem(IR[15:0]) DLA NEW STUFF!!!!!!!!!!!!!!
+					// Shift AC <= AC >> mem(IR[15:0])
 					4'b0011: begin
 						AC <= AC >> data_in;
 					end
@@ -62,7 +62,7 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
 						AC <= data_in;
 					end
 							
-					// AC <= AC | mem(IR[15:0]) DLA NEW STUFF!!!!!!!!!!!!!!
+					// AC <= AC | mem(IR[15:0])
 					4'b0110: begin
 						AC <= AC | data_in;
 					end
@@ -78,7 +78,7 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
 						PC <= IR[15:0];
 					end
 
-					// AC <= AC & mem(IR[15:0]) DLA NEW STUFF!!!!!!!!!!!!!!
+					// AC <= AC & mem(IR[15:0])
 					4'b1001: begin
 						AC <= AC & data_in;
 					end

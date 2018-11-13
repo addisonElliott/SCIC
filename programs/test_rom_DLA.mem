@@ -4,49 +4,61 @@
 //       Opcode    Unused            Operand
 //
 // Opcodes:
-//      1     Add to accum
-//      2     Shift accum Left
-//      3     Shift accum Right
-//      4     Load immediate to accum
+//      1     Add to AC
+//      2     Shift AC Left
+//      3     Shift AC Right
+//      4     Load immediate to AC
 //      5     Load accum
-//      6     Bitwise OR of accum
-//      7     Store accum to accum (do nothing)
+//      6     Bitwise OR of AC
+//      7     Store
 //      8     Branch
-//      9     Bitwise AND of accum
-
-// test the store to rom and add to accum
+//      9     Bitwise AND of AC
+//
+// Test the store to ROM and add to AC
 4000000f // LI 000f
 70000fff // ST 0fff
 40000001 // LI 0001
 10000fff // ADD 0fff
-// results should be 10
+// Result (AC) should be 10
 
-// test teh shift Left
+// Test the shift left (SL)
 40000001 // LI 0001
 70000fff // ST 0fff
 4000ffff // LI ffff
-20000fff // SHL 0fff
-// results should be fffe
+20000fff // SL 0fff
+// Result (AC) should be fffe
 
-// test the shift right
+// Test the shift right (SR)
 40000001 // LI 0001
 70000fff // ST 0fff
 4000ffff // LI ffff
-30000fff // SHR 0fff
-// results should be 7fff
+30000fff // SR 0fff
+// Result (AC) should be 7fff
 
-// test the load into accum/OR bitwise
+// Test the bitwise OR
 4000f0f0 // LI f0f0
 70000fff // ST 0fff
 40000000 // LI 0000
 60000fff // OR 0fff
-// results should be f0f0
+// Result (AC) should be f0f0
 
-// test the load into accum/AND bitwise
-40000f0f // LI ffff
+// Test the bitwise AND
+40000f0f // LI 0f0f
 70000fff // ST 0fff
-400000f0 // LI ffff
-90000fff // AND ffff
-// results should be 00000
+400000f0 // LI 00f0
+90000fff // AND 0fff
+// Result (AC) should be 00000
 
 80000000 // BR 0
+
+00000000 // NOP
+00000000 // NOP
+00000000 // NOP
+00000000 // NOP
+00000000 // NOP
+00000000 // NOP
+00000000 // NOP
+00000000 // NOP
+00000000 // NOP
+00000000 // NOP
+00000000 // NOP
