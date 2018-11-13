@@ -26,14 +26,20 @@ ln -s $PHOME/verilog.src/SCIC/SCIC.sdc $PHOME/verilog.src/sdc/
 ```
 
 If you want to verify that the symlinks were made, take a look at the figure below where I used the `ll` (alias to `ls -l`) command to achieve this. You can see that the output shows a symlink pointing to the repository location.
-**TODO: Place image here Screenshot-1.png**
+**TODO: Place image here Screenshot-2.png**
 
-XXX
+Next, we need to edit the TCL file to set the simulation mode: rtl, syn or pnr. When designing an IC, you typically start with the 'rtl' mode, then run with 'syn' and finally run it with 'pnr'. From left to right, the simulation mode starts with the least amount of information and then begins to add more and more. For example, rtl mode is simulating your Verilog design in the same way that Icarus Verilog simulates your code. It does not know anything about propagation delay between gates, gate size, etc. The 'syn' mode adds a bit more information by including timing delay for the gates and running a timing analysis. Finally, the 'pnr' mode (Place-n-Route) will actually place the gates on a chip and run an analysis with that.
+
+Editing the env.SCIC.tcl file can be done using your favorite text editor (gedit, vim, nano, etc). Change the line `SIM_MODE` to `rtl`. In the remainder of this document, we will tell you to change the SIM_MODE to a different value and you will need to open this file using a text editor and change the value appropriately.
+
+Finally, we are ready to run our simulation on the project. Run the commands below. `sb` is a script written by Dr. Engel and is short for **set base** to set the base project. The argument to this script is the name of any project contained in the `verilog.src` folder. To see the current project, you can type `b` for the **base** project.
 ```
 cd $PHOME
-sb SIUE-DigitalDesign-CPU-IC
+sb SCIC
 sim
 ```
+
+Cadence's simulator software XXX should pop up.
 
 XXX
 
@@ -45,7 +51,7 @@ XXX
 Once you have cloned the repository somewhere locally, there is a small change that must be made to the ROM. Open ROM.v and you should see there are blocks of code that contain the command *\$readmemh* that load in programs to the ROM. Each block of code should contain two *\$readmemh* commands, one for Icarus and one for the Cadence tools. Uncomment the Icarus command and comment the Cadence command. This is also where you can select **which** program you want to run.
 
 * Icarus - `$readmemh("programs/simple_counter.mem", memory, 0, 31);`
-* Cadence - `$readmemh("\$PHOME/verilog.src/SDDC/programs/simple_counter.mem", memory, 0, 31);`
+* Cadence - `$readmemh("\$PHOME/verilog.src/SCIC/programs/simple_counter.mem", memory, 0, 31);`
 
 Open a command prompt (cmd.exe for Windows, Terminal on Linux), navigate to this repository and run the following commands:
 ```
