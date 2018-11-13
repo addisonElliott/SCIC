@@ -6,13 +6,17 @@ module ROM(output reg [31:0] data_out, input [4:0] address, input chip_select);
     // This file makes it extremely flexible to add new programs to the CPU by simply referencing a different mem file
     initial begin
         // Program that adds 16 to accumulator over and over forever
-		//$readmemh("programs/simple_counter.mem", memory, 0, 31);
+		// $readmemh("programs/simple_counter.mem", memory, 0, 31);
+		$readmemh("$PHOME/verilog.src/SDDC/programs/simple_counter.mem", memory, 0, 31);
+
+        // Program that reads from switches and writes to LEDs repeatedly
+        // This program tests the bidirectional I/O controller
+        // $readmemh("programs/read_and_write_io.mem", memory, 0, 31);
+        $readmemh("$PHOME/verilog.src/SDDC/programs/read_and_write_io.mem", memory, 0, 31);
 
         // Program that tests all instructions
-		$readmemh("$PHOME/verilog.src/SDDC/programs/test_rom_DLA.mem", memory, 0, 31);
-
-        // TODO Not sure what this program does
-		// $readmemh("programs/program1.mem", memory, 0, 31);
+        // $readmemh("programs/test_new_ops.mem", memory, 0, 31);
+        $readmemh("$PHOME/verilog.src/SDDC/programs/test_new_ops.mem", memory, 0, 31);
 	end
 
     // When address changes, set data_out to new value in memory
@@ -23,5 +27,5 @@ module ROM(output reg [31:0] data_out, input [4:0] address, input chip_select);
         else begin
             data_out <= 32'bz;
         end
-	end
+    end
 endmodule

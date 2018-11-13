@@ -4,11 +4,11 @@
 //       Opcode    Unused            Operand
 //
 // Opcodes:
-//      1     Add to accum
-//      2     Shift accum Left
-//      3     Shift accum Right
+//      1     Add to AC
+//      2     Shift AC Left
+//      3     Shift AC Right
 //      4     Load immediate to AC
-//      5     Load accum
+//      5     Load AC
 //      6     Bitwise OR of AC
 //      7     Store
 //      8     Branch
