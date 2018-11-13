@@ -7,11 +7,11 @@ set   	PHOME		$env(PHOME) ; 	# Get the project home directory
 
 # Specify simulaton mode!!!!!!!
 
-set	SIM_MODE	rtl;		# Simulation mode: rtl, syn, or pnr
+set	SIM_MODE	syn;		# Simulation mode: rtl, syn, or pnr
 
 # Specify basename
 	
-set 	BASENAME	SIUE-DigitalDesign-CPU-IC; 		# Set the root cell	
+set 	BASENAME	SDDC; 		# Set the root cell	
 
 # Controls what rc_synthesis script does
 
@@ -38,7 +38,7 @@ source 	$env(EDI_TCL_DIR)/defaults.tcl
 #set     TB   	${SRC}/accu/testbench
 
 # Create a basedirectory variable
-set 	BASE_DIR	${SRC}/SIUE-DigitalDesign-CPU-IC
+set 	BASE_DIR	${SRC}/SDDC
 
 #
 # These files are used for RTL simulations (sim rtl)
@@ -114,7 +114,6 @@ set     E_PINS  {clk}
 set     W_PINS  {reset}
 
 # Spacing in microns between the pins
-file:///usr/share/doc/HTML/index.html
 set     N_SPACING   10
 set     S_SPACING   10
 set     E_SPACING   10

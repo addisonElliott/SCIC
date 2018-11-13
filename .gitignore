@@ -3,3 +3,6 @@
 
 # Ignore VCD files
 *.vcd
+
+# Ignore backup files
+*~

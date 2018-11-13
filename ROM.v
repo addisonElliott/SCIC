@@ -9,7 +9,7 @@ module ROM(output reg [31:0] data_out, input [4:0] address, input chip_select);
 		//$readmemh("programs/simple_counter.mem", memory, 0, 31);
 
         // Program that tests all instructions
-		$readmemh("programs/test_rom_DLA.mem", memory, 0, 31);
+		$readmemh("$PHOME/verilog.src/SDDC/programs/test_rom_DLA.mem", memory, 0, 31);
 
         // TODO Not sure what this program does
 		// $readmemh("programs/program1.mem", memory, 0, 31);
