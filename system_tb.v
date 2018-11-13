@@ -53,6 +53,5 @@ module SDDC_tb();
         #60 switches <= 4'b1111;
         #1000 $finish();
     end
-
-    */
+*/
 endmodule
