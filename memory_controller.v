@@ -1,6 +1,6 @@
 module memory_controller(output [31:0] data_out, output [3:0] io_out, input [31:0] data_in, input [15:0] address, input [3:0] io_in, input we, clock);
-	wire [31:0] rom_data_out, io_data_out, ram_data_out;
-	wire select_ram, select_io, select_rom;
+    wire [31:0] rom_data_out, io_data_out, ram_data_out;
+    wire select_ram, select_io, select_rom;
     reg [1:0] data_select;
 
     // Address Map:
