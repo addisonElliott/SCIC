@@ -1,7 +1,7 @@
 module memory_controller(output [31:0] data_out, output [3:0] io_out, input [31:0] data_in, input [15:0] address, input [3:0] io_in, input we, clock);
     wire [31:0] rom_data_out, io_data_out, ram_data_out;
     wire select_ram, select_io, select_rom;
-    reg [1:0] data_select;
+//    reg [1:0] data_select;
 
     // Address Map:
     //      Range       Item    Size (words)    Binary Range
@@ -16,20 +16,21 @@ module memory_controller(output [31:0] data_out, output [3:0] io_out, input [31:
     //      1 = I/O
     //      2 = RAM
     //      3 = Otherwise
-    always @(*) begin
-        if (address <= 16'h001f) begin
-            data_select = 2'b00;
-        end
-        else if (address <= 16'h003F) begin
-            data_select = 2'b01;
-        end
-        else if (address >= 16'h0800 && address <= 16'h0FFF) begin
-            data_select = 2'b10;
-        end
-        else begin
-            data_select = 2'b11;
-        end
-    end
+//    always @(*) begin
+//        if (address <= 16'h001f) begin
+//            data_select <= 2'b00;
+//        end
+//        else if (address <= 16'h003F) begin
+//            data_select <= 2'b01;
+//        end
+//        else if (address >= 16'h0800 && address <= 16'h0FFF) begin
+//            data_select <= 2'b10;
+//        end
+//        else begin
+//            data_select <= 2'b11;
+//        end
+//    end
+    assign data_select = address[6:5];
 
     // Wires for if a particular memory module is selected
     // This is essentially a behavioral description of a demultiplexor
