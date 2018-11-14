@@ -15,7 +15,7 @@
         end
         else begin
             // data_out is high impedance state when not selected
-            data_out = 32'bz;
+            data_out <= 32'bz;
         end
     end
 endmodule

@@ -90,7 +90,7 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
 
             // Toggle the fetch_or_execute on each clock cycle
             // Fetch, Execute, Fetch, Execute, ...
-            fetch_or_execute = ~fetch_or_execute;
+            fetch_or_execute <= ~fetch_or_execute;
         end
     end
 endmodule

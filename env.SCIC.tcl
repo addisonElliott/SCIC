@@ -47,7 +47,7 @@ $BASE_DIR/memory_controller.v \
 $BASE_DIR/Mux4to1.v \
 $BASE_DIR/RAM.v \
 $BASE_DIR/ROM.v \
-$BASE_DIR/system.v \
+$BASE_DIR/SCIC.v \
 "
 
 # These files are used by the synthesis tool
@@ -55,9 +55,9 @@ set NET $PHOME/syn_dir/netlists
 set SYN_VLOG_FILES $RTL_VLOG_FILES
 
 # Point to the testbench files to be used
-set RTL_TB_FILE $BASE_DIR/system_tb.v
-set SYN_TB_FILE $BASE_DIR/system_tb.v
-set PNR_TB_FILE $BASE_DIR/system_tb.v
+set RTL_TB_FILE $BASE_DIR/SCIC_tb.v
+set SYN_TB_FILE $BASE_DIR/SCIC_syn_tb.v
+set PNR_TB_FILE $BASE_DIR/SCIC_pnr_tb.v
 
 #
 # Choreograph RTL compiler flow
@@ -79,8 +79,8 @@ $TCL_DIR/enc/enc_hitkit.tcl \
 # ---------------------------------------------------------------------------
 
 # Provide X and Y dimensions of the core
-set CORE_X 1000
-set CORE_Y 2000
+set CORE_X 2000
+set CORE_Y 4000
 
 # Set the aspect ratio for the layout
 # A values less than 1.0 means wide and not so high!
@@ -94,9 +94,9 @@ set UTILIZATION	0.6
 
 # Pin assignments
 
-set N_PINS {acc[0] acc[1] acc[2] acc[3] acc[4] acc[5] acc[6] acc[7]}
-set S_PINS {in[0]  in[1] in[2] in[3] in[4] in[5] in[6] in[7]}
-set E_PINS {clk}
+set N_PINS {LEDs[0] LEDs[1] LEDs[2] LEDs[3]}
+set S_PINS {switches[0] switches[1] switches[2] switches[3]}
+set E_PINS {clock}
 set W_PINS {reset}
 
 # Spacing in microns between the pins

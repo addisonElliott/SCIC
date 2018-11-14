@@ -7,7 +7,7 @@ module SCIC_tb();
     reg [3:0] switches;
 
     // UUT = Unit Under Test
-    system UUT(LEDs, switches, reset, clock);
+    SCIC UUT(LEDs, switches, reset, clock);
 
     initial begin
         reset <= 1'b1;
@@ -15,7 +15,7 @@ module SCIC_tb();
         switches <= 4'b0000;
 
         // This dumps state to VCD file that can be used to view simulation results
-        $dumpfile("system.vcd");
+        $dumpfile("SCIC.vcd");
         $dumpvars(0, SCIC_tb);
 
         forever begin
@@ -54,4 +54,11 @@ module SCIC_tb();
         #1000 $finish();
     end
 */
+
+// SDF annotate.
+
+initial begin
+	$sdf_annotate("/home/campus/dashbau/cds/ece484/sim_dir/sdf/SCIC_syn.sdf",UUT, , ,"MAXIMUM");
+end
+
 endmodule
