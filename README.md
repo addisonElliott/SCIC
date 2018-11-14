@@ -73,7 +73,7 @@ Once you have cloned the repository somewhere locally, there is a small change t
 
 Open a command prompt (cmd.exe for Windows, Terminal on Linux), navigate to this repository and run the following commands:
 ```
-iverilog -o out.o CPU.v memory_controller.v Mux4to1.v RAM.v ROM.v system.v io_controller.v system_tb.v
+iverilog -o out.o CPU.v memory_controller.v Mux4to1.v RAM.v ROM.v SCIC.v io_controller.v SCIC_tb.v
 vvp out.o
-gtkwave system.vcd
+gtkwave SCIC.vcd
 ```
