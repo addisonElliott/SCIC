@@ -18,14 +18,14 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
     assign data_out = AC;
 
     // instantiate full adder
-    wire [31:0] adderOut;
-    wire [31:0] adderIn1;
-    wire [31:0] adderIn2;
+    // wire [31:0] adderOut;
+    // wire [31:0] adderIn1;
+    // wire [31:0] adderIn2;
 
-    assign adderIn1 = data_in;
-    assign adderIn2 = AC;
+    // assign adderIn1 = data_in;
+    // assign adderIn2 = AC;
 
-    fullAdder_32bit_struct fullAdder(adderIn1, adderIn2, adderOut);
+    // fullAdder_32bit_struct fullAdder(adderIn1, adderIn2, adderOut);
 
     always @(posedge clock) begin
         // Active HIGH reset
@@ -49,8 +49,8 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
                 case (IR[31:28])
                     // Add AC <= AC + mem(IR[15:0])
                    4'b0001: begin
-                        AC <= adderOut;
-//                        AC <= AC + data_in;
+                        // AC <= adderOut;
+                       AC <= AC + data_in;
                    end
 
                     // Shift AC <= AC << mem(IR[15:0])
