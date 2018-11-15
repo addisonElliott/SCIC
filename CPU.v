@@ -17,6 +17,11 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
     // Wire is only used when write enable (we) is high, when this happens we want to store the AC values
     assign data_out = AC;
 
+	assign adderIn1=data_in;
+	assign adderIn2=AC;
+	
+	fullAdder_32bit_struct fullAdder(adderIn1, adderIn2, adderOut);
+
     always @(posedge clock) begin
         // Active HIGH reset
         if (reset) begin
