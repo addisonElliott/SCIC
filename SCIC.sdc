@@ -5,7 +5,7 @@
 # Period and fanout information in global.tcl file
 set CLK "clock"
 set MAX_FAN_OUT 100
-set CLOCK_PERIOD 20
+set CLOCK_PERIOD 10
 
 set_max_fanout $MAX_FAN_OUT [current_design]
 
