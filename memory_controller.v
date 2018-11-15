@@ -27,7 +27,7 @@ module memory_controller(output [31:0] data_out, output [3:0] io_out, input [31:
     // ROM, I/O & RAM module instantiations
     ROM rom_inst(rom_data_out, address[4:0], select_rom);
     io_controller io_controller_inst(io_data_out, io_out, data_in, address[4:0], io_in, select_io, we, clock);
-    RAM ram_inst(ram_data_out, data_in, address[5:0], we, select_ram, clock);
+    RAM ram_inst(ram_data_out, data_in, address[4:0], we, select_ram, clock);
 
     // data_out wire is set to be whichever address range we are speaking to
     // In the case of an unknown address space being specified, the value returned is all zeros
