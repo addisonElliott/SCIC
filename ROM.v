@@ -91,6 +91,7 @@ module ROM(output reg [31:0] data_out, input [4:0] address, input chip_select);
             5'h1D: data_out <= 32'h0000_0000;   // NOP
             5'h1E: data_out <= 32'h0000_0000;   // NOP
             5'h1F: data_out <= 32'h0000_0000;   // NOP
+        endcase
     end
 
     // always @(chip_select or address) begin
