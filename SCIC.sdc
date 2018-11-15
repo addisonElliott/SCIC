@@ -8,7 +8,7 @@ set MAX_FAN_OUT 100
 set CLOCK_PERIOD 10
 
 set_max_fanout $MAX_FAN_OUT [current_design]
-set_max_capacitance 50
+set_max_capacitance 50 [current_design]
 # set_load XXX load capacitance of output wires
 
 # Create the transmitter clock
