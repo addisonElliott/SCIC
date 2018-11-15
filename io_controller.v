@@ -22,7 +22,7 @@ module io_controller(output reg [31:0] data_out, output reg [3:0] io_out, input 
                         data_out <= {28'd0, io_in};
                     end
 
-                    default: data_out <= 32'dz;
+                    default: data_out <= 32'bx;
                 endcase
             end
         end
