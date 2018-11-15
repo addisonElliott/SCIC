@@ -30,7 +30,7 @@ module ROM(output reg [31:0] data_out, input [4:0] address, input chip_select);
             data_out <= memory[address];
         end
         else begin
-            data_out <= 32'bz;
+            data_out <= 32'bx;
         end
     end
 endmodule

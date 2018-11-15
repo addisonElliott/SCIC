@@ -17,7 +17,7 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
     // Wire is only used when write enable (we) is high, when this happens we want to store the AC values
     assign data_out = AC;
 
-	// instantiate full adder
+    // instantiate full adder
     wire [31:0] adderOut;
     wire [31:0] adderIn1;
     wire [31:0] adderIn2;

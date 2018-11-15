@@ -28,7 +28,7 @@ module io_controller(output reg [31:0] data_out, output reg [3:0] io_out, input 
         end
         else begin
             // data_out is high impedance state when not selected
-            data_out <= 32'bz;
+            data_out <= 32'bx;
         end
     end
 endmodule
