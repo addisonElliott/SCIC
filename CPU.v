@@ -81,7 +81,6 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
                     // Store mem(IR[15:0]) <= AC
                     4'b0111: begin
                         // Do nothing, the write enable line (we) will be set high
-                        AC <= AC;
                     end
 
                     // Branch PC <= IR[15: 0]
@@ -95,7 +94,8 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
                     end
 
                     // Default is to do nothing
-                    default: AC <= AC;
+                    default: begin
+                    end
                 endcase
             end
 
