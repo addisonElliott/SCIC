@@ -22,6 +22,7 @@ Instruction format for the CPU is as follows:
          Opcode    Unused            Operand
 
 The updated CPU that we worked on contains the following instructions (bolded instructions are new):
+
 | Instruction      | Opcode |            RTL            |
 |------------------|--------|---------------------------|
 | Add              |   1    | AC <= AC + mem(IR[15:0])  |
@@ -36,6 +37,7 @@ The updated CPU that we worked on contains the following instructions (bolded in
 |                  |        |                           |
 
 Address range for the memory controller is as follows:
+
 | Name |    Range    | Size (words) |                Binary Range                |
 |------|-------------|--------------|--------------------------------------------|
 | ROM  |  0000-001F  |      32      | 0000 0000 0000 0000 -> 0000 0000 0001 1111 |
