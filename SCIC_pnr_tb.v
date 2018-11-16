@@ -58,7 +58,7 @@ module SCIC_tb();
 // SDF annotate.
 
 initial begin
-	$sdf_annotate("/home/campus/dashbau/cds/ece484/sim_dir/sdf/SCIC_pnr.sdf",UUT, , ,"MAXIMUM");
+	$sdf_annotate("/home/campus/adellio/cds/ece484/sim_dir/sdf/SCIC_pnr.sdf",UUT, , ,"MAXIMUM");
 end
 
 endmodule

@@ -4,6 +4,10 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
     reg [31:0] IR;
     reg [31:0] AC;
     
+    // Output from full adder
+    wire [31:0] adder_out;
+    wire adder_overflow;
+
     // 1'b0 = Fetching next instruction
     // 1'b1 = Executing next instruction
     reg	fetch_or_execute;
@@ -17,7 +21,10 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
     // Wire is only used when write enable (we) is high, when this happens we want to store the AC values
     assign data_out = AC;
 
-    always @(posedge clock, posedge reset) begin
+    // Adder module
+    ripple_carry_adder #(32) adder(adder_out, adder_overflow, AC, data_in, 1'b0);
+
+    always @(posedge clock) begin
         // Active HIGH reset
         if (reset) begin
             // On reset, set to fetch initially and start fetching from 0 (PC=0)
@@ -39,7 +46,7 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
                 case (IR[31:28])
                     // Add AC <= AC + mem(IR[15:0])
                     4'b0001: begin
-                        AC <= AC + data_in;
+                        AC <= adder_out;
                     end
 
                     // Shift AC <= AC << mem(IR[15:0])
@@ -70,7 +77,6 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
                     // Store mem(IR[15:0]) <= AC
                     4'b0111: begin
                         // Do nothing, the write enable line (we) will be set high
-                        AC <= AC;
                     end
 
                     // Branch PC <= IR[15: 0]
@@ -84,7 +90,8 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
                     end
 
                     // Default is to do nothing
-                    default: AC <= AC;
+                    default: begin
+                    end
                 endcase
             end
 
