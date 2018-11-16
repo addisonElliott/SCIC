@@ -1,3 +1,8 @@
+module half_adder_1bit(output S, Cout, input x, y);
+    xor G1(S, x, y);
+    and G2(Cout, x, y);
+endmodule
+
 module full_adder_1bit(output S, Cout, input x, y, Cin);
     wire p, r, s;
 
@@ -13,8 +18,7 @@ module full_adder_1bit(output S, Cout, input x, y, Cin);
     or G5(Cout, r, s);
 endmodule
 
-// Ripple carry full adder
-module full_adder
+module ripple_carry_adder
         #(parameter data_width = 2)
         (output [data_width-1: 0] out, output Cout, input [data_width-1: 0] x, y, input Cin);
     // Size is 1 + size of result because last element contains carry out of MSB
@@ -31,3 +35,4 @@ module full_adder
     end
     endgenerate
 endmodule
+
