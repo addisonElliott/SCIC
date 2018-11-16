@@ -15,6 +15,9 @@ set_max_fanout $MAX_FAN_OUT [current_design]
 set_max_capacitance $MAX_CAPACITANCE [current_design]
 set_load -pin_load $OUTPUT_PINS_CAPACITANCE [all_outputs]
 
+set_clock_uncertainty -setup 3.0 [get_ports $CLK]
+set_clock_uncertainty -hold 3.0 [get_ports $CLK]
+
 # Create the transmitter clock
 create_clock    -name $CLK  \
                 -period $CLOCK_PERIOD \
