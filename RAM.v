@@ -5,7 +5,6 @@
     // Data out is memory address if selected, otherwise unknown
     assign data_out = chip_select ? memory[address] : 32'bx;
 
-    // TODO: This negedge is causing problems because we require that the combination logic be set within 1/2 period versus full period...
     always @(posedge clock) begin
         // Only do stuff when chip_select is HIGH
         if (chip_select) begin

@@ -127,7 +127,7 @@ TODO: Do this
 
 Open a command prompt (cmd.exe for Windows, Terminal on Linux), navigate to this repository and run the following commands:
 ```
-iverilog -o out.o CPU.v memory_controller.v Mux4to1.v RAM.v ROM.v SCIC.v io_controller.v adder.v SCIC_tb.v
+iverilog -o out.o CPU.v memory_controller.v Mux4to1.v RAM.v ROM.v SCIC.v io_controller.v adder.v leftShift_32bit_struct.v rightShift_32bit_struct.v SCIC_tb.v
 vvp out.o
 gtkwave SCIC.vcd
 ```
