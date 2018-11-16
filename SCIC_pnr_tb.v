@@ -26,7 +26,7 @@ module SCIC_tb();
 
     // General testbench that does not rely on changing switches
     initial begin
-         #7 reset <= 1'b0;
+         #27 reset <= 1'b0;
          #10000 $finish();
      end
 
