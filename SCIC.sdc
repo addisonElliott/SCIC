@@ -1,23 +1,36 @@
-#
-# SDC file for counter design
-#
-
-# Period and fanout information in global.tcl file
+# SDC Parameters
+# ------------------------------------------------------------------------------------------------------
+# Name of clock in Verilog code
 set CLK "clock"
+
+# Maximum fanout allowed for all gates, buffers will be added if this fanout is exceeded
 set MAX_FAN_OUT 50
+
+# Maximum capacitance a gate can have as its load in pF
 set MAX_CAPACITANCE 0.1
+
+# Capacitance load on the output pins in pF
 set OUTPUT_PINS_CAPACITANCE 1.0
+
+# TODO Explain this...
 set IO_DELAY 0.5
+
+# Clock period in ns
 set CLOCK_PERIOD 10
 
+# Percentage of clock period to add to the minimum slack required
+# In other words, the RTL compiler will attempt to get a worst-case slack of SLACK_MARGIN * CLOCK_PERIOD
+set SLACK_MARGIN 0.1
+# ------------------------------------------------------------------------------------------------------
+
 set_max_fanout $MAX_FAN_OUT [current_design]
-# TODO: not sure if this is a problem or not? Further experimentation warranted
 set_max_capacitance $MAX_CAPACITANCE [current_design]
 set_load -pin_load $OUTPUT_PINS_CAPACITANCE [all_outputs]
 
-# TODO Need to learn more about this, seems to work?
-set_clock_uncertainty -setup 1.0 [get_ports $CLK]
-# set_clock_uncertainty -hold 3.0 [get_ports $CLK]
+# Based on my understanding, setup clock uncertainty will reduce the effective period by the amount while hold clock uncertainty will increase the clock period
+# The RTL compiler tries to get a positive slack but includes no way to have a slack margin, i.e. no way to require a minimum slack value. This approach does that by effectively reducing the clock period and requires the RTL compiler to try and meet that period instead
+# This sets the setup clock uncertainty to be a percentage of the clock period
+set_clock_uncertainty -setup [eval $CLOCK_PERIOD * $SLACK_MARGIN] [get_ports $CLK]
 
 # Create the transmitter clock
 create_clock    -name $CLK  \
