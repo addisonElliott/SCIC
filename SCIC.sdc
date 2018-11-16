@@ -8,7 +8,7 @@ set MAX_FAN_OUT 50
 set MAX_CAPACITANCE 0.1
 set OUTPUT_PINS_CAPACITANCE 1.0
 set IO_DELAY 0.5
-set CLOCK_PERIOD 50
+set CLOCK_PERIOD 30
 
 set_max_fanout $MAX_FAN_OUT [current_design]
 # TODO: not sure if this is a problem or not? Further experimentation warranted
