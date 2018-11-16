@@ -5,8 +5,8 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
     reg [31:0] AC;
     
     // Output from full adder
-    wire [31:0] adder_out;
-    wire adder_overflow;
+    // wire [31:0] adder_out;
+    // wire adder_overflow;
 
     // Output from left and right shifter
     wire [31:0] left_shifter_out;
@@ -26,7 +26,7 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
     assign data_out = AC;
 
     // Adder and left/right shifter modules
-    ripple_carry_adder #(32) adder(adder_out, adder_overflow, AC, data_in, 1'b0);
+    // ripple_carry_adder #(32) adder(adder_out, adder_overflow, AC, data_in, 1'b0);
     leftShift_32bit_struct left_shifter(data_in, AC, left_shifter_out);
 	rightShift_32bit_struct right_shifter(data_in, AC, right_shifter_out);
 
@@ -52,7 +52,8 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
                 case (IR[31:28])
                     // Add AC <= AC + mem(IR[15:0])
                     4'b0001: begin
-                        AC <= adder_out;
+                        // AC <= adder_out;
+                        AC <= AC + data_in;
                     end
 
                     // Shift AC <= AC << mem(IR[15:0])
