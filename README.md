@@ -34,7 +34,6 @@ The updated CPU that we worked on contains the following instructions (bolded in
 | Store            |   7    | mem(IR[15:0]) <= AC       |
 | Branch           |   8    | PC <= IR[15: 0]           |
 | **And**          |   9    | AC <= AC & mem(IR[15:0])  |
-|                  |        |                           |
 
 Address range for the memory controller is as follows:
 
@@ -43,7 +42,6 @@ Address range for the memory controller is as follows:
 | ROM  |  0000-001F  |      32      | 0000 0000 0000 0000 -> 0000 0000 0001 1111 |
 | RAM  |  0020-003F  |      32      | 0000 0000 0010 0000 -> 0000 0000 0011 1111 |
 | I/O  |  0040-005F  |      32      | 0000 0000 0100 0000 -> 0000 0000 0101 1111 |
-|      |             |              |                                            |
 
 # Cadence Tools
 **Note:** This was run using Dr. Engel's special setup with TCL scripts and such. You must do this using the lab machines with their custom scripts.
