@@ -12,8 +12,8 @@ set MAX_CAPACITANCE 0.1
 # Capacitance load on the output pins in pF
 set OUTPUT_PINS_CAPACITANCE 1.0
 
-# TODO Explain this...
-set IO_DELAY 0.5
+# Delay in ns from the clock edge to the input/output pins arriving
+set IO_DELAY 0.25
 
 # Clock period in ns
 set CLOCK_PERIOD 8
@@ -41,5 +41,3 @@ create_clock    -name $CLK  \
 # Set input and output delays
 set_input_delay $IO_DELAY -clock $CLK [remove_from_collection [all_inputs] $CLK]
 set_output_delay $IO_DELAY -clock $CLK [all_outputs]
-
-
