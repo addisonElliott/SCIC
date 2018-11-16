@@ -8,7 +8,7 @@ set MAX_FAN_OUT 50
 set MAX_CAPACITANCE 0.1
 set OUTPUT_PINS_CAPACITANCE 1.0
 set IO_DELAY 0.5
-set CLOCK_PERIOD 20
+set CLOCK_PERIOD 15
 
 set_max_fanout $MAX_FAN_OUT [current_design]
 # TODO: not sure if this is a problem or not? Further experimentation warranted
@@ -16,7 +16,7 @@ set_max_capacitance $MAX_CAPACITANCE [current_design]
 set_load -pin_load $OUTPUT_PINS_CAPACITANCE [all_outputs]
 
 # TODO Need to learn more about this, seems to work?
-set_clock_uncertainty -setup 2.0 [get_ports $CLK]
+set_clock_uncertainty -setup 1.5 [get_ports $CLK]
 # set_clock_uncertainty -hold 3.0 [get_ports $CLK]
 
 # Create the transmitter clock
