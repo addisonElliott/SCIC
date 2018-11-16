@@ -48,8 +48,6 @@ $BASE_DIR/Mux4to1.v \
 $BASE_DIR/RAM.v \
 $BASE_DIR/ROM.v \
 $BASE_DIR/SCIC.v \
-$BASE_DIR/leftShift_32bit_struct.v \
-$BASE_DIR/rightShift_32bit_struct.v \
 "
 
 # These files are used by the synthesis tool

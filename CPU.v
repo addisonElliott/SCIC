@@ -3,10 +3,6 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
     reg [15:0] PC;
     reg [31:0] IR;
     reg [31:0] AC;
-    
-    // Output from left and right shifter
-    // wire [31:0] left_shifter_out;
-    // wire [31:0] right_shifter_out;
 
     // 1'b0 = Fetching next instruction
     // 1'b1 = Executing next instruction
@@ -20,10 +16,6 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
 
     // Wire is only used when write enable (we) is high, when this happens we want to store the AC values
     assign data_out = AC;
-
-    // Adder and left/right shifter modules
-    // leftShift_32bit_struct left_shifter(data_in, AC, left_shifter_out);
-	// rightShift_32bit_struct right_shifter(data_in, AC, right_shifter_out);
 
     always @(posedge clock) begin
         // Active HIGH reset
@@ -53,13 +45,11 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
                     // Shift AC <= AC << mem(IR[15:0])
                     4'b0010: begin
                         AC <= AC << data_in;
-                        // AC <= left_shifter_out;
                     end
 
                     // Shift AC <= AC >> mem(IR[15:0])
                     4'b0011: begin
                         AC <= AC >> data_in;
-                        // AC <= right_shifter_out;
                     end
 
                     // Load AC immediate AC <= IR[15:0]
