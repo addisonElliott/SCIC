@@ -43,6 +43,8 @@ Address range for the memory controller is as follows:
 | RAM  |  0020-003F  |      32      | 0000 0000 0010 0000 -> 0000 0000 0011 1111 |
 | I/O  |  0040-005F  |      32      | 0000 0000 0100 0000 -> 0000 0000 0101 1111 |
 
+A detailed explanation of the code is given in the section TODO: ME below.
+
 # Cadence Tools
 **Note:** This was run using Dr. Engel's special setup with TCL scripts and such. You must do this using the lab machines with their custom scripts.
 
@@ -97,7 +99,22 @@ Cadence's simulator software *SimVision* should pop up. There will not be a deta
 
 ## Synthesis
 
-TODO: Do this
+Once the design is logically correct, the next step is synthesizing the design into gates and analyzing this design. This does not include wiring capacitances or resistance because the gates are not placed yet, that is handled in the place & route tool. This synthesis will provide information such as power usage, worst-case timing path, number of gates used, area used and much more. The *SCIC.sdc* file will be used in the synthesis to gather information about clock speed, input/output capacitance and delay and more.
+
+Run these commands from your terminal to launch the RTL compiler:
+```
+cd $PHOME
+sb SCIC
+syn
+```
+
+The *syn* command is a custom TCL script written by Dr. Engel and a former graduate student that runs the RTL compiler and runs a synthesis script within it. It will begin by parsing the SDC file and afterwards the script will pause to wait for user input. You will read the output in your terminal to ensure there were no errors, and if so type 'resume' in the terminal.
+
+The script will finish running and then a schematic window will appear. You can double click on any of the blocks in the hierarchy to view a schematic for them. Below are some screenshots showing some of the capabilities that this synthesis contains.
+
+TODO: Images here
+
+TODO: Describe how to do a post-synthesis simulation
 
 ## Synthesis with Place & Route
 
