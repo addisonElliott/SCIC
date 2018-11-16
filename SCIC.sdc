@@ -5,14 +5,14 @@
 # Period and fanout information in global.tcl file
 set CLK "clock"
 set MAX_FAN_OUT 50
-set MAX_CAPACITANCE 50
-set OUTPUT_PINS_CAPACITANCE 1000
+set MAX_CAPACITANCE 0.05
+set OUTPUT_PINS_CAPACITANCE 1.0
 set IO_DELAY 0.5
 set CLOCK_PERIOD 20
 
 set_max_fanout $MAX_FAN_OUT [current_design]
 set_max_capacitance $MAX_CAPACITANCE [current_design]
-set_load $OUTPUT_PINS_CAPACITANCE [all_outputs]
+set_load -pin_load $OUTPUT_PINS_CAPACITANCE [all_outputs]
 
 # Create the transmitter clock
 create_clock    -name $CLK  \
