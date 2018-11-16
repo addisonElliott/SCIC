@@ -2,22 +2,17 @@
     // 32 x 32 memory
     reg [31:0] memory [0:31];
 
-    assign data_out = memory[address];
+    // Data out is memory address if selected, otherwise unknown
+    assign data_out = chip_select ? memory[address] : 32'bx;
 
-    always @(negedge clock) begin
+    // TODO: This negedge is causing problems because we require that the combination logic be set within 1/2 period versus full period...
+    always @(posedge clock) begin
         // Only do stuff when chip_select is HIGH
         if (chip_select) begin
             // If write-enable is HIGH, then write to memory with data_in, otherwise retrieve memory at specified address
             if (we) begin
                 memory[address] <= data_in;
             end
-            // else begin
-            //     data_out <= memory[address];
-            // end
-        end
-        else begin
-            // data_out is high impedance state when not selected
-            // data_out <= 32'bx;
         end
     end
 endmodule
