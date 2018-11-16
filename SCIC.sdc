@@ -19,6 +19,7 @@ set_load -pin_load $OUTPUT_PINS_CAPACITANCE [all_outputs]
 # Clock is 15000ps, risin
 # TODO: Holding off on trying this until I ensure the RAM is still the bottleneck
 # set_max_delay -from {fetch_or_execute} -to {memory_reg} 6000
+set_max_delay -from {SCIC/cpu_inst/add_42_34/B} -to {SCIC/cpu_inst/add_42_34/Z} 5000
 
 # Create the transmitter clock
 create_clock    -name $CLK  \
