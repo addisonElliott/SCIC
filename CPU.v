@@ -44,8 +44,8 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
                 // 4 MSB of IR are the opcode
                 case (IR[31:28])
                     // Add AC <= AC + mem(IR[15:0])
-                   4'b0001: begin
-                    AC <= adder_out;
+                    4'b0001: begin
+                        AC <= adder_out;
                     end
 
                     // Shift AC <= AC << mem(IR[15:0])
