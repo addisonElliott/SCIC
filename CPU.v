@@ -6,6 +6,7 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
     
     // Output from full adder
     wire [31:0] adder_out;
+    wire adder_overflow;
 
     // 1'b0 = Fetching next instruction
     // 1'b1 = Executing next instruction
@@ -21,7 +22,7 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
     assign data_out = AC;
 
     // Adder module
-    ripple_carry_adder #(32) adder(AC, data_in, adder_out);
+    ripple_carry_adder #(32) adder(adder_out, adder_overflow, AC, data_in, 1'b0);
 
     always @(posedge clock) begin
         // Active HIGH reset

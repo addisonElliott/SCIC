@@ -1,4 +1,4 @@
- module RAM(output reg [31:0] data_out, input [31:0] data_in, input [4:0] address, input we, chip_select, clock);
+ module RAM(output /*reg*/ [31:0] data_out, input [31:0] data_in, input [4:0] address, input we, chip_select, clock);
     // 32 x 32 memory
     reg [31:0] memory [0:31];
 

@@ -1,6 +1,48 @@
 # SIUE CPU IC (SCIC)
 Project of Addison Elliott and Dan Ashbaugh to create IC layout of 32-bit custom CPU used in teaching digital design at SIUE.
 
+## Overview
+In the introduction class to digital design at SIUE, there is a simple CPU written in Verilog that is used for demonstration purposes. The design is discussed and simulated but never synthesized, whether it be on an FPGA or ASIC. In this project, we took the CPU from this class and created an ASIC design using the Cadence toolset making some minor changes and additions to the CPU itself.
+
+**Note:** The original CPU from the digital design class can be found in the old_files folder of this repository.
+
+**Specifications:**
+* 1x 32-bit accumulator (AC)
+* 32-bit instructions (1 word)
+* Bidirectional I/O port (input = switches, output = LEDs)
+* RAM
+* ROM
+* Non-pipelined implementation. Clocks per instruction (CPI) = 2
+* 32-bit Ripple carry adder
+* 4-bit opcode, 9 instructions, 16-bit address space
+
+Instruction format for the CPU is as follows:
+
+        31----28------------16-15----------------0
+         Opcode    Unused            Operand
+
+The updated CPU that we worked on contains the following instructions (bolded instructions are new):
+| Instruction      | Opcode |            RTL            |
+|------------------|--------|---------------------------|
+| Add              |   1    | AC <= AC + mem(IR[15:0])  |
+| **Shift Left**   |   2    | AC <= AC << mem(IR[15:0]) |
+| **Shift Right**  |   3    | AC <= AC >> mem(IR[15:0]) |
+| **Load immed.**  |   4    | AC <= IR[15:0]            |
+| Load             |   5    | AC <= mem(IR[15:0])       |
+| **Or**           |   6    | AC <= AC | mem(IR[15:0])  |
+| Store            |   7    | mem(IR[15:0]) <= AC       |
+| Branch           |   8    | PC <= IR[15: 0]           |
+| **And**          |   9    | AC <= AC & mem(IR[15:0])  |
+|                  |        |                           |
+
+Address range for the memory controller is as follows:
+| Name |    Range    | Size (words) |                Binary Range                |
+|------|-------------|--------------|--------------------------------------------|
+| ROM  |  0000-001F  |      32      | 0000 0000 0000 0000 -> 0000 0000 0001 1111 |
+| RAM  |  0020-003F  |      32      | 0000 0000 0010 0000 -> 0000 0000 0011 1111 |
+| I/O  |  0040-005F  |      32      | 0000 0000 0100 0000 -> 0000 0000 0101 1111 |
+|      |             |              |                                            |
+
 # Cadence Tools
 **Note:** This was run using Dr. Engel's special setup with TCL scripts and such. You must do this using the lab machines with their custom scripts.
 
@@ -66,14 +108,9 @@ TODO: Do this
 * \<IVERILOG PATH>/bin (e.g. C:/iverilog/bin)
 * \<IVERILOG PATH>/gtkwave/bin (e.g. C:/iverilog/gtkwave/bin)
 
-Once you have cloned the repository somewhere locally, there is a small change that must be made to the ROM. Open ROM.v and you should see there are blocks of code that contain the command *\$readmemh* that load in programs to the ROM. Each block of code should contain two *\$readmemh* commands, one for Icarus and one for the Cadence tools. Uncomment the Icarus command and comment the Cadence command. This is also where you can select **which** program you want to run.
-
-* Icarus - `$readmemh("programs/simple_counter.mem", memory, 0, 31);`
-* Cadence - `$readmemh("\$PHOME/verilog.src/SCIC/programs/simple_counter.mem", memory, 0, 31);`
-
 Open a command prompt (cmd.exe for Windows, Terminal on Linux), navigate to this repository and run the following commands:
 ```
-iverilog -o out.o CPU.v memory_controller.v Mux4to1.v RAM.v ROM.v SCIC.v io_controller.v SCIC_tb.v
+iverilog -o out.o CPU.v memory_controller.v Mux4to1.v RAM.v ROM.v SCIC.v io_controller.v adder.v SCIC_tb.v
 vvp out.o
 gtkwave SCIC.vcd
 ```

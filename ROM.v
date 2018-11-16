@@ -32,7 +32,7 @@ module ROM(output reg [31:0] data_out, input [4:0] address, input chip_select);
             5'h05: data_out <= 32'h7000_005f;   // ST 005f
             5'h06: data_out <= 32'h4000_ffff;   // LI ffff
             5'h07: data_out <= 32'h2000_005f;   // SL 005f
-            // Result (AC) should be fffe
+            // Result (AC) should be 1fffe
 
             // Test the shift right (SR)
             5'h08: data_out <= 32'h4000_0001;   // LI 0001
