@@ -63,7 +63,7 @@ set PNR_TB_FILE $BASE_DIR/SCIC_pnr_tb.v
 # Choreograph RTL compiler flow
 #
 set RC_TO_DO_LIST { \
-$BASE_DIR/rc_synthesis.tcl \
+$TCL_DIR/rc/rc_synthesis.tcl \
 }
 
 # Choreograph encounter flow
