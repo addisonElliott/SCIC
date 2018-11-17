@@ -41,6 +41,7 @@ set_dont_touch [find / -net data_out[2]]
 set_dont_touch [find / -net data_out[1]]
 set_dont_touch [find / -net data_out[0]]
 
+# Didn't work
 set_dont_touch_network [find / * /designs/SCIC/isntances_hier/cpu_inst/instances_seq/AC_reg[*]/pins_in/d]
 set_dont_touch_network [find / * /designs/SCIC/isntances_hier/cpu_inst/instances_seq/AC_reg[*]/pins_out/q]
 
