@@ -119,7 +119,9 @@ set_attribute delete_unloaded_insts false
 set_attribute delete_hier_insts_on_preserved_net false
 set_attribute delete_flops_on_preserved_net false
 set_attribute delete_unloaded_seqs false
-# dc::set_dont_touch [find / -instance PC_reg[*]]
+# dc::set_dont_touch [find / -net PC*]
+set_attribute preserve true [find / -net PC*]
+set_attribute auto_ungroup none /
 
      print $log "\nSynthesizing design with options ..." 
      print $log "--> ${RC_SYNTHESIZE_OPTS}"
@@ -131,7 +133,7 @@ set_attribute delete_unloaded_seqs false
      print $log "--> ${SYN_DIR}/netlists/${BASENAME}_syn.v"
 
 set_attribute preserve true [find / -instance PC_reg[*]]
-set_attribute auto_ungroup none /
+# set_attribute auto_ungroup none /
 
    eval write_hdl -generic > ${SYN_DIR}/netlists/${BASENAME}_syn_test1.v
    eval write_hdl -equation > ${SYN_DIR}/netlists/${BASENAME}_syn_test2.v
