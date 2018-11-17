@@ -111,6 +111,10 @@ if {${RC_LOAD_DSN} == "true"} {
 set_attribute delete_unloaded_seqs false /
 set_attribute optimize_constant_0_flops false /
 set_attribute optimize_constant_latches false /
+delete_unloaded_insts false
+delete_hier_insts_on_preserved_net false
+delete_flops_on_preserved_net false
+# dc::set_dont_touch [find / -instance PC_reg[*]]
 
      print $log "\nSynthesizing design with options ..." 
      print $log "--> ${RC_SYNTHESIZE_OPTS}"
