@@ -119,6 +119,9 @@ if {${RC_LOAD_DSN} == "true"} {
 set_attribute preserve true [find / -instance PC_reg[*]]
 set_attribute auto_ungroup none /
 
+   eval write_hdl -generic > ${SYN_DIR}/netlists/${BASENAME}_syn_test1.v
+   eval write_hdl -equation > ${SYN_DIR}/netlists/${BASENAME}_syn_test2.v
+
 # Saving netlists to pnr and syn directories
 
     eval write_hdl ${RC_WRITE_HDL_OPTS} > ${PNR_DIR}/netlists/${BASENAME}_syn.v
