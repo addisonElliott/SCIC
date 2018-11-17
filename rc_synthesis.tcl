@@ -108,20 +108,20 @@ if {${RC_LOAD_DSN} == "true"} {
 ## Synthesize your code .. options in env.tcl
 ##
 
-set_attribute delete_unloaded_seqs false /
-set_attribute optimize_constant_0_flops false /
-set_attribute optimize_constant_latches false /
+# set_attribute delete_unloaded_seqs false /
+# set_attribute optimize_constant_0_flops false /
+# set_attribute optimize_constant_latches false /
 
-set_attribute optimize_merge_flops false /
-set_attribute optimize_merge_latches false /
+# set_attribute optimize_merge_flops false /
+# set_attribute optimize_merge_latches false /
 
-set_attribute delete_unloaded_insts false
-set_attribute delete_hier_insts_on_preserved_net false
-set_attribute delete_flops_on_preserved_net false
-set_attribute delete_unloaded_seqs false
+# set_attribute delete_unloaded_insts false
+# set_attribute delete_hier_insts_on_preserved_net false
+# set_attribute delete_flops_on_preserved_net false
+# set_attribute delete_unloaded_seqs false
 # dc::set_dont_touch [find / -net PC*]
 set_attribute preserve true [find / -net PC*]
-set_attribute auto_ungroup none /
+# set_attribute auto_ungroup none /
 
      print $log "\nSynthesizing design with options ..." 
      print $log "--> ${RC_SYNTHESIZE_OPTS}"
