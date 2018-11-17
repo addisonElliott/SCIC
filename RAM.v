@@ -9,7 +9,7 @@
     // assign data_out = memory[address];
     assign data_out = memory;
 
-    always @(negedge clock) begin
+    always @(posedge clock) begin
         // Only do stuff when chip_select is HIGH
         if (chip_select) begin
             // If write-enable is HIGH, then write to memory with data_in, otherwise retrieve memory at specified address
