@@ -27,6 +27,9 @@ set_max_fanout $MAX_FAN_OUT [current_design]
 set_max_capacitance $MAX_CAPACITANCE [current_design]
 set_load -pin_load $OUTPUT_PINS_CAPACITANCE [all_outputs]
 
+set_dont_touch [find / -instance PC_reg[*]]
+# set_dont_touch_network [find / -instance PC_reg[*]]
+
 # Based on my understanding, setup clock uncertainty will reduce the effective period by the amount while hold clock uncertainty will increase the clock period
 # The RTL compiler tries to get a positive slack but includes no way to have a slack margin, i.e. no way to require a minimum slack value. This approach does that by effectively reducing the clock period and requires the RTL compiler to try and meet that period instead
 # This sets the setup clock uncertainty to be a percentage of the clock period
