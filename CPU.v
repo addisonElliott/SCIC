@@ -1,9 +1,9 @@
-// module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] data_in, input reset, clock);
-module CPU(output reg [15:0] PC, output reg [31:0] IR, AC, output [31:0] data_out, output[15:0] address, output we, input[31:0] data_in, input reset, clock);
+module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] data_in, input reset, clock);
+// module CPU(output reg [15:0] PC, output reg [31:0] IR, AC, output [31:0] data_out, output[15:0] address, output we, input[31:0] data_in, input reset, clock);
     // Define 16-bit program counter (PC), 32-bit instruction register (IR) and 32-bit ACcumulator (AC)
-    // reg [15:0] PC;
-    // reg [31:0] IR;
-    // reg [31:0] AC;
+    reg [15:0] PC;
+    reg [31:0] IR;
+    reg [31:0] AC;
 
     // 1'b0 = Fetching next instruction
     // 1'b1 = Executing next instruction
