@@ -26,7 +26,8 @@ if {${RC_LOAD_DSN} == "true"} {
 # Set information level
 #
 
-   set_attribute	information_level	${RC_INFO_LEVEL}
+   # set_attribute	information_level	${RC_INFO_LEVEL}
+   set_attribute	information_level	9
 
 #
 # Point tool to lef descriptions of the cells
