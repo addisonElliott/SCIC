@@ -42,8 +42,8 @@ set_dont_touch [find / -net data_out[1]]
 set_dont_touch [find / -net data_out[0]]
 
 # Didn't work
-set_dont_touch_network [find / * /designs/SCIC/isntances_hier/cpu_inst/instances_seq/AC_reg[*]/pins_in/d]
-set_dont_touch_network [find / * /designs/SCIC/isntances_hier/cpu_inst/instances_seq/AC_reg[*]/pins_out/q]
+# set_dont_touch_network [find / * /designs/SCIC/isntances_hier/cpu_inst/instances_seq/AC_reg[*]/pins_in/d]
+# set_dont_touch_network [find / * /designs/SCIC/isntances_hier/cpu_inst/instances_seq/AC_reg[*]/pins_out/q]
 
 # Based on my understanding, setup clock uncertainty will reduce the effective period by the amount while hold clock uncertainty will increase the clock period
 # The RTL compiler tries to get a positive slack but includes no way to have a slack margin, i.e. no way to require a minimum slack value. This approach does that by effectively reducing the clock period and requires the RTL compiler to try and meet that period instead
