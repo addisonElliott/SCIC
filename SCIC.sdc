@@ -27,7 +27,7 @@ set_max_fanout $MAX_FAN_OUT [current_design]
 set_max_capacitance $MAX_CAPACITANCE [current_design]
 set_load -pin_load $OUTPUT_PINS_CAPACITANCE [all_outputs]
 
-set_dont_touch [find / -instance PC_reg[*]]
+# set_dont_touch [find / -instance PC_reg[*]]
 # set_dont_touch_network [find / -instance PC_reg[*]]
 
 # Based on my understanding, setup clock uncertainty will reduce the effective period by the amount while hold clock uncertainty will increase the clock period
