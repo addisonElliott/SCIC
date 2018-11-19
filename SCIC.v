@@ -1,4 +1,5 @@
-module SCIC(output [3:0] LEDs, input [3:0] switches, input reset, clock);
+// module SCIC(output [3:0] LEDs, input [3:0] switches, input reset, clock);
+module SCIC(output [31:0] AC, output [3:0] LEDs, input [3:0] switches, input reset, clock);
     wire [15:0]	address;
     wire [31:0]	data_toCPU;
     wire [31:0]	data_fromCPU;

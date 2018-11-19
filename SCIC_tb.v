@@ -2,12 +2,14 @@
 
 module SCIC_tb();
     wire [3:0] LEDs;
+    wire [31:0] AC;
 
     reg reset, clock;
     reg [3:0] switches;
 
     // UUT = Unit Under Test
-    SCIC UUT(LEDs, switches, reset, clock);
+    // SCIC UUT(LEDs, switches, reset, clock);
+    SCIC UUT(AC, LEDs, switches, reset, clock);
 
     initial begin
         reset <= 1'b1;
