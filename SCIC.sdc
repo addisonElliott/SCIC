@@ -35,7 +35,8 @@ set_dont_touch [find / -net IR*]
 set_dont_touch [find / -net fetch_or_execute]
 set_dont_touch [find / -net we]
 
-# set_dont_touch [find / -net data_out*]
+# TODO: I think this causes problems because there are multiple data_out nets found
+set_dont_touch [find / -net data_out*]
 # set_dont_touch [find / -net data_out[3]]
 # set_dont_touch [find / -net data_out[2]]
 # set_dont_touch [find / -net data_out[1]]
