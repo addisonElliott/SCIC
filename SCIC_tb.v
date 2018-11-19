@@ -18,18 +18,18 @@ module SCIC_tb();
         switches <= 4'b0000;
 
         // This dumps state to VCD file that can be used to view simulation results
-        // $dumpfile("SCIC.vcd");
-        // $dumpvars(0, SCIC_tb);
+        $dumpfile("SCIC.vcd");
+        $dumpvars(0, SCIC_tb);
 
         forever begin
             // 5ns = 1/2 * period for 100MHz clock
-            #250 clock <= ~clock;
+            #50 clock <= ~clock;
         end
     end
 
     // General testbench that does not rely on changing switches
     initial begin
-         #1020 reset <= 1'b0;
+         #2020 reset <= 1'b0;
          #10000 $finish();
      end
 
