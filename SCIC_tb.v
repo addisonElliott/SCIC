@@ -2,15 +2,15 @@
 
 module SCIC_tb();
     wire [3:0] LEDs;
-    wire [15:0] PC;
-    wire [31:0] IR, AC;
+    // wire [15:0] PC;
+    // wire [31:0] IR, AC;
 
     reg reset, clock;
     reg [3:0] switches;
 
     // UUT = Unit Under Test
-    // SCIC UUT(LEDs, switches, reset, clock);
-    SCIC UUT(PC, IR, AC, LEDs, switches, reset, clock);
+    SCIC UUT(LEDs, switches, reset, clock);
+    // SCIC UUT(PC, IR, AC, LEDs, switches, reset, clock);
 
     initial begin
         reset <= 1'b1;
@@ -29,7 +29,7 @@ module SCIC_tb();
 
     // General testbench that does not rely on changing switches
     initial begin
-         #2020 reset <= 1'b0;
+         #220 reset <= 1'b0;
          #10000 $finish();
      end
 
