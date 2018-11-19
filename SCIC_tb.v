@@ -18,8 +18,8 @@ module SCIC_tb();
         switches <= 4'b0000;
 
         // This dumps state to VCD file that can be used to view simulation results
-        $dumpfile("SCIC.vcd");
-        $dumpvars(0, SCIC_tb);
+        // $dumpfile("SCIC.vcd");
+        // $dumpvars(0, SCIC_tb);
 
         forever begin
             // 5ns = 1/2 * period for 100MHz clock
