@@ -20,13 +20,13 @@ module SCIC_tb();
 
         forever begin
             // 4ns = 1/2 * period for 125MHz clock
-            #4 clock <= ~clock;
+            #10 clock <= ~clock;
         end
     end
 
     // General testbench that does not rely on changing switches
     initial begin
-         #27 reset <= 1'b0;
+         #57 reset <= 1'b0;
          #1000 $finish();
      end
 

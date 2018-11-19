@@ -16,7 +16,7 @@ set OUTPUT_PINS_CAPACITANCE 1.0
 set IO_DELAY 0.25
 
 # Clock period in ns
-set CLOCK_PERIOD 8
+set CLOCK_PERIOD 20
 
 # Percentage of clock period to add to the minimum slack required
 # In other words, the RTL compiler will attempt to get a worst-case slack of SLACK_MARGIN * CLOCK_PERIOD
