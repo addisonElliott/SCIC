@@ -79,12 +79,12 @@ $TCL_DIR/enc/enc_hitkit.tcl \
 # ---------------------------------------------------------------------------
 
 # Provide X and Y dimensions of the core
-set CORE_X 2000
-set CORE_Y 4000
+set CORE_X 8000
+set CORE_Y 16000
 
 # Set the aspect ratio for the layout
 # A values less than 1.0 means wide and not so high!
-set ASPECT 0.25
+set ASPECT 1.0
 
 # Establish a boundary outside of the core area 
 set CORE_TO_BOUND 15
