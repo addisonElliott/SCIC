@@ -106,7 +106,8 @@ if {${RC_LOAD_DSN} == "true"} {
 ##
 ## Synthesize your code .. options in env.tcl
 ##
-set_attribute write_vlog_preserve_net_name true
+# TODO: Dont think I need this
+# set_attribute write_vlog_preserve_net_name true
 
 
      print $log "\nSynthesizing design with options ..." 
