@@ -40,6 +40,8 @@ set_dont_touch [find / -net we]
 # Result should be 00000010, got 0X000010...
 # set_dont_touch [find / -net data_out*]
 
+set_dont_touch [find designs/**/cpu_inst -net data_out*]
+
 # set_dont_touch [find / -net data_out[3]]
 # set_dont_touch [find / -net data_out[2]]
 # set_dont_touch [find / -net data_out[1]]
