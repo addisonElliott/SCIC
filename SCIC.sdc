@@ -4,13 +4,13 @@
 set CLK "clock"
 
 # Maximum fanout allowed for all gates, buffers will be added if this fanout is exceeded
-set MAX_FAN_OUT 500
+set MAX_FAN_OUT 520
 
 # Maximum capacitance a gate can have as its load in pF
 set MAX_CAPACITANCE 1.0
 
 # Capacitance load on the output pins in pF
-set OUTPUT_PINS_CAPACITANCE 1.0
+set OUTPUT_PINS_CAPACITANCE 1.05
 
 # Delay in ns from the clock edge to the input/output pins arriving
 set IO_DELAY 0.25
