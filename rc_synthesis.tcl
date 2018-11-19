@@ -77,6 +77,7 @@ if {${RC_LOAD_DSN} == "true"} {
 
 #  set_attribute      preserve   true  {LOGIC0 LOGIC1}
 # suspend
+set_attribute hdl_preserve_unused_registers true
 
    elaborate ${BASENAME}
 
