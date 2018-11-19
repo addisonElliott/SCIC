@@ -1,5 +1,4 @@
 module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] data_in, input reset, clock);
-// module CPU(/*output reg [15:0] PC, output reg [31:0] IR, */output reg [31:0] AC, output [31:0] data_out, output[15:0] address, output we, input[31:0] data_in, input reset, clock);
     // Define 16-bit program counter (PC), 32-bit instruction register (IR) and 32-bit ACcumulator (AC)
     reg [15:0] PC;
     reg [31:0] IR;
@@ -17,7 +16,6 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
 
     // Wire is only used when write enable (we) is high, when this happens we want to store the AC values
     assign data_out = AC;
-    // assign data_out = 32'd10;
 
     always @(posedge clock) begin
         // Active HIGH reset

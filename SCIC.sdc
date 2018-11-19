@@ -29,31 +29,11 @@ set_load -pin_load $OUTPUT_PINS_CAPACITANCE [all_outputs]
 
 # TODO Explain this in detail
 # Explain that doing set_dont_touch on instances did not work for me, in my case PC_reg
-# set_dont_touch [find / -net PC*]
-# set_dont_touch [find / -net IR*]
-# # set_dont_touch [find / -net AC*]
-# set_dont_touch [find / -net fetch_or_execute]
-# set_dont_touch [find / -net we]
-
-# TODO: I think this causes problems because there are multiple data_out nets found
-# Yes it did because it just happened for adding.
-# Result should be 00000010, got 0X000010...
-# set_dont_touch [find / -net data_out*]
-# set_dont_touch [find / -net data_out[3]]
-# set_dont_touch [find / -net data_out[2]]
-# set_dont_touch [find / -net data_out[1]]
-# set_dont_touch [find / -net data_out[0]]
-
-# Did not work either, got rid of AC wire completely and even then, some of the wires were not connected properly
-# set_dont_touch [find designs/**/cpu_inst -net data_out*]
-# set_dont_touch [find designs/**/cpu_inst -net data_out[3]]
-# set_dont_touch [find designs/**/cpu_inst -net data_out[2]]
-# set_dont_touch [find designs/**/cpu_inst -net data_out[1]]
-# set_dont_touch [find designs/**/cpu_inst -net data_out[0]]
-
-# Didn't work
-# set_dont_touch_network [find / * /designs/SCIC/isntances_hier/cpu_inst/instances_seq/AC_reg[*]/pins_in/d]
-# set_dont_touch_network [find / * /designs/SCIC/isntances_hier/cpu_inst/instances_seq/AC_reg[*]/pins_out/q]
+set_dont_touch [find / -net PC*]
+set_dont_touch [find / -net IR*]
+# set_dont_touch [find / -net AC*]
+set_dont_touch [find / -net fetch_or_execute]
+set_dont_touch [find / -net we]
 
 # Based on my understanding, setup clock uncertainty will reduce the effective period by the amount while hold clock uncertainty will increase the clock period
 # The RTL compiler tries to get a positive slack but includes no way to have a slack margin, i.e. no way to require a minimum slack value. This approach does that by effectively reducing the clock period and requires the RTL compiler to try and meet that period instead
