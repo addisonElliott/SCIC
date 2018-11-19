@@ -40,6 +40,7 @@ set_dont_touch [find / -net we]
 # Result should be 00000010, got 0X000010...
 # set_dont_touch [find / -net data_out*]
 
+# Did not work either, got rid of AC wire completely and even then, some of the wires were not connected properly
 set_dont_touch [find designs/**/cpu_inst -net data_out*]
 
 # set_dont_touch [find / -net data_out[3]]

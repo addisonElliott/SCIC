@@ -76,7 +76,7 @@ if {${RC_LOAD_DSN} == "true"} {
 #
 
 #  set_attribute      preserve   true  {LOGIC0 LOGIC1}
-
+suspend
 
    elaborate ${BASENAME}
 
