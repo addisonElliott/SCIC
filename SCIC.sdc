@@ -10,7 +10,7 @@ set MAX_FAN_OUT 520
 set MAX_CAPACITANCE 1.0
 
 # Capacitance load on the output pins in pF
-set OUTPUT_PINS_CAPACITANCE 1.05
+set OUTPUT_PINS_CAPACITANCE 1.10
 
 # Delay in ns from the clock edge to the input/output pins arriving
 set IO_DELAY 0.25
