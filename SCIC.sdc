@@ -36,7 +36,10 @@ set_dont_touch [find / -net fetch_or_execute]
 set_dont_touch [find / -net we]
 
 # TODO: I think this causes problems because there are multiple data_out nets found
-set_dont_touch [find / -net data_out*]
+# Yes it did because it just happened for adding.
+# Result should be 00000010, got 0X000010...
+# set_dont_touch [find / -net data_out*]
+
 # set_dont_touch [find / -net data_out[3]]
 # set_dont_touch [find / -net data_out[2]]
 # set_dont_touch [find / -net data_out[1]]
