@@ -90,7 +90,7 @@ set ASPECT 1.0
 set CORE_TO_BOUND 15
 
 # Utilization
-set UTILIZATION	0.3
+set UTILIZATION	0.1
 
 # Pin assignments
 
