@@ -29,11 +29,11 @@ set_load -pin_load $OUTPUT_PINS_CAPACITANCE [all_outputs]
 
 # TODO Explain this in detail
 # Explain that doing set_dont_touch on instances did not work for me, in my case PC_reg
-# set_dont_touch [find / -net PC*]
-# set_dont_touch [find / -net IR*]
+set_dont_touch [find / -net PC*]
+set_dont_touch [find / -net IR*]
 # set_dont_touch [find / -net AC*]
-# set_dont_touch [find / -net fetch_or_execute]
-# set_dont_touch [find / -net we]
+set_dont_touch [find / -net fetch_or_execute]
+set_dont_touch [find / -net we]
 
 # set_dont_touch [find / -net data_out*]
 # set_dont_touch [find / -net data_out[3]]
