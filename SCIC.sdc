@@ -31,7 +31,7 @@ set_load -pin_load $OUTPUT_PINS_CAPACITANCE [all_outputs]
 # Explain that doing set_dont_touch on instances did not work for me, in my case PC_reg
 set_dont_touch [find / -net PC*]
 set_dont_touch [find / -net IR*]
-set_dont_touch [find / -net AC*]
+# set_dont_touch [find / -net AC*]
 set_dont_touch [find / -net fetch_or_execute]
 set_dont_touch [find / -net we]
 
@@ -46,10 +46,10 @@ set_dont_touch [find / -net we]
 
 # Did not work either, got rid of AC wire completely and even then, some of the wires were not connected properly
 # set_dont_touch [find designs/**/cpu_inst -net data_out*]
-set_dont_touch [find designs/**/cpu_inst -net data_out[3]]
-set_dont_touch [find designs/**/cpu_inst -net data_out[2]]
-set_dont_touch [find designs/**/cpu_inst -net data_out[1]]
-set_dont_touch [find designs/**/cpu_inst -net data_out[0]]
+# set_dont_touch [find designs/**/cpu_inst -net data_out[3]]
+# set_dont_touch [find designs/**/cpu_inst -net data_out[2]]
+# set_dont_touch [find designs/**/cpu_inst -net data_out[1]]
+# set_dont_touch [find designs/**/cpu_inst -net data_out[0]]
 
 # Didn't work
 # set_dont_touch_network [find / * /designs/SCIC/isntances_hier/cpu_inst/instances_seq/AC_reg[*]/pins_in/d]
