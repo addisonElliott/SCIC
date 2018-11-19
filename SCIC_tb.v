@@ -23,13 +23,13 @@ module SCIC_tb();
 
         forever begin
             // 5ns = 1/2 * period for 100MHz clock
-            #50 clock <= ~clock;
+            #4 clock <= ~clock;
         end
     end
 
     // General testbench that does not rely on changing switches
     initial begin
-         #220 reset <= 1'b0;
+         #27 reset <= 1'b0;
          #10000 $finish();
      end
 
