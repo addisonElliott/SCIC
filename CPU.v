@@ -16,8 +16,8 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
     assign we = fetch_or_execute & (IR[31:28] == 4'b0111);
 
     // Wire is only used when write enable (we) is high, when this happens we want to store the AC values
-    // assign data_out = AC;
-    assign data_out = 32'd10;
+    assign data_out = AC;
+    // assign data_out = 32'd10;
 
     always @(posedge clock) begin
         // Active HIGH reset
@@ -42,14 +42,11 @@ module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] 
                     // Add AC <= AC + mem(IR[15:0])
                     4'b0001: begin
                         AC <= AC + data_in;
-                        // AC <= AC + IR[15:0];
-                        // AC <= data_in;
                     end
 
                     // Shift AC <= AC << mem(IR[15:0])
                     4'b0010: begin
                         AC <= AC << data_in;
-                        // AC <= data_in;
                     end
 
                     // Shift AC <= AC >> mem(IR[15:0])

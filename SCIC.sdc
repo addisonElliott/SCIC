@@ -39,14 +39,17 @@ set_dont_touch [find / -net we]
 # Yes it did because it just happened for adding.
 # Result should be 00000010, got 0X000010...
 # set_dont_touch [find / -net data_out*]
-
-# Did not work either, got rid of AC wire completely and even then, some of the wires were not connected properly
-set_dont_touch [find designs/**/cpu_inst -net data_out*]
-
 # set_dont_touch [find / -net data_out[3]]
 # set_dont_touch [find / -net data_out[2]]
 # set_dont_touch [find / -net data_out[1]]
 # set_dont_touch [find / -net data_out[0]]
+
+# Did not work either, got rid of AC wire completely and even then, some of the wires were not connected properly
+# set_dont_touch [find designs/**/cpu_inst -net data_out*]
+set_dont_touch [find designs/**/cpu_inst -net data_out[3]]
+set_dont_touch [find designs/**/cpu_inst -net data_out[2]]
+set_dont_touch [find designs/**/cpu_inst -net data_out[1]]
+set_dont_touch [find designs/**/cpu_inst -net data_out[0]]
 
 # Didn't work
 # set_dont_touch_network [find / * /designs/SCIC/isntances_hier/cpu_inst/instances_seq/AC_reg[*]/pins_in/d]
