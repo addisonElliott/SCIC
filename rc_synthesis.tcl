@@ -121,7 +121,16 @@ if {${RC_LOAD_DSN} == "true"} {
      print $log "--> ${PNR_DIR}/netlists/${BASENAME}_syn.v"
      print $log "--> ${SYN_DIR}/netlists/${BASENAME}_syn.v"
 
+#TODO: Testing
+dc::set_dont_touch [find / -net PC*]
+dc::set_dont_touch [find / -net IR*]
+# set_dont_touch [find / -net AC*]
+dc::set_dont_touch [find / -net fetch_or_execute]
+dc::set_dont_touch [find / -net we]
+dc::set_dont_touch [find designs/**/cpu_inst -net data_out*]
+    eval write_hdl -lec ${RC_WRITE_HDL_OPTS} > ${PNR_DIR}/netlists/${BASENAME}_syn_test1.v
 # Saving netlists to pnr and syn directories
+
 
     eval write_hdl ${RC_WRITE_HDL_OPTS} > ${PNR_DIR}/netlists/${BASENAME}_syn.v
     eval write_hdl ${RC_WRITE_HDL_OPTS} > ${SYN_DIR}/netlists/${BASENAME}_syn.v
