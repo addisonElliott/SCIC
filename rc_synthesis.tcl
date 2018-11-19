@@ -44,6 +44,7 @@ if {${RC_LOAD_DSN} == "true"} {
 
    set_attribute 	library 		{s35_CORELIB_TYP.lib   s35_IOLIB_TYP.lib}
 
+# set_attribute write_vlog_preserve_net_name true
 #
 # Read in list of verilog files
 # VLOG_FILES defined in env.tcl
