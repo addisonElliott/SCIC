@@ -35,6 +35,8 @@ set_dont_touch [find / -net IR*]
 set_dont_touch [find / -net fetch_or_execute]
 set_dont_touch [find / -net we]
 
+# TODO: Fix & find out reason why AC net is not present? Need some way to probe this?
+
 # Based on my understanding, setup clock uncertainty will reduce the effective period by the amount while hold clock uncertainty will increase the clock period
 # The RTL compiler tries to get a positive slack but includes no way to have a slack margin, i.e. no way to require a minimum slack value. This approach does that by effectively reducing the clock period and requires the RTL compiler to try and meet that period instead
 # This sets the setup clock uncertainty to be a percentage of the clock period
