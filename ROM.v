@@ -24,15 +24,14 @@ module ROM(output reg [31:0] data_out, input [4:0] address, input chip_select);
             5'h00: data_out <= 32'h4000_000f;   // LI 000f
             5'h01: data_out <= 32'h7000_005f;   // ST 005f
             5'h02: data_out <= 32'h4000_0001;   // LI 0001
-            // 5'h03: data_out <= 32'h1000_005f;   // ADD 005f
-            5'h03: data_out <= 32'h1000_0016;   // ADD 0016
+            5'h03: data_out <= 32'h1000_005f;   // ADD 005f
             // Result (AC) should be 10
 
             // Test the shift left (SL)
             5'h04: data_out <= 32'h4000_0001;   // LI 0001
-            5'h05: data_out <= 32'h7000_0040;   // ST 005f
+            5'h05: data_out <= 32'h7000_005f;   // ST 005f
             5'h06: data_out <= 32'h4000_ffff;   // LI ffff
-            5'h07: data_out <= 32'h2000_0040;   // SL 005f
+            5'h07: data_out <= 32'h2000_005f;   // SL 005f
             // Result (AC) should be 1fffe
 
             // Test the shift right (SR)
@@ -56,11 +55,13 @@ module ROM(output reg [31:0] data_out, input [4:0] address, input chip_select);
             5'h13: data_out <= 32'h9000_005f;   // AND 005f
             // Result (AC) should be 00000
 
-            5'h14: data_out <= 32'h5000_005f;   // LD 005f
-            5'h15: data_out <= 32'h8000_0000;   // BR 0
+            
+            5'h14: data_out <= 32'h5000_0016;   // LD 0017
+            5'h15: data_out <= 32'h5000_005f;   // LD 005f
+            5'h16: data_out <= 32'h8000_0000;   // BR 0
 
             // Constants
-            5'h16: data_out <= 32'h0000_005F;
+            5'h17: data_out <= 32'h0000_002A;
             // ------------------------------------------------------------
 
             // Program that reads from switches and writes to LEDs repeatedly
