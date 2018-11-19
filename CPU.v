@@ -40,15 +40,15 @@ module CPU(output reg [15:0] PC, output reg [31:0] IR, AC, output [31:0] data_ou
                 case (IR[31:28])
                     // Add AC <= AC + mem(IR[15:0])
                     4'b0001: begin
-                        // AC <= AC + data_in;
+                        AC <= AC + data_in;
                         // AC <= AC + IR[15:0];
-                        AC <= data_in;
+                        // AC <= data_in;
                     end
 
                     // Shift AC <= AC << mem(IR[15:0])
                     4'b0010: begin
-                        // AC <= AC << data_in;
-                        AC <= data_in;
+                        AC <= AC << data_in;
+                        // AC <= data_in;
                     end
 
                     // Shift AC <= AC >> mem(IR[15:0])
