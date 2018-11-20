@@ -16,7 +16,7 @@ set OUTPUT_PINS_CAPACITANCE 1.0
 set IO_DELAY 0.25
 
 # Clock period in ns
-set CLOCK_PERIOD 100
+set CLOCK_PERIOD 1000
 
 # Percentage of clock period to add to the minimum slack required
 # In other words, the RTL compiler will attempt to get a worst-case slack of SLACK_MARGIN * CLOCK_PERIOD
@@ -40,7 +40,7 @@ set_load -pin_load $OUTPUT_PINS_CAPACITANCE [all_outputs]
 # Based on my understanding, setup clock uncertainty will reduce the effective period by the amount while hold clock uncertainty will increase the clock period
 # The RTL compiler tries to get a positive slack but includes no way to have a slack margin, i.e. no way to require a minimum slack value. This approach does that by effectively reducing the clock period and requires the RTL compiler to try and meet that period instead
 # This sets the setup clock uncertainty to be a percentage of the clock period
-set_clock_uncertainty -setup [expr {$CLOCK_PERIOD * $SLACK_MARGIN}] [get_ports $CLK]
+# set_clock_uncertainty -setup [expr {$CLOCK_PERIOD * $SLACK_MARGIN}] [get_ports $CLK]
 
 # Create the transmitter clock
 create_clock    -name $CLK  \

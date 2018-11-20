@@ -83,13 +83,13 @@ $TCL_DIR/enc/enc_hitkit.tcl \
 set ASPECT 0.5
 
 # Establish a boundary outside of the core area 
-set CORE_TO_BOUND 150
+set CORE_TO_BOUND 100
 
 # Utilization
 set UTILIZATION	0.2
 
 # TODO: Document this
-set FP_ROW_SPACING 30
+set FP_ROW_SPACING 60
 set FP_ROW_TYPE 1
 
 # Pin assignments
