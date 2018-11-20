@@ -1,5 +1,3 @@
-// NOTE: OLD CODE FOR REFERENCE, NOT USED
-
 /*
 File: memoryIO_282.v
 Description: 	  ROM and data memory plus a bi-directional IO port
