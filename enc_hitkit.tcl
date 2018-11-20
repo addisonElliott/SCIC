@@ -85,6 +85,25 @@ amsPowerRoute2 {gnd!  vdd!}
 print $log  "Executing amsPlace $PLACEMENT_MODE" {color_blue}
 amsPlace2  $PLACEMENT_MODE
 
+# TODO: Added by Addison Elliott
+# Now run the first optimization step - pre-CTS (Clock Tree Synthesis) in-place optimization. 
+# setOptMode -yieldEffort none
+# setOptMode -effort high
+# setOptMode -maxDensity 0.95
+# setOptMode -drcMargin 0.0
+# setOptMode -holdTargetSlack 0.0 -setupTargetSlack 0.0
+# setOptMode -simplifyNetlist false
+# 
+# # Additional commands in another repository to try
+# setOptMode -fixDRC true
+# setOptMode -fixFanoutLoad true
+# setOptMode -optimizeFF true
+# 
+# clearClockDomains
+# setOptMode -noUsefulSkew
+# set filename2 [format "constraints/%s_prects.ctsrpt" $BASENAME]
+# optDesign -preCTS -drv -outDir $filename2
+
 # Perform Clock Tree Synthesis
 
 print  $log  "Executing amsCts (performing clock tree synthesis using sdc file)" {color_blue}
@@ -107,8 +126,27 @@ amsFillperi2
 
 # Route rest (other than clock) of the signals
 
-print  $log  "Executing amsRoute (routing signals using $ROUTER_TO_USE)" {color_blue}
-amsRoute2 $ROUTER_TO_USE
+print  $log  "Executing amsRoute (routing signals using nano)" {color_blue}
+amsRoute2 nano
+
+# TODO: Added by Addison Elliott
+# Optimize design after routing
+# setOptMode -yieldEffort none
+# setOptMode -effort high
+# setOptMode -maxDensity 0.95
+# setOptMode -drcMargin 0.0
+# setOptMode -holdTargetSlack 0.0 -setupTargetSlack 0.0
+# setOptMode -simplifyNetlist false
+# 
+# # Additional commands in another repository to try
+# setOptMode -fixDRC true
+# setOptMode -fixFanoutLoad true
+# setOptMode -optimizeFF true
+# 
+# clearClockDomains
+# setOptMode -noUsefulSkew
+# set filename2 [format "constraints/%s_postroute.ctsrpt" $BASENAME]
+# optDesign -postRoute -drv -outDir $filename2
 
 # Add more filler
 
@@ -119,7 +157,6 @@ amsFillcore2
 
 print $log  "Executing amsTA (postRoute timing analysis)" {color_blue}
 amsTa2 postRoute
-
 
 # Verifying geometry and connectivity
 

@@ -115,18 +115,19 @@ set W_LAYER 3
 # Power planning
 # ---------------------------------------------------------------------------
 
+# TODO: Changed this stuff, maybe this had an effect
 # For the add power ring command
 # Width of the metal as well as the separation between gnd and vdd rings
-set CORE_RING_SPACING 1
-set CORE_RING_WIDTH	3
-set CORE_RING_OFFSET 1
+set CORE_RING_SPACING 10
+set CORE_RING_WIDTH 30
+set CORE_RING_OFFSET 30
 
 # Desired metal layer for the power rings
 set PWR_HORIZ_MET metal1
 set PWR_VERT_MET metal2
 
 # Power stripes
-set STRIPE_WIDTH 5
+set STRIPE_WIDTH 10
 set STRIPE_SPACE 300
 set STRIPE_LAYER metal2
 

@@ -118,6 +118,11 @@ proc amsGlobalConnect2 type {
         globalNetConnect $n -type pgpin -pin $p -inst * -module {}
 #        print $log "---# GlobalConnect all $p pins to net $n" {color_red}
      }
+
+     # TODO: Added by Addison Elliott
+     # Did it because I saw it in Dr. Engel's amsFunctions folder and on 5710 GitHub page...
+#      globalNetConnect vdd! -type tiehi
+#      globalNetConnect gnd! -type tielo
 }
 
 # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
@@ -289,6 +294,8 @@ proc amsFillperi2 {} {
 
 proc amsRoute2 {routerType} {
    global   log
+
+   changeUseClockNetStatus -noFixedNetWires
 
 #    print $log "Router type is $routerType"
 
@@ -575,6 +582,19 @@ proc amsPlace2 how {
                  setPlaceMode -timingdriven true -reorderScan false -congEffort high \
                               -doCongOpt -modulePlan false
                  placeDesign -inPlaceOpt -prePlaceOpt
+
+                 # TODO: Changed by Addison Elliott
+                 # Saw a few different options that I will be trying
+#                  setPlaceMode -timingdriven true -reorderScan true -congEffort high \
+#                               -doCongOpt false -modulePlan true
+#                 setPlaceMode -timingdriven true -reorderScan true -congEffort high \
+#                              -doCongOpt false -modulePlan false
+#                 setPlaceMode -timingdriven true -reorderScan true -congEffort high \
+#                              -doCongOpt true -modulePlan true
+#                 setPlaceMode -timingdriven true -reorderScan true -congEffort high \
+#                              -doCongOpt true -modulePlan false
+
+                 placeDesign -inPlaceOpt -prePlaceOpt
               }
    }
    amsSave placed
@@ -604,6 +624,34 @@ proc amsCts2 {} {
    set filename1 [format "constraints/%s_cts.guide" $topcellname]
    set filename2 [format "constraints/%s_cts.ctsrpt" $topcellname]
    ckSynthesis -rguide $filename1 -report $filename2
+
+   # TODO: Added by Addison Elliott
+   # Other places do not use the ckSynthesis command which is odd...
+   # Use -useCTSRouteGuide to use routing guide during CTS.
+#    setCTSMode -useCTSRouteGuide
+# 
+#    # Set routeClkNet to use Nanoroute during CTS.
+#    setCTSMode -routeClkNet
+# 
+#    # Perform clocktree synthesis
+#    clockDesign -outDir $filename1
+# 
+#    # Run the second optimization - post-CTS
+#    setOptMode -yieldEffort none
+#    setOptMode -effort high
+#    setOptMode -maxDensity 0.95
+#    setOptMode -drcMargin 0.0
+#    setOptMode -holdTargetSlack 0.0 -setupTargetSlack 0.0
+#    setOptMode -simplifyNetlist false
+# 
+#    # Additional commands in another repository to try
+#    setOptMode -fixDRC true
+#    setOptMode -fixFanoutLoad true
+#    setOptMode -optimizeFF true
+# 
+#    clearClockDomains
+#    setOptMode -noUsefulSkew
+#    optDesign -postCTS -drv -outDir $filename2
 
    amsSave2 clkplaced
 }
