@@ -78,19 +78,19 @@ $TCL_DIR/enc/enc_hitkit.tcl \
 # Floorplanning
 # ---------------------------------------------------------------------------
 
-# Provide X and Y dimensions of the core
-set CORE_X 100000
-set CORE_Y 100000
-
 # Set the aspect ratio for the layout
 # A values less than 1.0 means wide and not so high!
-set ASPECT 1.0
+set ASPECT 0.5
 
 # Establish a boundary outside of the core area 
-set CORE_TO_BOUND 15
+set CORE_TO_BOUND 150
 
 # Utilization
-set UTILIZATION	0.1
+set UTILIZATION	0.2
+
+# TODO: Document this
+set FP_ROW_SPACING 30
+set FP_ROW_TYPE 1
 
 # Pin assignments
 
@@ -100,10 +100,10 @@ set E_PINS {clock}
 set W_PINS {reset}
 
 # Spacing in microns between the pins
-set N_SPACING 10
-set S_SPACING 10
-set E_SPACING 10
-set W_SPACING 10
+set N_SPACING 100
+set S_SPACING 100
+set E_SPACING 100
+set W_SPACING 100
 
 # Metal layer that should be used
 set N_LAYER 2  

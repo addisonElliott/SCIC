@@ -16,15 +16,15 @@ set OUTPUT_PINS_CAPACITANCE 1.0
 set IO_DELAY 0.25
 
 # Clock period in ns
-set CLOCK_PERIOD 20
+set CLOCK_PERIOD 100
 
 # Percentage of clock period to add to the minimum slack required
 # In other words, the RTL compiler will attempt to get a worst-case slack of SLACK_MARGIN * CLOCK_PERIOD
-set SLACK_MARGIN 0.1
+set SLACK_MARGIN 0.25
 # ------------------------------------------------------------------------------------------------------
 
-set_max_fanout $MAX_FAN_OUT [current_design]
-set_max_capacitance $MAX_CAPACITANCE [current_design]
+# set_max_fanout $MAX_FAN_OUT [current_design]
+# set_max_capacitance $MAX_CAPACITANCE [current_design]
 set_load -pin_load $OUTPUT_PINS_CAPACITANCE [all_outputs]
 
 # TODO Explain this in detail
