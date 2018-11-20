@@ -127,6 +127,8 @@ amsFillperi2
 # Route rest (other than clock) of the signals
 
 print  $log  "Executing amsRoute (routing signals using nano)" {color_blue}
+# TODO: Changed by Addison Elliott
+# amsRoute2 wroute
 amsRoute2 nano
 
 # TODO: Added by Addison Elliott
