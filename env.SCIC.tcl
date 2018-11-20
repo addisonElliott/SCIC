@@ -71,7 +71,7 @@ $TCL_DIR/rc/rc_synthesis.tcl \
 # edi2ic converts gdsii file to OA lib
 
 set ENC_TO_DO_LIST { \
-$TCL_DIR/enc/enc_hitkit.tcl \
+$BASE_DIR/enc_hitkit.tcl \
 }
 
 # ---------------------------------------------------------------------------
