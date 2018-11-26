@@ -2,7 +2,6 @@ module memory_controller(output [31:0] data_out, output [3:0] io_out, input [31:
     wire [31:0] rom_data_out, io_data_out, ram_data_out;
     wire select_ram, select_io, select_rom;
     wire [1:0] data_select;
-//    reg [1:0] data_select;
 
     // Address Map:
     //      Range       Item    Size (words)    Binary Range

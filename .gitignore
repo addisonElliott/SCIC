@@ -6,3 +6,7 @@
 
 # Ignore backup files
 *~
+
+# Ignore pnr & syn testbenches
+SCIC_syn_tb.v
+SCIC_pnr_tb.v

@@ -1,7 +1,4 @@
 module io_controller(output reg [31:0] data_out, output reg [3:0] io_out, input [31:0] data_in, input [4:0] address, input [3:0] io_in, input chip_select, we, clock);
-    // TODO: next slowest clock, negedge not posedge...
-    // Actually, the left and right shifter are not implemented properly yet. Still need to get that working before I optimize this
-    // Honestly, I think our bottleneck will be left/right shifter, MAYBE the adder.
     always @(posedge clock) begin
         // Only do stuff when this chip is selected
         if (chip_select) begin
