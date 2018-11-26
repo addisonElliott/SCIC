@@ -42,11 +42,6 @@ set BASE_DIR $SRC/$BASENAME
 #
 set RTL_VLOG_FILES "\
 $BASE_DIR/CPU.v \
-$BASE_DIR/io_controller.v \
-$BASE_DIR/memory_controller.v \
-$BASE_DIR/Mux4to1.v \
-$BASE_DIR/RAM.v \
-$BASE_DIR/ROM.v \
 $BASE_DIR/SCIC.v \
 "
 
@@ -93,7 +88,6 @@ set FP_ROW_SPACING 60
 set FP_ROW_TYPE 1
 
 # Pin assignments
-
 set N_PINS {LEDs[0] LEDs[1] LEDs[2] LEDs[3]}
 set S_PINS {switches[0] switches[1] switches[2] switches[3]}
 set E_PINS {clock}
