@@ -8,7 +8,7 @@ set PHOME $env(PHOME)
 
 # Specify simulaton mode!!!!!!!
 # Simulation mode: rtl, syn, or pnr
-set SIM_MODE pnr
+set SIM_MODE syn
 
 # Specify basename
 set BASENAME SCIC
@@ -71,7 +71,7 @@ $TCL_DIR/rc/rc_synthesis.tcl \
 # edi2ic converts gdsii file to OA lib
 
 set ENC_TO_DO_LIST { \
-$BASE_DIR/enc_hitkit.tcl \
+$TCL_DIR/enc/enc_hitkit.tcl \
 }
 
 # ---------------------------------------------------------------------------
