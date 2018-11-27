@@ -117,42 +117,42 @@ amsFillcore
 print $log  "Executing amsTA (postRoute timing analysis)" {color_blue}
 amsTa postRoute
 
-set MAX_ROUTE_COUNT 3
-set DRC_FILENAME "test.drc"
+# Verify geometry and connectivity and rerun routing until DRC violations are gone
+# Routing is done up to MAX_ROUTE_COUNT times
 
-# TODO Clean this up
+# Filename that DRC files containing DRC violations will be saved
+set DRC_FILENAME "$BASENAME.drc"
+
 for {set i 0} {$i < $MAX_ROUTE_COUNT} {incr i} {
-    print $log  "Executing Encounter verifyGeometry command (attempt #)" {color_blue}
+    print $log  "Executing Encounter verifyGeometry command (iteration #$i)" {color_blue}
     verifyGeometry
 
-    print $log  "Executing Encounter verifyConnectivity -type all command (attempt #)" {color_blue}
+    print $log  "Executing Encounter verifyConnectivity -type all command (iteration #$i)" {color_blue}
     verifyConnectivity -type all
 
+    # Save DRC violations to file
     saveDrc $DRC_FILENAME
 
-    set fh [open $DRC_FILENAME]
-    set lines [split [read $fh] "\n"]
-    set drcCount [lindex $lines 2]
+    # Load DRC file and retrieve the 3rd line of file (should contain the number of DRC violations)
+    set lines [split [read [open $DRC_FILENAME]] "\n"]
+    set drc_count [lindex $lines 2]
 
-    if {$drcCount != 0} {
-        # TODO Rerun route here
-        print  $log  "Executing amsRoute (routing signals using $ROUTER_TO_USE)" {color_blue}
+    # Run routing again if there are DRC violations, otherwise get out of loop
+    if {$drc_count != 0} {
+        print  $log  "Executing amsRoute (routing signals using $ROUTER_TO_USE) (iteration #$i)" {color_blue}
         amsRoute $ROUTER_TO_USE
     }
-
-    puts "I inside first loop: $i"
+    else {
+        break
+    }
 }
 
-# Verifying geometry and connectivity
+# Show an error message if DRC violations still exist
+if {$i == $MAX_ROUTE_COUNT} {
+    print $log  "DRC violations still exist after routing $MAX_ROUTE_COUNT times!" {color_red}
+}
 
-print $log  "Executing Encounter verifyGeometry command" {color_blue}
-verifyGeometry
-
-print $log  "Executing Encounter verifyConnectivity -type all command" {color_blue}
-verifyConnectivity -type all
-
-print    $log  "---> Type resume to continue after making sure there are no DRC or LVS errors!
-" {color_red}
+print    $log  "---> Type resume to continue after making sure there are no DRC or LVS errors!" {color_red}
 win
 suspend
 fit
