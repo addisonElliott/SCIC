@@ -117,6 +117,31 @@ amsFillcore
 print $log  "Executing amsTA (postRoute timing analysis)" {color_blue}
 amsTa postRoute
 
+set MAX_ROUTE_COUNT 3
+set DRC_FILENAME "test.drc"
+
+# TODO Clean this up
+for {set i 0} {$i < $MAX_ROUTE_COUNT} {incr i} {
+    print $log  "Executing Encounter verifyGeometry command (attempt #)" {color_blue}
+    verifyGeometry
+
+    print $log  "Executing Encounter verifyConnectivity -type all command (attempt #)" {color_blue}
+    verifyConnectivity -type all
+
+    saveDrc $DRC_FILENAME
+
+    set fh [open $DRC_FILENAME]
+    set lines [split [read $fh] "\n"]
+    set drcCount [lindex $lines 2]
+
+    if {$drcCount != 0} {
+        # TODO Rerun route here
+        print  $log  "Executing amsRoute (routing signals using $ROUTER_TO_USE)" {color_blue}
+        amsRoute $ROUTER_TO_USE
+    }
+
+    puts "I inside first loop: $i"
+}
 
 # Verifying geometry and connectivity
 

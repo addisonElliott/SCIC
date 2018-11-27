@@ -1,4 +1,4 @@
-module CPU(output [31:0] data_out, output[15:0] address, output we, input[31:0] data_in, input reset, clock);
+module CPU(output [31:0] data_out, output[15:0] address, output we, input [31:0] data_in, input reset, clock);
     // Define 16-bit program counter (PC), 32-bit instruction register (IR) and 32-bit ACcumulator (AC)
     reg [15:0] PC;
     reg [31:0] IR;
