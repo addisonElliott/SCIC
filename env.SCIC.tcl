@@ -29,7 +29,7 @@ set MODULE_LIST ""
 # we would like to employ
 #
 # source $env(EDI_TCL_DIR)/defaults.tcl
-source defaults.tcl
+source $PHOME/verilog.src/SCIC/defaults.tcl
 
 # ---------------------------------------------------------------------------
 
