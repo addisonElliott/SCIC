@@ -140,7 +140,7 @@ for {set i 0} {$i < $MAX_ROUTE_COUNT} {incr i} {
     # Run routing again if there are DRC violations, otherwise get out of loop
     if {$drc_count != 0} {
         print  $log  "Executing amsRoute (routing signals using $ROUTER_TO_USE) (iteration #[expr $i + 1])" {color_blue}
-        amsRoute [expr ($i % 2 == 0)?$ALT_ROUTER_TO_USE:$ROUTER_TO_USE]
+        amsRoute [expr {$i % 2 == 0 ? $ALT_ROUTER_TO_USE : $ROUTER_TO_USE}]
     } else {
         break
     }
