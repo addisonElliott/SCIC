@@ -124,10 +124,10 @@ amsTa postRoute
 set DRC_FILENAME "$BASENAME.drc"
 
 for {set i 0} {$i < $MAX_ROUTE_COUNT} {incr i} {
-    print $log  "Executing Encounter verifyGeometry command (iteration #$i)" {color_blue}
+    print $log  "Executing Encounter verifyGeometry command (iteration #[expr $i + 1])" {color_blue}
     verifyGeometry
 
-    print $log  "Executing Encounter verifyConnectivity -type all command (iteration #$i)" {color_blue}
+    print $log  "Executing Encounter verifyConnectivity -type all command (iteration #[expr $i + 1])" {color_blue}
     verifyConnectivity -type all
 
     # Save DRC violations to file
@@ -139,10 +139,9 @@ for {set i 0} {$i < $MAX_ROUTE_COUNT} {incr i} {
 
     # Run routing again if there are DRC violations, otherwise get out of loop
     if {$drc_count != 0} {
-        print  $log  "Executing amsRoute (routing signals using $ROUTER_TO_USE) (iteration #$i)" {color_blue}
+        print  $log  "Executing amsRoute (routing signals using $ROUTER_TO_USE) (iteration #[expr $i + 1])" {color_blue}
         amsRoute $ROUTER_TO_USE
-    }
-    else {
+    } else {
         break
     }
 }
