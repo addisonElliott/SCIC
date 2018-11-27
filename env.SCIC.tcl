@@ -28,7 +28,8 @@ set MODULE_LIST ""
 # Source the file containing the standard options
 # we would like to employ
 #
-source $env(EDI_TCL_DIR)/defaults.tcl
+# source $env(EDI_TCL_DIR)/defaults.tcl
+source $BASE_DIR/defaults.tcl
 
 # ---------------------------------------------------------------------------
 
