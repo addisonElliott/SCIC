@@ -29,12 +29,13 @@ set MODULE_LIST ""
 # we would like to employ
 #
 # source $env(EDI_TCL_DIR)/defaults.tcl
-source $BASE_DIR/defaults.tcl
 
 # ---------------------------------------------------------------------------
 
 # Point to key source directories
 set BASE_DIR $SRC/$BASENAME
+
+source $BASE_DIR/defaults.tcl
 
 #
 # These files are used for RTL simulations (sim rtl)
