@@ -136,11 +136,13 @@ for {set i 0} {$i < $MAX_ROUTE_COUNT} {incr i} {
     # Load DRC file and retrieve the 3rd line of file (should contain the number of DRC violations)
     set lines [split [read [open $DRC_FILENAME]] "\n"]
     set drc_count [lindex $lines 2]
+    print  $log  "Test $drc_count" {color_blue}
 
     # Run routing again if there are DRC violations, otherwise get out of loop
     if {$drc_count != 0} {
-        print  $log  "Executing amsRoute (routing signals using $ROUTER_TO_USE) (iteration #[expr $i + 1])" {color_blue}
-        amsRoute [expr {$i % 2 == 0 ? $ALT_ROUTER_TO_USE : $ROUTER_TO_USE}]
+        set router [expr {$i % 2 == 0 ? $ALT_ROUTER_TO_USE : $ROUTER_TO_USE}]
+        print  $log  "Executing amsRoute (routing signals using $router) (iteration #[expr $i + 1])" {color_blue}
+        amsRoute $router
     } else {
         break
     }
