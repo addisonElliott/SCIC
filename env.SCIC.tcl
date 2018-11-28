@@ -89,7 +89,7 @@ set CORE_TO_BOUND 100
 set UTILIZATION	0.4
 
 # TODO: Document this
-set FP_ROW_SPACING 20
+set FP_ROW_SPACING 30
 set FP_ROW_TYPE 1
 
 # Pin assignments
