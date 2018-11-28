@@ -4,10 +4,10 @@
 set CLK "clock"
 
 # Maximum fanout allowed for all gates, buffers will be added if this fanout is exceeded
-set MAX_FAN_OUT 50
+set MAX_FAN_OUT 520
 
 # Maximum capacitance a gate can have as its load in pF
-set MAX_CAPACITANCE 0.1
+set MAX_CAPACITANCE 1.10
 
 # Capacitance load on the output pins in pF
 set OUTPUT_PINS_CAPACITANCE 1.0
@@ -16,16 +16,26 @@ set OUTPUT_PINS_CAPACITANCE 1.0
 set IO_DELAY 0.25
 
 # Clock period in ns
-set CLOCK_PERIOD 8
+set CLOCK_PERIOD 1000
 
 # Percentage of clock period to add to the minimum slack required
 # In other words, the RTL compiler will attempt to get a worst-case slack of SLACK_MARGIN * CLOCK_PERIOD
-set SLACK_MARGIN 0.1
+set SLACK_MARGIN 0.25
 # ------------------------------------------------------------------------------------------------------
 
 set_max_fanout $MAX_FAN_OUT [current_design]
 set_max_capacitance $MAX_CAPACITANCE [current_design]
 set_load -pin_load $OUTPUT_PINS_CAPACITANCE [all_outputs]
+
+# TODO Explain this in detail
+# Explain that doing set_dont_touch on instances did not work for me, in my case PC_reg
+# If I don't call set_dont_touch on these nets, then when I go to do Post-synthesis simulation, there will be some high impedance lines because Cadence will optimize out the nets.
+# The IR wire and AC wires are optimized out. However, set_dont_touch on AC wires does not work because the nets do not exist. Rather, one can observe the data_out wires since they are the same.
+set_dont_touch [find / -net PC*]
+set_dont_touch [find / -net IR*]
+# set_dont_touch [find / -net AC*]
+set_dont_touch [find / -net fetch_or_execute]
+set_dont_touch [find / -net we]
 
 # Based on my understanding, setup clock uncertainty will reduce the effective period by the amount while hold clock uncertainty will increase the clock period
 # The RTL compiler tries to get a positive slack but includes no way to have a slack margin, i.e. no way to require a minimum slack value. This approach does that by effectively reducing the clock period and requires the RTL compiler to try and meet that period instead

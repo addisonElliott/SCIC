@@ -54,8 +54,13 @@ module ROM(output reg [31:0] data_out, input [4:0] address, input chip_select);
             5'h12: data_out <= 32'h4000_00f0;   // LI 00f0
             5'h13: data_out <= 32'h9000_005f;   // AND 005f
             // Result (AC) should be 00000
+            
+            5'h14: data_out <= 32'h5000_0017;   // LD 0017
+            5'h15: data_out <= 32'h5000_005f;   // LD 005f
+            5'h16: data_out <= 32'h8000_0000;   // BR 0
 
-            5'h14: data_out <= 32'h8000_0000;   // BR 0
+            // Constants
+            5'h17: data_out <= 32'h0000_002A;
             // ------------------------------------------------------------
 
             // Program that reads from switches and writes to LEDs repeatedly

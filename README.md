@@ -13,8 +13,9 @@ In the introduction class to digital design at SIUE, there is a simple CPU writt
 * RAM
 * ROM
 * Non-pipelined implementation. Clocks per instruction (CPI) = 2
-* 32-bit Ripple carry adder
+* 32-bit adder
 * 4-bit opcode, 9 instructions, 16-bit address space
+* Behavioral implementation
 
 Instruction format for the CPU is as follows:
 

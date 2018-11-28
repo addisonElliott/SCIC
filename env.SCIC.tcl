@@ -78,19 +78,19 @@ $TCL_DIR/enc/enc_hitkit.tcl \
 # Floorplanning
 # ---------------------------------------------------------------------------
 
-# Provide X and Y dimensions of the core
-set CORE_X 2000
-set CORE_Y 4000
-
 # Set the aspect ratio for the layout
 # A values less than 1.0 means wide and not so high!
-set ASPECT 0.25
+set ASPECT 0.5
 
 # Establish a boundary outside of the core area 
-set CORE_TO_BOUND 15
+set CORE_TO_BOUND 100
 
 # Utilization
-set UTILIZATION	0.6
+set UTILIZATION	0.2
+
+# TODO: Document this
+set FP_ROW_SPACING 60
+set FP_ROW_TYPE 1
 
 # Pin assignments
 
@@ -100,10 +100,10 @@ set E_PINS {clock}
 set W_PINS {reset}
 
 # Spacing in microns between the pins
-set N_SPACING 10
-set S_SPACING 10
-set E_SPACING 10
-set W_SPACING 10
+set N_SPACING 100
+set S_SPACING 100
+set E_SPACING 100
+set W_SPACING 100
 
 # Metal layer that should be used
 set N_LAYER 2  
@@ -115,10 +115,11 @@ set W_LAYER 3
 # Power planning
 # ---------------------------------------------------------------------------
 
+# TODO: Changed this stuff, maybe this had an effect
 # For the add power ring command
 # Width of the metal as well as the separation between gnd and vdd rings
 set CORE_RING_SPACING 1
-set CORE_RING_WIDTH	3
+set CORE_RING_WIDTH 3
 set CORE_RING_OFFSET 1
 
 # Desired metal layer for the power rings

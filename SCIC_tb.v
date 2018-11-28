@@ -1,4 +1,4 @@
-`timescale 1 ns / 1 ns
+`timescale 1 ns / 100 ps
 
 module SCIC_tb();
     wire [3:0] LEDs;
@@ -19,15 +19,15 @@ module SCIC_tb();
         $dumpvars(0, SCIC_tb);
 
         forever begin
-            // 5ns = 1/2 * period for 100MHz clock
-            #5 clock <= ~clock;
+            // 4ns = 1/2 * period for 125MHz clock
+            #10 clock <= ~clock;
         end
     end
 
     // General testbench that does not rely on changing switches
     initial begin
-         #7 reset <= 1'b0;
-         #10000 $finish();
+         #57 reset <= 1'b0;
+         #1000 $finish();
      end
 
 /*
