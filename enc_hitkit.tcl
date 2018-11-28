@@ -129,8 +129,10 @@ print    $log  "---> Type resume to continue after making sure there are no DRC 
 print    $log  "If errors are present, try typing \"route wroute\" or \"route nano\" to attempt to fix them" {color_blue}
 win
 
-# TODO: If user types: route nano route wroute, then call that and call verifyXXX again...
+# Process to route again and automatically call verify geometry and connectivity afterwards
 proc route {type} {
+    global log
+
     amsRoute $type
 
     print $log  "Executing Encounter verifyGeometry command" {color_blue}
