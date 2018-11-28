@@ -86,7 +86,7 @@ set ASPECT 1.0
 set CORE_TO_BOUND 100
 
 # Utilization
-set UTILIZATION	0.5
+set UTILIZATION	0.4
 
 # TODO: Document this
 set FP_ROW_SPACING 20

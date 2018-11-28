@@ -40,7 +40,7 @@ set_dont_touch [find / -net we]
 # Based on my understanding, setup clock uncertainty will reduce the effective period by the amount while hold clock uncertainty will increase the clock period
 # The RTL compiler tries to get a positive slack but includes no way to have a slack margin, i.e. no way to require a minimum slack value. This approach does that by effectively reducing the clock period and requires the RTL compiler to try and meet that period instead
 # This sets the setup clock uncertainty to be a percentage of the clock period
-# set_clock_uncertainty -setup [expr {$CLOCK_PERIOD * $SLACK_MARGIN}] [get_ports $CLK]
+set_clock_uncertainty -setup [expr {$CLOCK_PERIOD * $SLACK_MARGIN}] [get_ports $CLK]
 
 # Create the transmitter clock
 create_clock    -name $CLK  \
