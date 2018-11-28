@@ -8,7 +8,7 @@ set PHOME $env(PHOME)
 
 # Specify simulaton mode!!!!!!!
 # Simulation mode: rtl, syn, or pnr
-set SIM_MODE rtl
+set SIM_MODE syn
 
 # Specify basename
 set BASENAME SCIC
@@ -80,16 +80,16 @@ $TCL_DIR/enc/enc_hitkit.tcl \
 
 # Set the aspect ratio for the layout
 # A values less than 1.0 means wide and not so high!
-set ASPECT 0.5
+set ASPECT 1.0
 
 # Establish a boundary outside of the core area 
 set CORE_TO_BOUND 100
 
 # Utilization
-set UTILIZATION	0.2
+set UTILIZATION	0.5
 
 # TODO: Document this
-set FP_ROW_SPACING 60
+set FP_ROW_SPACING 20
 set FP_ROW_TYPE 1
 
 # Pin assignments
