@@ -8,7 +8,7 @@ set PHOME $env(PHOME)
 
 # Specify simulaton mode!!!!!!!
 # Simulation mode: rtl, syn, or pnr
-set SIM_MODE syn
+set SIM_MODE rtl
 
 # Specify basename
 set BASENAME SCIC
