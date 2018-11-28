@@ -43,6 +43,11 @@ set BASE_DIR $SRC/$BASENAME
 #
 set RTL_VLOG_FILES "\
 $BASE_DIR/CPU.v \
+$BASE_DIR/io_controller.v \
+$BASE_DIR/memory_controller.v \
+$BASE_DIR/Mux4to1.v \
+$BASE_DIR/RAM.v \
+$BASE_DIR/ROM.v \
 $BASE_DIR/SCIC.v \
 "
 
