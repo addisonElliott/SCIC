@@ -126,7 +126,7 @@ print $log  "Executing Encounter verifyConnectivity -type all command" {color_bl
 verifyConnectivity -type all
 
 print    $log  "---> Type resume to continue after making sure there are no DRC or LVS errors!" {color_red}
-print    $log  "If errors are present, try typing \"route nano\" or \"route wroute\" to attempt to fix them" {color_blue}
+print    $log  "If errors are present, try typing \"route wroute\" or \"route nano\" to attempt to fix them" {color_blue}
 win
 
 # TODO: If user types: route nano route wroute, then call that and call verifyXXX again...
