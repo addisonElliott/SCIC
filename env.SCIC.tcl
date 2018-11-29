@@ -85,10 +85,13 @@ set ASPECT 1.0
 # Establish a boundary outside of the core area 
 set CORE_TO_BOUND 100
 
-# Utilization
+# Utilization is a factor from 0.0 -> 1.0 and can also be thought of as row density
+# A small number means more space will be allocated because the rows are less dense
 set UTILIZATION	0.4
 
-# TODO: Document this
+# Sets spacing between each row of MOSFETs
+# Row type can be 1 for every row or 2 for every other row. The spacing is in microns
+# Setting this manually can be beneficial to ensuring the router has enough space to route wires
 set FP_ROW_SPACING 30
 set FP_ROW_TYPE 1
 
@@ -115,7 +118,6 @@ set W_LAYER 3
 # Power planning
 # ---------------------------------------------------------------------------
 
-# TODO: Changed this stuff, maybe this had an effect
 # For the add power ring command
 # Width of the metal as well as the separation between gnd and vdd rings
 set CORE_RING_SPACING 1
@@ -134,8 +136,7 @@ set STRIPE_LAYER metal2
 # Name of OA lib we want to export to
 set MY_OA_LIB "ediLib"
 
-##############################################################
-
+# ---------------------------------------------------------------------------
 
 # We need to do something special with the ncvlog opts
 # since we don't have an include directory
@@ -145,4 +146,3 @@ set NCVLOG_OPTS	"-cdslib $CDS_LIB \
                 -update \
                 -linedebug \
                 -status "
-
