@@ -31,6 +31,8 @@ set_load -pin_load $OUTPUT_PINS_CAPACITANCE [all_outputs]
 # Explain that doing set_dont_touch on instances did not work for me, in my case PC_reg
 # If I don't call set_dont_touch on these nets, then when I go to do Post-synthesis simulation, there will be some high impedance lines because Cadence will optimize out the nets.
 # The IR wire and AC wires are optimized out. However, set_dont_touch on AC wires does not work because the nets do not exist. Rather, one can observe the data_out wires since they are the same.
+# But the interesting thing is that putting set_dont_touch for the data_out wires will preserve some of the AC nets and also will optimize some out. I think this also messes up data_out wire. So it's a bit odd and I'm not sure how to get around this.
+# TODO: Might want to try removing this when not doing post-synthesis simulation
 set_dont_touch [find / -net PC*]
 set_dont_touch [find / -net IR*]
 # set_dont_touch [find / -net AC*]
