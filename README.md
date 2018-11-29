@@ -318,6 +318,7 @@ TODO: XXX
 ## Results Table
 
 * Area: 2100um x 2100um
+* Maximum clock speed: 80MHz
 
 # Workflow Commands List
 ```bash
