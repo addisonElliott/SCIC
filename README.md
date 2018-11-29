@@ -243,7 +243,7 @@ verifyConnectivity -type all
 
 Once there is no DRC violations, type resume once again to finish the design by placing power pins. At this point, you can close Encounter and move to the next step.
 
-See the results section for screenshots of what you **should** see for this step. Don't forget to run Post-Synthesis simulation to verify the synthesis is working correctly. The simulation should show delays between signals now.
+See the results section for screenshots of what you **should** see for this step (TODO: Link here). Don't forget to run Post-Synthesis simulation to verify the synthesis is working correctly. The simulation should show delays between signals now.
 
 # Final Steps
 
