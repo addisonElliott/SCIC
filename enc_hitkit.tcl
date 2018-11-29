@@ -117,17 +117,43 @@ amsFillcore
 print $log  "Executing amsTA (postRoute timing analysis)" {color_blue}
 amsTa postRoute
 
+# Verify geometry and connectivity and rerun routing until DRC violations are gone
+# Routing is done up to MAX_ROUTE_COUNT times
 
-# Verifying geometry and connectivity
+# Filename that DRC files containing DRC violations will be saved
+set DRC_FILENAME "$BASENAME.drc"
 
-print $log  "Executing Encounter verifyGeometry command" {color_blue}
-verifyGeometry
+for {set i 0} {$i < $MAX_ROUTE_COUNT} {incr i} {
+    print $log  "Executing Encounter verifyGeometry command (iteration #[expr $i + 1])" {color_blue}
+    verifyGeometry
 
-print $log  "Executing Encounter verifyConnectivity -type all command" {color_blue}
-verifyConnectivity -type all
+    print $log  "Executing Encounter verifyConnectivity -type all command (iteration #[expr $i + 1])" {color_blue}
+    verifyConnectivity -type all
 
-print    $log  "---> Type resume to continue after making sure there are no DRC or LVS errors!
-" {color_red}
+    # Save DRC violations to file
+    saveDrc $DRC_FILENAME
+
+    # Load DRC file and retrieve the 3rd line of file (should contain the number of DRC violations)
+    set lines [split [read [open $DRC_FILENAME]] "\n"]
+    set drc_count [lindex $lines 2]
+    print  $log  "Test $drc_count" {color_blue}
+
+    # Run routing again if there are DRC violations, otherwise get out of loop
+    if {$drc_count != 0} {
+        set router [expr {$i % 2 == 0 ? $ALT_ROUTER_TO_USE : $ROUTER_TO_USE}]
+        print  $log  "Executing amsRoute (routing signals using $router) (iteration #[expr $i + 1])" {color_blue}
+        amsRoute $router
+    } else {
+        break
+    }
+}
+
+# Show an error message if DRC violations still exist
+if {$i == $MAX_ROUTE_COUNT} {
+    print $log  "DRC violations still exist after routing $MAX_ROUTE_COUNT times!" {color_red}
+}
+
+print    $log  "---> Type resume to continue after making sure there are no DRC or LVS errors!" {color_red}
 win
 suspend
 fit
