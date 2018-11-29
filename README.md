@@ -173,7 +173,7 @@ See the results section for screenshots of what you **should** see for this step
         * **Statistics** - Displays area and percentages of sequential, inverter, buffer & combinational logic
 ![Statistics](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_statistics.png?raw=true)
         * **Violations** - Displays any DRC violations that occurred during synthesis
-TODO: Include link to image
+![Violations](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_violations.png?raw=true)
     * Power
         * **Detailed Report** - Displays dynamic and static power for each Verilog module
 ![Power Report](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_power.png?raw=true)
@@ -230,7 +230,9 @@ The next part of the script will take the longest because it is actually placing
 
 After the script has stopped again, you will want to look at the terminal for geometry or connectivity violations (i.e. DRC violations). If there are issues here, there will likely be LVS or DRC errors later on. Any DRC violations will also be shown as white X's on the design in Encounter. You can zoom in and click on the white X to see what the violation is. In addition, there is a *Violation Browser* in *Tools->Violation Browser* that is helpful for viewing violations.
 
-TODO: Insert images here
+![Design with Violations](https://github.com/addisonElliott/SCIC/blob/master/images/pnr_wviolations.png?raw=true)
+![Violation Browser](https://github.com/addisonElliott/SCIC/blob/master/images/pnr_violation_browser.png?raw=true)
+![Console](https://github.com/addisonElliott/SCIC/blob/master/images/pnr_console.png?raw=true)
 
 DRC violations will occur in this project and the solution is to run again with a different router. Type the following commands into the terminal (it accepts TCL commands when suspended).
 ```Tcl
