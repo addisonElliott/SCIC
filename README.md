@@ -4,8 +4,26 @@ Project of Addison Elliott and Dan Ashbaugh to create IC layout of 32-bit custom
 **Note:** This guide contains information based on Addison and Dan's experience with the Cadence tools during the 1 month period spent on the project. As a result, this guide may contain mistakes or incorrect information and pull requests are welcome to fix any issues.
 
 # Table of Contents
-
-TODO: Do me!
+- [SIUE CPU IC (SCIC)](#siue-cpu-ic-scic)
+- [Table of Contents](#table-of-contents)
+- [Overview](#overview)
+- [Setup](#setup)
+- [Workflow](#workflow)
+- [Simulation](#simulation)
+- [Synthesis](#synthesis)
+        - [Reports & Menus](#reports--menus)
+- [Place & Route](#place--route)
+- [Final Steps](#final-steps)
+- [Results](#results)
+    - [RTL Simulation](#rtl-simulation)
+    - [Synthesis](#synthesis-1)
+    - [Post-Synthesis Simulation](#post-synthesis-simulation)
+    - [Place & Route](#place--route-1)
+    - [Post-PNR Simulation](#post-pnr-simulation)
+    - [Results Table](#results-table)
+- [Workflow Commands List](#workflow-commands-list)
+- [Future Work](#future-work)
+- [Simulating with Icarus Verilog](#simulating-with-icarus-verilog)
 
 # Overview
 
@@ -372,7 +390,12 @@ icd_ams
 
 Below is a list of issues we encountered but did not have enough time to investigate.
 
-* TODO: DO me!
+* Unable to view AC wire in simulation after synthesis
+    * Best solution is to ensure that any wires you want to view is included in testbench and is present at the top-level module
+* Create RAM generator to allow for full 2kB of RAM, only using 64 words of D flip flops, very slow
+* Optimize design to allow for full 100MHz operation
+* Fix LVS errors using nano router
+* Fix DRC errors when using wroute router, figure out why this occurs
 
 # Simulating with Icarus Verilog
 
