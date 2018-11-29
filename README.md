@@ -297,7 +297,10 @@ Keep in mind that the only purpose of the RTL simulation is to verify the functi
 
 ## Post-Synthesis Simulation
 
-TODO: XXX
+The important peice to note here is that the results are the same from the RTL simulation. The only exception to this is that there is no AC wire because that was optimized out. The value on data_out is the same as the AC register however. In addition, you can see a slight delay and ringing between when the clock edge occurs and when the other wires change.
+
+![Synthesis Results 9](https://github.com/addisonElliott/SCIC/blob/master/images/simulation_syn_1.png?raw=true)
+![Synthesis Results 10](https://github.com/addisonElliott/SCIC/blob/master/images/simulation_syn_2.png?raw=true)
 
 ## Place & Route
 
@@ -307,7 +310,9 @@ TODO: XXX
 
 TODO: XXX
 
-Include results of what LVS & DRC errors are present
+## Results Table
+
+* Area: 2100um x 2100um
 
 # Workflow Commands List
 ```bash
@@ -356,6 +361,12 @@ icd_ams
 # ACTION: Go to ediLib -> SCIC, double-click layout
 # ACTION: Run LVS & DRC on layout to check for errors
 ```
+
+# Future Work
+
+Below is a list of issues we encountered but did not have enough time to investigate.
+
+* TODO: DO me!
 
 # Simulating with Icarus Verilog
 
