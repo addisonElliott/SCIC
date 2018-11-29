@@ -52,6 +52,7 @@ Address range for the memory controller is as follows:
 | I/O  |  0040-005F  |      32      | 0000 0000 0100 0000 -> 0000 0000 0101 1111 |
 
 Test ROM Program to fully test all the instructions:
+
 ![Test ROM Program](https://github.com/addisonElliott/SCIC/blob/master/images/test_rom_program.png?raw=true)
 
 # Setup
