@@ -121,7 +121,7 @@ Cadence's simulator software *SimVision* should pop up. There will not be a deta
 
 **Note:** To make your life easier, you can save your current setup in the waveform window by clicking **File -> Save Command Script** and save the file as restore.tcl which will automatically be loaded each time a simulation is ran. This saves you the trouble of having to add the same wires to the waveform window.
 
-See the results section for screenshots of what you **should** see for this step. TODO: Link here
+See the results section for screenshots of what you **should** see for this step. [Click here](#RTL-Simulation)
 
 ![Image 2](https://github.com/addisonElliott/SCIC/blob/master/images/image2.png?raw=true)
 ![Image 3](https://github.com/addisonElliott/SCIC/blob/master/images/image3.png?raw=true)
