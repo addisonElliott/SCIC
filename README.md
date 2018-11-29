@@ -260,7 +260,7 @@ TODO: Show images of icd_ams
 ![Image 8](https://github.com/addisonElliott/SCIC/blob/master/images/image8.png?raw=true)
 ![Image 9](https://github.com/addisonElliott/SCIC/blob/master/images/image9.png?raw=true)
 
-:sparkles: :sparkles: :sparkles: **You are finished with your design!** :sparkles: :sparkles: :sparkles:
+:sparkles: :sparkles: :sparkles: :sparkles: :sparkles: :sparkles: **You are finished with your design!** :sparkles: :sparkles: :sparkles: :sparkles: :sparkles: :sparkles:
 
 The remainder of this document is explaining the code and displaying our results.
 
