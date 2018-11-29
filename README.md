@@ -87,6 +87,8 @@ sb SCIC
 
 # Workflow
 
+![Cadence Workflow](https://github.com/addisonElliott/SCIC/blob/master/images/CadenceWorkflow.png?raw=true)
+
 # Simulation
 
 The first step of any design is to simulate the Verilog code using a testbench to ensure that it is **functionally** working correctly. There is no point in worrying about propagation delay, timing constraints, capacitance, resistances until you know that your design does what it is supposed to in the first place. This is the purpose of running a simulation is to verify that the design does what it is supposed to.
