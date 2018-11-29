@@ -246,17 +246,20 @@ See the results section for screenshots of what you **should** see for this step
 
 # Final Steps
 
-TODO: Do this
+TODO: Put language for all code blocks
 
+This completes the use of the Encounter Digital Implementation (EDI) tools. The final step is to convert the layout & schematic to Cadence Virtuoso. This can be done with two simple commands, given below. **Note:** You **must** call *edi2ic* first because it wipes the *ediLib* section while *edi2sch* does not.
+```
 edi2ic
-
 edi2sch
+```
 
-Must run in this order! edi2ic overwrites the library!
+Now the layout & schematic can be opened in Virtuoso like any design. Start Virtuoso (using *icd_ams* command) and select *ediLib -> SCIC* and double-click on the layout. Run LVS and DRC checks to ensure there are no issues.
 
-Start icd_ams, open ediLib -> SCIC etc
+TODO: Show images of icd_ams
 
-Run LVS & DRC checks. This is what really matters in the end! If you get issues, you need to figure out why and figure out why!!!
+![Image 8](https://github.com/addisonElliott/SCIC/blob/master/images/image8.png?raw=true)
+![Image 9](https://github.com/addisonElliott/SCIC/blob/master/images/image9.png?raw=true)
 
 # Code Explanation
 
