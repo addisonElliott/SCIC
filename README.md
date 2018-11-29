@@ -58,14 +58,14 @@ A detailed explanation of the code is given in the section TODO: ME below.
 **Note:** This was run using Dr. Engel's special workflow with custom TCL scripts. You must do this using the lab machines with their custom scripts in order for this tutorial to work.
 
 Begin by logging into a VLSI lab machine in EB3009 and then open a terminal. Run the following commands to get your terminal setup with Dr. Engel's custom scripts. These commands only need to be run once each time you open a terminal to setup your environment correctly.
-```
+```bash
 cds_ams
 cd $PHOME
 setup_edi
 ```
 
 Navigate into *verilog.src* and clone the project repository with the following commands. **Note:** If you are wanting to push changes back to the repository eventually (requires write access), then you must use the following URL rather than the one given below `https://<GITHUB_USERNAME>@github.com/addisonElliott/SCIC.git`.
-```
+```bash
 cd verilog.src
 git clone https://github.com/addisonElliott/SCIC.git
 ```
@@ -73,7 +73,7 @@ git clone https://github.com/addisonElliott/SCIC.git
 The directory `verilog.src` contains all Verilog projects that are going to be simulated or synthesized using Cadence. This is a custom directory structure setup by Dr. Engel to adhere to his specific workflow. The purpose is to standardize where projects are located for ease of use. Cloning the repository only needs to be done once because afterwards it will be stored on your machine. But, if you want to pull new changes from the repository, you can do so with the command `git pull origin master`. You must be inside the directory to run the git command (or any git commands for that matter).
 
 Next, one more once-per-machine step must be done. There is a TCL and SDC file that is expected to be in a different directory to adhere to Dr. Engel's workflow. Since we wanted to make these files tracked by our GitHub repository, we place these files in the repository and create symbolic links (i.e. symlinks) to these locations. Run the following two commands to create symlinks for the TCL and SDC file in the appropriate directory.
-```
+```bash
 ln -s $PHOME/verilog.src/SCIC/env.SCIC.tcl $PHOME/env_files/
 ln -s $PHOME/verilog.src/SCIC/SCIC.sdc $PHOME/verilog.src/sdc/
 ```
@@ -83,7 +83,7 @@ If you want to verify that the symlinks were made, take a look at the figure bel
 ![Image 1](https://github.com/addisonElliott/SCIC/blob/master/images/image1.png?raw=true)
 
 Once the repository is cloned and setup, one remaining command must be called. This command must be called each time a terminal is opened to set the current base project. `sb` is a script written by Dr. Engel and is short for **set base** to set the base project. The argument to this script is the name of any project contained in the `verilog.src` folder. To see the current project, you can type `b` for the **base** project. The workflow commands used below use the current "base project" to perform their respective actions on.
-```
+```bash
 sb SCIC
 ```
 
@@ -110,7 +110,7 @@ The simulation in each case can be ran the same way except for one minor change.
 ![Image 4](https://github.com/addisonElliott/SCIC/blob/master/images/image4.png?raw=true)
 
 Run the following commands to simulate the design. There is no need to run the *cd* command if you are already at *$PHOME*.
-```
+```bash
 cd $PHOME
 sim
 ```
@@ -125,7 +125,7 @@ See the results section for screenshots of what you **should** see for this step
 ![Image 3](https://github.com/addisonElliott/SCIC/blob/master/images/image3.png?raw=true)
 
 Before running a Post-Synthesis and Post-PNR simulation, you must type the following command to create special testbenches that include delay information. The delay information from the synthesis and place & route step are stored in a Standard Delay Format (SDF) which is loaded in the testbench using the *$sdf_annotate* function. Open up the generated testbenches to see the differences yourself!
-```
+```bash
 sdf
 ```
 
@@ -144,7 +144,7 @@ The synthesis tool does **a lot** of optimization such as removing unused regist
 Another frustration with the synthesis tool with optimization is that it can be difficult to probe the testbench wires because some of the wires may disappear, become high impedance or change due to the fact that the synthesis tool optimized them away. The best way I found to counteract this effect is to use the *set_dont_touch* command on the net in the SDC file, but even then it was a bit buggy with the results.
 
 Run these commands from your terminal to launch the RTL compiler:
-```
+```bash
 cd $PHOME
 syn
 ```
@@ -212,7 +212,7 @@ There are some 'knobs' that one can tweak in the *env.SCIC.tcl* file for adjusti
 One frustration that we ran into during this project is that after completion, there would be on the order of hundreds of DRC violations. After much experimentation and review of our Verilog code, we came to the conclusion that has something to do with the router used. The default router used is *wroute* which is Cadence's old tool and was superseded by *nano*. According to Cadence's documentation, *nano* is recommended for sub-180nm processes or larger projects with more than 300K instances. Dr. Engel also informed us that the *nano* router was recommended by the AMS engineers over the *wroute* router (even though our process is 0.35um). But, Dr. Engel and his students empirically found that *wroute* yielded better results than *nano*. With all this in mind, the important thing to take away is to try multiple routers and try running route multiple times. Using the *nano* router in this project solved all DRC violations in Encounter.
 
 Now with that introduction, let's begin running the place & route tool.
-```
+```bash
 cd $PHOME
 pnr
 ```
@@ -233,7 +233,7 @@ After the script has stopped again, you will want to look at the terminal for ge
 TODO: Insert images here
 
 DRC violations will occur in this project and the solution is to run again with a different router. Type the following commands into the terminal (it accepts TCL commands when suspended).
-```
+```Tcl
 amsRoute nano
 verifyGeometry
 verifyConnectivity -type all
@@ -248,7 +248,7 @@ See the results section for screenshots of what you **should** see for this step
 TODO: Put language for all code blocks
 
 This completes the use of the Encounter Digital Implementation (EDI) tools. The final step is to convert the layout & schematic to Cadence Virtuoso. This can be done with two simple commands, given below. **Note:** You **must** call *edi2ic* first because it wipes the *ediLib* section while *edi2sch* does not.
-```
+```bash
 edi2ic
 edi2sch
 ```
@@ -299,7 +299,7 @@ TODO: XXX
 Include results of what LVS & DRC errors are present
 
 # Overall List of Commands to Type
-```
+```bash
 cds_ams
 cd $PHOME
 setup_edi
@@ -341,7 +341,7 @@ Performing a simulation with Icarus Verilog is great because it is an easy-to-in
 * \<IVERILOG PATH>/gtkwave/bin (e.g. C:/iverilog/gtkwave/bin)
 
 Open a command prompt (cmd.exe for Windows, Terminal on Linux), navigate to this repository and run the following commands:
-```
+```bash
 iverilog -o out.o CPU.v memory_controller.v Mux4to1.v RAM.v ROM.v SCIC.v io_controller.v SCIC_tb.v
 vvp out.o
 gtkwave SCIC.vcd
