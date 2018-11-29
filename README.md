@@ -119,25 +119,24 @@ Cadence's simulator software *SimVision* should pop up. There will not be a deta
 
 **Note:** To make your life easier, you can save your current setup in the waveform window by clicking **File -> Save Command Script** and save the file as restore.tcl which will automatically be loaded each time a simulation is ran. This saves you the trouble of having to add the same wires to the waveform window.
 
+See the results section for screenshots of what you **should** see for this step. TODO: Link here
+
 ![Image 2](https://github.com/addisonElliott/SCIC/blob/master/images/image2.png?raw=true)
 ![Image 3](https://github.com/addisonElliott/SCIC/blob/master/images/image3.png?raw=true)
 
 # Synthesis
 
-After running a RTL simulation to verify the functionality of the project (TODO: Link to results here), the next step is to synthesize the design. Synthesizing the design, in this context, means to take Verilog and turn it into a purely structural design in terms of the standard cells available to the process (e.g. AOI22, NAND22, NOR22, inverter, D flip-flop). If the Verilog code is already purely structural, then the synthesize tool will not be able to optimize the design much.
+After running a RTL simulation to verify the functionality of the project (TODO: Link to results here), the next step is to synthesize the design using the *RTL Compiler*. Synthesizing the design, in this context, means to take Verilog and turn it into a purely structural design in terms of the standard cells available to the process (e.g. AOI22, NAND22, NOR22, inverter, D flip-flop). If the Verilog code is already purely structural, then the synthesize tool will not be able to optimize the design much.
 
 Additionally, the synthesize step will also calculate the worst case timing path, total consumed area for each Verilog module instance, total consumed power for each Verilog module instance and much more. This is the point in the design where you can analyze the design and see if the area, power, timing meets your requirements.
 
 In simple terms, the synthesize step encompasses figuring out all the gates, flip flops and components that are required and how they should be connected to achieve certain constraints. The synthesize step does **not** take into account wiring resistance or capacitance.
 
-One important component for the synthesize step is the *SCIC.sdc* file, which is a TCL script that specifies constraints for the synthesize tool.
-
-Once the design is logically correct, the next step is synthesizing the design into gates and analyzing this design. This does not include wiring capacitances or resistance because the gates are not placed yet, that is handled in the place & route tool. This synthesis will provide information such as power usage, worst-case timing path, number of gates used, area used and much more. The *SCIC.sdc* file will be used in the synthesis to gather information about clock speed, input/output capacitance and delay and more.
+One important component for the synthesis step is the *SCIC.sdc* file, which is a TCL script that specifies constraints for the synthesize tool. A detailed explanation of the SDC file can be seen in (TODO: Link here).
 
 Run these commands from your terminal to launch the RTL compiler:
 ```
 cd $PHOME
-sb SCIC
 syn
 ```
 
@@ -145,9 +144,9 @@ The *syn* command is a custom TCL script written by Dr. Engel and a former gradu
 
 The script will finish running and then a schematic window will appear. You can double click on any of the blocks in the hierarchy to view a schematic for them. Below are some screenshots showing some of the capabilities that this synthesis contains.
 
-TODO: Images here
+See the results section for screenshots of what you **should** see for this step. TODO: Link here
 
-TODO: Describe how to do a post-synthesis simulation
+TODO: Images here
 
 # Synthesis with Place & Route
 
