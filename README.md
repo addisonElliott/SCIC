@@ -179,6 +179,13 @@ TODO: Do this
 
 TODO: Do this
 
+# Code Explanation
+
+TODO: Talk about SCIC.sdc
+TODO: Talk about env.SCIC.tcl
+TODO: Talk about CPU.v
+TODO: Talk about memory_controller.v
+
 # Results
 
 ## RTL Simulation
