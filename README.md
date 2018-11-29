@@ -157,7 +157,7 @@ See the results section for screenshots of what you **should** see for this step
 
 ![Image 5](https://github.com/addisonElliott/SCIC/blob/master/images/image5.png?raw=true)
 
-## Reports & Menus
+### Reports & Menus
 
 TODO: Fix me up!
 
@@ -169,6 +169,7 @@ TODO: Fix me up!
     * Unknown
 * Violations
     * Unknown
+    * Object Browser too
 
 # Place & Route
 
