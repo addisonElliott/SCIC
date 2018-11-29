@@ -87,6 +87,10 @@ sb SCIC
 
 # Workflow
 
+The general workflow for synthesizing a Verilog project to an IC can be seen below. Preceding the RTL simulation is developing the Verilog module, general setup of the project and creating the SDC & environment TCL file. 
+
+If you encounter an error in one of the steps of the workflow, you should not proceed further until that error is fixed!
+
 ![Cadence Workflow](https://github.com/addisonElliott/SCIC/blob/master/images/CadenceWorkflow.png?raw=true)
 
 # Simulation
