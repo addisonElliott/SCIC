@@ -151,11 +151,22 @@ syn
 
 The *syn* command is a custom TCL script written by Dr. Engel and a former graduate student that runs the RTL compiler and runs a synthesis script within it. It will begin by parsing the SDC file and afterwards the script will pause to wait for user input. You will read the output in your terminal to ensure there were no errors, and if so type 'resume' in the terminal.
 
-The script will finish running and then a schematic window will appear. You can double click on any of the blocks in the hierarchy to view a schematic for them. Below are some screenshots showing some of the capabilities that this synthesis contains.
+The script will finish running and then a schematic window will appear. You can double click on any of the blocks in the hierarchy to view a schematic for them. In addition, the "Report" menu provides useful options for analyzing various aspects of the design (power, area, timing, etc).
 
 See the results section for screenshots of what you **should** see for this step. TODO: Link here Don't forget to run Post-Synthesis simulation to verify the synthesis is working correctly. 
 
-TODO: Images here
+![Image 5](https://github.com/addisonElliott/SCIC/blob/master/images/image5.png?raw=true)
+
+TODO: Fix me up!
+List of XXX:
+* Report
+    * Timing
+        * Worst Timing Path
+        * Endpoint Timing
+* DFT
+    * Unknown
+* Violations
+    * Unknown
 
 # Synthesis with Place & Route
 
