@@ -121,7 +121,7 @@ Cadence's simulator software *SimVision* should pop up. There will not be a deta
 
 **Note:** To make your life easier, you can save your current setup in the waveform window by clicking **File -> Save Command Script** and save the file as restore.tcl which will automatically be loaded each time a simulation is ran. This saves you the trouble of having to add the same wires to the waveform window.
 
-See the results section for screenshots of what you **should** see for this step. [Click here](#RTL-Simulation)
+See the results section for screenshots of what you **should** see for this step ([Click here](#RTL-Simulation))
 
 ![Image 2](https://github.com/addisonElliott/SCIC/blob/master/images/image2.png?raw=true)
 ![Image 3](https://github.com/addisonElliott/SCIC/blob/master/images/image3.png?raw=true)
@@ -133,7 +133,7 @@ sdf
 
 # Synthesis
 
-After running a RTL simulation to verify the functionality of the project (TODO: Link to results here), the next step is to synthesize the design using the *RTL Compiler* (rc). Synthesizing the design, in this context, means to take Verilog and turn it into a purely structural design in terms of the standard cells available to the process (e.g. AOI22, NAND22, NOR22, inverter, D flip-flop). If the Verilog code is already purely structural, then the synthesize tool will not be able to optimize the design much.
+After running a RTL simulation to verify the functionality of the project ([Click here](#RTL-Simulation)), the next step is to synthesize the design using the *RTL Compiler* (rc). Synthesizing the design, in this context, means to take Verilog and turn it into a purely structural design in terms of the standard cells available to the process (e.g. AOI22, NAND22, NOR22, inverter, D flip-flop). If the Verilog code is already purely structural, then the synthesize tool will not be able to optimize the design much.
 
 Additionally, the synthesize step will also calculate the worst case timing path, total consumed area for each Verilog module instance, total consumed power for each Verilog module instance and much more. This is the point in the design where you can analyze the design and see if the area, power, timing meets your requirements.
 
@@ -155,7 +155,7 @@ The *syn* command is a custom TCL script written by Dr. Engel and a former gradu
 
 The script will finish running and then a schematic window will appear. You can double click on any of the blocks in the hierarchy to view a schematic for them. In addition, the "Report" menu provides useful options for analyzing various aspects of the design (power, area, timing, etc).
 
-See the results section for screenshots of what you **should** see for this step. The synthesis should only take around 5-10minutes to complete. TODO: Link here Don't forget to run Post-Synthesis simulation to verify the synthesis is working correctly. The simulation should show delays between signals now.
+See the results section for screenshots of what you **should** see for this step ([Click here](#synthesis-1)). The synthesis should only take around 5-10minutes to complete. Don't forget to run Post-Synthesis simulation to verify the synthesis is working correctly. The simulation should show delays between signals now.
 
 ![Image 5](https://github.com/addisonElliott/SCIC/blob/master/images/image5.png?raw=true)
 
@@ -245,7 +245,7 @@ verifyConnectivity -type all
 
 Once there is no DRC violations, type resume once again to finish the design by placing power pins. At this point, you can close Encounter and move to the next step.
 
-See the results section for screenshots of what you **should** see for this step (TODO: Link here). Don't forget to run Post-Synthesis simulation to verify the synthesis is working correctly. The simulation should show delays between signals now.
+See the results section for screenshots of what you **should** see for this step ([Click here](#place--route-1)). Don't forget to run Post-Synthesis simulation to verify the synthesis is working correctly. The simulation should show delays between signals now.
 
 # Final Steps
 
