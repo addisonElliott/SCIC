@@ -207,9 +207,19 @@ See the results section for screenshots of what you **should** see for this step
 
 The place & route stage is when the magic begins to happen taking a Verilog design and placing all the necessary transistors as well as connecting them up correctly. It is a complex process, consisting of many stages, to ensure that timing and other constraints specified in the SDC file are met. As a result, this part of the process may also take the **longest** (expect somewhere between 10minutes to an hour depending on constraints specified). Obviously, the stricter the constraints on the design, such as timing specifications, area, spacing between rows for wires, will mean that the place & route tool will take longer to complete. The place & route tool created by Cadence is *Encounter* (enc).
 
-After running a RTL simulation to verify the functionality of the project (TODO: Link to results here), the next step is to synthesize the design using the *RTL Compiler* (rc). Synthesizing the design, in this context, means to take Verilog and turn it into a purely structural design in terms of the standard cells available to the process (e.g. AOI22, NAND22, NOR22, inverter, D flip-flop). If the Verilog code is already purely structural, then the synthesize tool will not be able to optimize the design much.
+Once Dr. Engel's custom place & route script is done running, one important comment to make is that you can perform additional actions on the design in Encounter. Everything in the custom script has a GUI counterpart that can be ran. Things such as rerouting, verifying geometry & connectivity, moving wires, etc can be done after the fact.
 
+Based on my personal experience of the software, some designs may end up with DRC violations after the process is done. The automatic router is not perfect and can leave violations after completion. Keep this in mind and be prepared to fix small issues if necessary. 
 
+There are some 'knobs' that one can tweak in the *env.SCIC.tcl* file for adjusting how the place & route tool will operate. These options are discussed in further detail in (TODO: Link here). Briefly, the important parameters that we tuned in this project were the router used (nano or wroute), aspect ratio, core to boundary distance, utilization (i.e. row density) factor, row spacing between transistors and pin spacing.
+
+One frustration that we ran into during this project is that after completion, there would be on the order of hundreds of DRC violations. After much experimentation and review of our Verilog code, we came to the conclusion that has something to do with the router used. The default router used is *wroute* which is Cadence's old tool and was superseded by *nano*. According to Cadence's documentation, *nano* is recommended for sub-180nm processes or larger projects with more than 300K instances. Dr. Engel also informed us that the *nano* router was recommended by the AMS engineers over the *wroute* router (even though our process is 0.35um). But, Dr. Engel and his students empirically found that *wroute* yielded better results than *nano*. With all this in mind, the important thing to take away is to try multiple routers and try running route multiple times. Using the *nano* router in this project solved all DRC violations in Encounter.
+
+Now with that introduction, let's begin running the place & route tool.
+```
+cd $PHOME
+pnr
+```
 
 
 Creates floorplan of design and places pins. Review it and type resume.
