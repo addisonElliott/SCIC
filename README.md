@@ -51,10 +51,9 @@ Address range for the memory controller is as follows:
 
 A detailed explanation of the code is given in the section TODO: ME below.
 
-# Cadence Tools
-**Note:** This was run using Dr. Engel's special setup with TCL scripts and such. You must do this using the lab machines with their custom scripts.
-
 # Setup
+
+**Note:** This was run using Dr. Engel's special workflow with custom TCL scripts. You must do this using the lab machines with their custom scripts in order for this tutorial to work.
 
 Begin by logging into a VLSI lab machine in EB3009 and then open a terminal. Run the following commands to get your terminal setup with Dr. Engel's custom scripts. These commands only need to be run once each time you open a Terminal to setup your environment correctly.
 ```
@@ -143,4 +142,38 @@ Open a command prompt (cmd.exe for Windows, Terminal on Linux), navigate to this
 iverilog -o out.o CPU.v memory_controller.v Mux4to1.v RAM.v ROM.v SCIC.v io_controller.v SCIC_tb.v
 vvp out.o
 gtkwave SCIC.vcd
+```
+
+# Overall List of Commands to Type
+```
+cds_ams
+cd $PHOME
+setup_edi
+sb SCIC
+
+<Edit env.SCIC.tcl to set SIM_MODE to rtl>
+sim
+
+syn
+<Follow command prompt and review timing, power & other constraints in GUI that appears once synthesis is done>
+
+# Only needs to be done once
+sdf
+
+<Edit env.SCIC.tcl to set SIM_MODE to syn>
+sim
+
+# TODO: Edit stuff here at all?
+
+pnr
+<Follow command prompt and review layout after finished>
+<Quit encounter once layout is complete>
+
+edi2ic
+edi2sch
+
+icd_ams
+<Go to ediLib, select SCIC, double-click layout>
+
+<Run LVS & DRC on layout to check for errors>
 ```
