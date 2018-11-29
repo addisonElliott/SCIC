@@ -159,8 +159,6 @@ See the results section for screenshots of what you **should** see for this step
 
 ### Reports & Menus
 
-TODO: Might want to tell the user how to use the synthesis RTL compiler GUI. Just stuff like double clicking on instances will make them appear in the viewer.
-
 * Report
     * Datapath
         * Information about any datapath elements used, in our design there were none so this does not provide any useful information.
