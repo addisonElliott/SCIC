@@ -286,8 +286,8 @@ set	PLACEMENT_MODE		"opt"
 
 set	ROUTER_TO_USE		"wroute"
 
-set ALT_ROUTER_TO_USE	"nano"		; # Alternate router to use when running route multiple times to remove DRC violations
-set	MAX_ROUTE_COUNT		3			; # Maximum number of times to rerun routing to remove DRC violations
+set   ALT_ROUTER_TO_USE	"nano"		; # Alternate router to use when running route multiple times to remove DRC violations
+set	MAX_ROUTE_COUNT	3			   ; # Maximum number of times to rerun routing to remove DRC violations
 
 # Some more defines
 
