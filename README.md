@@ -103,13 +103,11 @@ The first step of any design is to simulate the Verilog code using a testbench t
     * Performed after place & route and includes the wiring delay as well as the propagation delay for gates
     * This is the final simulation and **should** mimic the real-life waveforms present on the chip
 
-The simulation in each case can be ran the same way except for one minor change. The *env.SCIC.tcl* file must be edited to set the simulation mode to the desired mode.
+The simulation in each case can be ran the same way except for one minor change. The *env.SCIC.tcl* file must be edited to set the simulation mode to the desired mode. Editing the file can be done using your favorite text editor (gedit, vim, nano, etc). Change the line `SIM_MODE` to the desired mode.
 
 ![Image 4](https://github.com/addisonElliott/SCIC/blob/master/images/image4.png?raw=true)
 
-Editing the env.SCIC.tcl file can be done using your favorite text editor (gedit, vim, nano, etc). Change the line `SIM_MODE` to `rtl`. In the remainder of this document, we will tell you to change the SIM_MODE to a different value and you will need to open this file using a text editor and change the value appropriately.
-
-Finally, we are ready to run our simulation on the project. Run the commands below. There is no need to run the *cd* command if you are already at *$PHOME*.
+Run the following commands to simulate the design. There is no need to run the *cd* command if you are already at *$PHOME*.
 ```
 cd $PHOME
 sim
