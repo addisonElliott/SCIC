@@ -124,7 +124,7 @@ See the results section for screenshots of what you **should** see for this step
 ![Image 2](https://github.com/addisonElliott/SCIC/blob/master/images/image2.png?raw=true)
 ![Image 3](https://github.com/addisonElliott/SCIC/blob/master/images/image3.png?raw=true)
 
-Before running a Post-Synthesis and Post-PNR simulation, you must type the following command to create special testbenches that include delay information. The delay information from the synthesis and place & route step are stored in a Standard Delay Format (SDF) which is loaded in the testbench.
+Before running a Post-Synthesis and Post-PNR simulation, you must type the following command to create special testbenches that include delay information. The delay information from the synthesis and place & route step are stored in a Standard Delay Format (SDF) which is loaded in the testbench using the *$sdf_annotate* function. Open up the generated testbenches to see the differences yourself!
 ```
 sdf
 ```
