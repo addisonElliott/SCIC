@@ -131,7 +131,7 @@ sdf
 
 # Synthesis
 
-After running a RTL simulation to verify the functionality of the project (TODO: Link to results here), the next step is to synthesize the design using the *RTL Compiler*. Synthesizing the design, in this context, means to take Verilog and turn it into a purely structural design in terms of the standard cells available to the process (e.g. AOI22, NAND22, NOR22, inverter, D flip-flop). If the Verilog code is already purely structural, then the synthesize tool will not be able to optimize the design much.
+After running a RTL simulation to verify the functionality of the project (TODO: Link to results here), the next step is to synthesize the design using the *RTL Compiler* (rc). Synthesizing the design, in this context, means to take Verilog and turn it into a purely structural design in terms of the standard cells available to the process (e.g. AOI22, NAND22, NOR22, inverter, D flip-flop). If the Verilog code is already purely structural, then the synthesize tool will not be able to optimize the design much.
 
 Additionally, the synthesize step will also calculate the worst case timing path, total consumed area for each Verilog module instance, total consumed power for each Verilog module instance and much more. This is the point in the design where you can analyze the design and see if the area, power, timing meets your requirements.
 
@@ -159,6 +159,7 @@ See the results section for screenshots of what you **should** see for this step
 
 ### Reports & Menus
 
+TODO: Might want to tell the user how to use the synthesis RTL compiler GUI. Just stuff like double clicking on instances will make them appear in the viewer.
 TODO: Fix me up!
 
 * Report
@@ -181,14 +182,17 @@ TODO: Fix me up!
 ![Statistics](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_statistics.png?raw=true)
         * **Violations** - Displays any DRC violations that occurred during synthesis
     * Power
-        * **Detailed Report**
-        * **RTL Power**
-        * **Library Domains**
-        * **Power Domains**
-        * **Instance Power Usage**
-        * **Net Power Usage**
-        * **Probability Histogram**
-        * **Toggle Rate Histogram**
+        * **Detailed Report** - Displays dynamic and static power for each Verilog module
+![Power Report](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_power.png?raw=true)
+        * **RTL Power** - Blank for this project, unsure what it does
+        * **Library Domains** - Blank for this project, unsure what it does
+        * **Power Domains** - Blank for this project, unsure what it does
+        * **Instance Power Usage** - Displays a pie chart of the instance power (short circuit power)
+![Instance Power Chart](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_instance_power.png?raw=true)
+        * **Net Power Usage** - Displays a pie chart of the net power (charge/discharge capacitances power)
+![Net Power Chart](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_net_power.png?raw=true)
+        * **Probability Histogram** - Causes RTL Compiler to crash
+        * **Toggle Rate Histogram** - Causes RTL Compiler to crash
     * Timing
         * **Endpoint Histogram**
         * **Lint Report**
