@@ -299,12 +299,17 @@ Keep in mind that the only purpose of the RTL simulation is to verify the functi
 
 The important peice to note here is that the results are the same from the RTL simulation. The only exception to this is that there is no AC wire because that was optimized out. The value on data_out is the same as the AC register however. In addition, you can see a slight delay and ringing between when the clock edge occurs and when the other wires change.
 
-![Synthesis Results 9](https://github.com/addisonElliott/SCIC/blob/master/images/simulation_syn_1.png?raw=true)
-![Synthesis Results 10](https://github.com/addisonElliott/SCIC/blob/master/images/simulation_syn_2.png?raw=true)
+![Simulation Results 1](https://github.com/addisonElliott/SCIC/blob/master/images/simulation_syn_1.png?raw=true)
+![Simulation Results 2](https://github.com/addisonElliott/SCIC/blob/master/images/simulation_syn_2.png?raw=true)
 
 ## Place & Route
 
-TODO: XXX
+Zero DRC violations when running nano router after wroute. See the steps above for more information. Design looks good and seems well routed. However, minimum slack was -2.5ns which means we can only run this at about 80MHz. In addition, there are 3 minor LVS errors that need to be resolved.
+
+![Place & Route 1](https://github.com/addisonElliott/SCIC/blob/master/images/pnr_1.png?raw=true)
+![Place & Route 2](https://github.com/addisonElliott/SCIC/blob/master/images/pnr_2.png?raw=true)
+![Place & Route 3](https://github.com/addisonElliott/SCIC/blob/master/images/pnr_3.png?raw=true)
+![Place & Route 4](https://github.com/addisonElliott/SCIC/blob/master/images/pnr_4.png?raw=true)
 
 ## Post-PNR Simulation
 
