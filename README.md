@@ -174,8 +174,11 @@ TODO: Fix me up!
         * **Preserved** - No idea what this does, no registers that meet criterion in design
     * Netlist
         * **Area** - Area by each Verilog module split into cell area and net area summed to total area in square micrometers
+![Area](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_area.png?raw=true)
         * **Mapped Gates** - Lists each gate used, the number of instances in the design and the area these take
+![Mapped Gates](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_mapped_gates.png?raw=true)
         * **Statistics** - Displays area and percentages of sequential, inverter, buffer & combinational logic
+![Statistics](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_violations.png?raw=true)
         * **Violations** - Displays any DRC violations that occurred during synthesis
     * Power
         * **Detailed Report**
@@ -192,8 +195,10 @@ TODO: Fix me up!
         * **Worst Path**
 * Tools
     * **Object Browser** - Allows browsing of the synthesized logic, includes every single net, instance, flip flop and gate that is used and allows for easy traversal.
+![Object Browser](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_object_browser.png?raw=true)
 * File
     * **Source Script** - Can be used to load an existing synthesis. For any project, the script you want to load is */opt/home/campus/<USERNAME>/cds/ece484/syn_dir/dsn/\<PROJECT NAME\>/\<PROJECT NAME\>.rc_setup.tcl*
+![File Open](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_file_open.png?raw=true)
 
 # Place & Route
 
