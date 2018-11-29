@@ -265,13 +265,13 @@ The remainder of this document is explaining the code and displaying our results
 
 # Code Explanation
 
+## SCIC.sdc
+
 TODO: Talk about SCIC.sdc
 
+## env.SCIC.tcl
+
 TODO: Talk about env.SCIC.tcl
-
-TODO: Talk about CPU.v
-
-TODO: Talk about memory_controller.v
 
 # Results
 
