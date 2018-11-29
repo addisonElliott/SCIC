@@ -265,6 +265,8 @@ The remainder of this document is additional information and results from this p
 
 ## RTL Simulation
 
+Within the RTL simulation, the only thing you are checking is if the design is working as intended. 
+
 ![RTL Simulation 1](https://github.com/addisonElliott/SCIC/blob/master/images/rtl_simulation_1.png?raw=true)
 ![RTL Simulation 1](https://github.com/addisonElliott/SCIC/blob/master/images/rtl_simulation_2.png?raw=true)
 ![Simplified Waveforms](https://github.com/addisonElliott/SCIC/blob/master/images/rtl_simulation_easy.png?raw=true)
