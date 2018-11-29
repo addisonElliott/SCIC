@@ -324,13 +324,16 @@ sdf
 # ACTION: Edit env.SCIC.tcl to set SIM_MODE to syn
 sim
 
-# TODO: Edit stuff here at all?
-
 # Place & Route
 # -----------------------------------------------------------------------------------------------------------------
 pnr
 # ACTION: Follow command prompt and review layout after finished
 # ACTION: Quit encounter once layout is complete
+
+# Post-PNR Simulation
+# -----------------------------------------------------------------------------------------------------------------
+# ACTION: Edit env.SCIC.tcl to set SIM_MODE to pnr
+sim
 
 # Final Steps
 # -----------------------------------------------------------------------------------------------------------------
