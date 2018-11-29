@@ -19,8 +19,8 @@ module SCIC_tb();
         $dumpvars(0, SCIC_tb);
 
         forever begin
-            // 4ns = 1/2 * period for 125MHz clock
-            #10 clock <= ~clock;
+            // 6.25ns = 1/2 * period for 80MHz clock
+            #6.25 clock <= ~clock;
         end
     end
 
