@@ -55,7 +55,7 @@ A detailed explanation of the code is given in the section TODO: ME below.
 
 **Note:** This was run using Dr. Engel's special workflow with custom TCL scripts. You must do this using the lab machines with their custom scripts in order for this tutorial to work.
 
-Begin by logging into a VLSI lab machine in EB3009 and then open a terminal. Run the following commands to get your terminal setup with Dr. Engel's custom scripts. These commands only need to be run once each time you open a Terminal to setup your environment correctly.
+Begin by logging into a VLSI lab machine in EB3009 and then open a terminal. Run the following commands to get your terminal setup with Dr. Engel's custom scripts. These commands only need to be run once each time you open a terminal to setup your environment correctly.
 ```
 cds_ams
 cd $PHOME
@@ -80,7 +80,7 @@ If you want to verify that the symlinks were made, take a look at the figure bel
 
 ![Image 1](https://github.com/addisonElliott/SCIC/blob/master/images/image1.png?raw=true)
 
-Finally, one remaining step must be done each time a Terminal is opened. `sb` is a script written by Dr. Engel and is short for **set base** to set the base project. The argument to this script is the name of any project contained in the `verilog.src` folder. To see the current project, you can type `b` for the **base** project. The workflow commands used below use the current "base project" to perform their respective actions on.
+Once the repository is cloned and setup, one remaining command must be called. This command must be called each time a terminal is opened to set the current base project. `sb` is a script written by Dr. Engel and is short for **set base** to set the base project. The argument to this script is the name of any project contained in the `verilog.src` folder. To see the current project, you can type `b` for the **base** project. The workflow commands used below use the current "base project" to perform their respective actions on.
 ```
 sb SCIC
 ```
