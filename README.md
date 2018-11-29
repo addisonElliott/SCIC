@@ -313,7 +313,8 @@ sim
 # Synthesis
 # ---------------------------------------------------------------------------------------------------------------------
 syn
-# ACTION: Follow command prompt and review timing, power & other constraints in GUI that appears once synthesis is done
+# ACTION: Follow command prompt and review timing, power & other constraints in GUI that appears once synthesis is 
+# done
 
 # Only needs to be done once
 sdf
