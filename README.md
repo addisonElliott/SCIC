@@ -153,11 +153,13 @@ The *syn* command is a custom TCL script written by Dr. Engel and a former gradu
 
 The script will finish running and then a schematic window will appear. You can double click on any of the blocks in the hierarchy to view a schematic for them. In addition, the "Report" menu provides useful options for analyzing various aspects of the design (power, area, timing, etc).
 
-See the results section for screenshots of what you **should** see for this step. TODO: Link here Don't forget to run Post-Synthesis simulation to verify the synthesis is working correctly. 
+See the results section for screenshots of what you **should** see for this step. TODO: Link here Don't forget to run Post-Synthesis simulation to verify the synthesis is working correctly. The simulation should show delays between signals now.
 
 ![Image 5](https://github.com/addisonElliott/SCIC/blob/master/images/image5.png?raw=true)
 
 ## Reports & Menus
+
+TODO: Fix me up!
 
 * Report
     * Timing
@@ -168,7 +170,7 @@ See the results section for screenshots of what you **should** see for this step
 * Violations
     * Unknown
 
-# Synthesis with Place & Route
+# Place & Route
 
 TODO: Do this
 
