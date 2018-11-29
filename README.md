@@ -124,6 +124,11 @@ See the results section for screenshots of what you **should** see for this step
 ![Image 2](https://github.com/addisonElliott/SCIC/blob/master/images/image2.png?raw=true)
 ![Image 3](https://github.com/addisonElliott/SCIC/blob/master/images/image3.png?raw=true)
 
+Before running a Post-Synthesis and Post-PNR simulation, you must type the following command to create special testbenches that include delay information. The delay information from the synthesis and place & route step are stored in a Standard Delay Format (SDF) which is loaded in the testbench.
+```
+sdf
+```
+
 # Synthesis
 
 After running a RTL simulation to verify the functionality of the project (TODO: Link to results here), the next step is to synthesize the design using the *RTL Compiler*. Synthesizing the design, in this context, means to take Verilog and turn it into a purely structural design in terms of the standard cells available to the process (e.g. AOI22, NAND22, NOR22, inverter, D flip-flop). If the Verilog code is already purely structural, then the synthesize tool will not be able to optimize the design much.
@@ -133,6 +138,10 @@ Additionally, the synthesize step will also calculate the worst case timing path
 In simple terms, the synthesize step encompasses figuring out all the gates, flip flops and components that are required and how they should be connected to achieve certain constraints. The synthesize step does **not** take into account wiring resistance or capacitance.
 
 One important component for the synthesis step is the *SCIC.sdc* file, which is a TCL script that specifies constraints for the synthesize tool. A detailed explanation of the SDC file can be seen in (TODO: Link here).
+
+**Note:** The synthesis tool does **a lot** of optimization and will remove unused registers, unused wires and any other logic unused. The tool attempts to meet all constraints in the SDC file first and it's next priority is minimizing area. An example of this that puzzled us at first was the synthesis of an adder. If the clock speed was slow enough then a ripple-carry adder would be used because it minimizes area **and** meets timing constraints. However, as the clock speed reaches a certain point, the ripple-carry adder becomes too slow and the synthesizer optimizes to use a carry lookahead adder.
+
+Another frustration with the synthesis tool with optimization is that it can be difficult to probe the testbench wires because some of the wires may disappear, be high impedance or changed due to the fact that the synthesis tool optimized them away. The best way I found to counteract this effect is to use the *set_dont_touch* command on the net in the SDC file, but even then it was a bit buggy with the results.
 
 Run these commands from your terminal to launch the RTL compiler:
 ```
@@ -144,7 +153,7 @@ The *syn* command is a custom TCL script written by Dr. Engel and a former gradu
 
 The script will finish running and then a schematic window will appear. You can double click on any of the blocks in the hierarchy to view a schematic for them. Below are some screenshots showing some of the capabilities that this synthesis contains.
 
-See the results section for screenshots of what you **should** see for this step. TODO: Link here
+See the results section for screenshots of what you **should** see for this step. TODO: Link here Don't forget to run Post-Synthesis simulation to verify the synthesis is working correctly. 
 
 TODO: Images here
 
