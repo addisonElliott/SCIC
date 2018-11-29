@@ -277,6 +277,24 @@ Keep in mind that the only purpose of the RTL simulation is to verify the functi
 
 ## Synthesis
 
+![Synthesis Results 9](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_results_9.png?raw=true)
+![Synthesis Results 10](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_results_10.png?raw=true)
+![Synthesis Results 11](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_results_11.png?raw=true)
+![Synthesis Results 12](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_results_12.png?raw=true)
+![Synthesis Results 13](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_results_13.png?raw=true)
+
+![Synthesis Results 8](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_results_8.png?raw=true)
+![Synthesis Results 14](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_results_14.png?raw=true)
+![Synthesis Results 2](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_results_2.png?raw=true)
+
+![Synthesis Results 1](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_results_1.png?raw=true)
+![Synthesis Results 3](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_results_3.png?raw=true)
+![Synthesis Results 4](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_results_4.png?raw=true)
+
+![Synthesis Results 5](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_results_5.png?raw=true)
+![Synthesis Results 6](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_results_6.png?raw=true)
+![Synthesis Results 7](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_results_7.png?raw=true)
+
 TODO: XXX
 
 ## Post-Synthesis Simulation
