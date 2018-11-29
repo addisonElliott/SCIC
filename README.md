@@ -9,7 +9,7 @@ TODO: Do me!
 
 In the introduction class to digital design at SIUE, there is a simple CPU written in Verilog that is used for demonstration purposes. The design is discussed and simulated but never synthesized, whether it be on an FPGA or ASIC. In this project, we took the CPU from this class and created an ASIC design using the Cadence toolset making some minor changes and additions to the CPU itself.
 
-**Note:** The original CPU from the digital design class can be found in the old_files folder of this repository.
+**Note:** The original CPU from the digital design class can be found in the [old_files](https://github.com/addisonElliott/SCIC/tree/master/old_files) folder of this repository.
 
 **Specifications:**
 * 1x 32-bit accumulator (AC)
