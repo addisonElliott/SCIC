@@ -297,14 +297,14 @@ TODO: XXX
 
 Include results of what LVS & DRC errors are present
 
-# Overall List of Commands to Type
+# Workflow Commands List
 ```bash
 cds_ams
 cd $PHOME
 setup_edi
 sb SCIC
 
-<Edit env.SCIC.tcl to set SIM_MODE to rtl>
+"Edit env.SCIC.tcl to set SIM_MODE to rtl"
 sim
 
 syn
