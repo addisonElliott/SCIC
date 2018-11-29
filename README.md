@@ -163,13 +163,8 @@ See the results section for screenshots of what you **should** see for this step
     * Datapath
         * Information about any datapath elements used, in our design there were none so this does not provide any useful information.
     * DFT
-        * **Violations** - Useful for displaying violations such as maximum fanout or capacitance that were not met
-        * **Scan Chans** - No idea what this does, no scan chains in design
-        * **Fail TDRC** - No idea what this does, no registers that meet criterion in design
-        * **Level Sensitive** - No idea what this does, no registers that meet criterion in design
-        * **Lockup Elements** - No idea what this does, no registers that meet criterion in design
-        * **Pass TDRC** - No idea what this does, shows clock edge for each register
-        * **Preserved** - No idea what this does, no registers that meet criterion in design
+        * Design For Test
+        * None of these options do anything for our project
     * Netlist
         * **Area** - Area by each Verilog module split into cell area and net area summed to total area in square micrometers
 ![Area](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_area.png?raw=true)
@@ -178,6 +173,7 @@ See the results section for screenshots of what you **should** see for this step
         * **Statistics** - Displays area and percentages of sequential, inverter, buffer & combinational logic
 ![Statistics](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_statistics.png?raw=true)
         * **Violations** - Displays any DRC violations that occurred during synthesis
+TODO: Include link to image
     * Power
         * **Detailed Report** - Displays dynamic and static power for each Verilog module
 ![Power Report](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_power.png?raw=true)

@@ -4,10 +4,12 @@
 set CLK "clock"
 
 # Maximum fanout allowed for all gates, buffers will be added if this fanout is exceeded
-set MAX_FAN_OUT 50
+# Since we want such a fast clock speed, this fanout needs to be large for slack to be met in PNR stage
+set MAX_FAN_OUT 1000
 
 # Maximum capacitance a gate can have as its load in pF
-set MAX_CAPACITANCE 0.05
+# Since we want such a fast clock speed, this capacitance needs to be large for slack to be met in PNR stage
+set MAX_CAPACITANCE 1.5
 
 # Capacitance load on the output pins in pF
 set OUTPUT_PINS_CAPACITANCE 1.0
