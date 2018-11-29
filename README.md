@@ -163,22 +163,20 @@ TODO: Fix me up!
 
 * Report
     * Datapath
-        * **Area**
-        * **Component**
-        * **Muxes**
+        * Information about any datapath elements used, in our design there were none so this does not provide any useful information.
     * DFT
-        * **Violations**
-        * **Scan Chans**
-        * **Fail TDRC**
-        * **Level Sensitive**
-        * **Lockup Elements**
-        * **Pass TDRC**
-        * **Preserved**
+        * **Violations** - Useful for displaying violations such as maximum fanout or capacitance that were not met
+        * **Scan Chans** - No idea what this does, no scan chains in design
+        * **Fail TDRC** - No idea what this does, no registers that meet criterion in design
+        * **Level Sensitive** - No idea what this does, no registers that meet criterion in design
+        * **Lockup Elements** - No idea what this does, no registers that meet criterion in design
+        * **Pass TDRC** - No idea what this does, shows clock edge for each register
+        * **Preserved** - No idea what this does, no registers that meet criterion in design
     * Netlist
-        * **Area**
-        * **Mapped Gates**
-        * **Statistics**
-        * **Violations**
+        * **Area** - Area by each Verilog module split into cell area and net area summed to total area in square micrometers
+        * **Mapped Gates** - Lists each gate used, the number of instances in the design and the area these take
+        * **Statistics** - Displays area and percentages of sequential, inverter, buffer & combinational logic
+        * **Violations** - Displays any DRC violations that occurred during synthesis
     * Power
         * **Detailed Report**
         * **RTL Power**
@@ -193,9 +191,9 @@ TODO: Fix me up!
         * **Lint Report**
         * **Worst Path**
 * Tools
-    * **Object Browser** 
+    * **Object Browser** - Allows browsing of the synthesized logic, includes every single net, instance, flip flop and gate that is used and allows for easy traversal.
 * File
-    * **Source Script** - Can be used to load an existing synthesis. For any project, the script you want to load is */opt/home/campus/<USERNAME>/cds/ece484/syn_dir/dsn/<PROJECT NAME, SCIC for this project>/<PROJECT NAME>.rc_setup.tcl*
+    * **Source Script** - Can be used to load an existing synthesis. For any project, the script you want to load is */opt/home/campus/<USERNAME>/cds/ece484/syn_dir/dsn/\<PROJECT NAME\>/\<PROJECT NAME\>.rc_setup.tcl*
 
 # Place & Route
 
