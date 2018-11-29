@@ -295,8 +295,6 @@ Keep in mind that the only purpose of the RTL simulation is to verify the functi
 ![Synthesis Results 6](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_results_6.png?raw=true)
 ![Synthesis Results 7](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_results_7.png?raw=true)
 
-TODO: XXX
-
 ## Post-Synthesis Simulation
 
 TODO: XXX
