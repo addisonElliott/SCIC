@@ -153,7 +153,7 @@ The *syn* command is a custom TCL script written by Dr. Engel and a former gradu
 
 The script will finish running and then a schematic window will appear. You can double click on any of the blocks in the hierarchy to view a schematic for them. In addition, the "Report" menu provides useful options for analyzing various aspects of the design (power, area, timing, etc).
 
-See the results section for screenshots of what you **should** see for this step. TODO: Link here Don't forget to run Post-Synthesis simulation to verify the synthesis is working correctly. The simulation should show delays between signals now.
+See the results section for screenshots of what you **should** see for this step. The synthesis should only take around 5-10minutes to complete. TODO: Link here Don't forget to run Post-Synthesis simulation to verify the synthesis is working correctly. The simulation should show delays between signals now.
 
 ![Image 5](https://github.com/addisonElliott/SCIC/blob/master/images/image5.png?raw=true)
 
@@ -173,11 +173,43 @@ TODO: Fix me up!
 
 # Place & Route
 
+Uses Cadence Encounter tools
+
+Creates floorplan of design and places pins. Review it and type resume.
+
+Next, it optimizes the design and starts to place & route the items. There is a section where it will check the timing 
+
+This can take anywhere from 1-15minutes depending on the design. At the very least, there should be text printing out to the console log. One part of the design is it will try to meet timing constraints and will keep printing out the slack (negative is bad!) and will slowly optimize to try and get it positive (to 0.1ns). If your timing constraints are too much, then this will take awhile and will eventually quit with negative slack. In our case, it will stop around -2.5ns slack. This means the minimum clock speed you can use is the clock period plus the 2.5ns of slack (12.5ns in this instance).
+
+Maybe include comment about set_clock_uncertainty and removing from updated SDC file... Got to see if this affects anything first
+
+Include command for running it, pnr basically
+
+Include comments about routers, wroute vs nano
+
+After awhile, the routing will be done and it will suspend again waiting for the user's response. At this point, you want to look at the console and check for geometry or connectivity violations. You don't want any geometry violations, but a few connectivity violations may be okay depending on the errors. If you have DRC violations in Encounter, then when you get it into IC station, it will likely have LVS or DRC errors as well! But this is not always the case, user discretion is necessary to read and understand the errors.
+
+Show how to use violation browser to check out issues. Say that white Xs are DRC issues. Can zoom in and check them out.
+
+Say how sometimes running a different router type or running route again might fix them. In the case of this project, the best results was doing wroute first and then running nano route afterwards. Show command for how to do that.
+
+TODO: Show images here
+
 TODO: Do this
 
 # Final Steps
 
 TODO: Do this
+
+edi2ic
+
+edi2sch
+
+Must run in this order! edi2ic overwrites the library!
+
+Start icd_ams, open ediLib -> SCIC etc
+
+Run LVS & DRC checks. This is what really matters in the end! If you get issues, you need to figure out why and figure out why!!!
 
 # Code Explanation
 
@@ -207,6 +239,8 @@ TODO: XXX
 ## Post-PNR Simulation
 
 TODO: XXX
+
+Include results of what LVS & DRC errors are present
 
 # Overall List of Commands to Type
 ```
