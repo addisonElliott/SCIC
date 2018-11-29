@@ -87,17 +87,23 @@ sb SCIC
 
 # Workflow
 
-The general workflow for synthesizing a Verilog project to an IC can be seen below. Preceding the RTL simulation is developing the Verilog module, general setup of the project and creating the SDC & environment TCL file. 
-
-If you encounter an error in one of the steps of the workflow, you should not proceed further until that error is fixed!
+The general workflow for synthesizing a Verilog project to an IC can be seen below. Preceding the RTL simulation is developing the Verilog module, general setup of the project and creating the SDC & environment TCL file. While developing your project, it is *extremely* common to encounter an error in one of the steps, in which case you will correct the error and restart the workflow.
 
 ![Cadence Workflow](https://github.com/addisonElliott/SCIC/blob/master/images/CadenceWorkflow.png?raw=true)
 
 # Simulation
 
-The first step of any design is to simulate the Verilog code using a testbench to ensure that it is **functionally** working correctly. There is no point in worrying about propagation delay, timing constraints, capacitance, resistances until you know that your design does what it is supposed to in the first place. This is the purpose of running a simulation is to verify that the design does what it is supposed to.
+The first step of any design is to simulate the Verilog code using a testbench to ensure that it is performing the way it is designed. There are three cases throughout the workflow that a simulation is performed.
 
-We need to edit the TCL file to set the simulation mode: rtl, syn or pnr. When designing an IC, you typically start with the 'rtl' mode, then run with 'syn' and finally run it with 'pnr'. From left to right, the simulation mode starts with the least amount of information and then begins to add more and more. For example, rtl mode is simulating your Verilog design in the same way that Icarus Verilog simulates your code. It does not know anything about propagation delay between gates, gate size, etc. The 'syn' mode adds a bit more information by including timing delay for the gates and running a timing analysis. Finally, the 'pnr' mode (Place-n-Route) simulation includes delay from wires.
+1. RTL Simulation (**rtl**)
+    * Ideal simulation with no delays included. Used to verify design functionally works
+2. Post-Synthesis Simulation (**syn**)
+    * Performed after synthesis and includes propagation delay for gates (no wiring delay is included)
+3. Post-PNR Simulation (**pnr**)
+    * Performed after place & route and includes the wiring delay as well as the propagation delay for gates
+    * This is the final simulation and **should** mimic the real-life waveforms present on the chip
+
+The simulation in each case can be ran the same way except for one minor change. The *env.SCIC.tcl* file must be edited to set the simulation mode to the desired mode.
 
 ![Image 4](https://github.com/addisonElliott/SCIC/blob/master/images/image4.png?raw=true)
 
