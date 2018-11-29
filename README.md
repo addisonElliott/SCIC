@@ -156,6 +156,28 @@ vvp out.o
 gtkwave SCIC.vcd
 ```
 
+# Results
+
+## RTL Simulation
+
+TODO: XXX
+
+## Synthesis
+
+TODO: XXX
+
+## Post-Synthesis Simulation
+
+TODO: XXX
+
+## Place & Route
+
+TODO: XXX
+
+## Post-PNR Simulation
+
+TODO: XXX
+
 # Overall List of Commands to Type
 ```
 cds_ams
