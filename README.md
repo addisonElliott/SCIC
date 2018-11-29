@@ -299,36 +299,46 @@ Include results of what LVS & DRC errors are present
 
 # Workflow Commands List
 ```bash
+# Setup terminal
 cds_ams
 cd $PHOME
 setup_edi
 sb SCIC
 
-"Edit env.SCIC.tcl to set SIM_MODE to rtl"
+# RTL Simulation
+# ---------------------------------------------------------------------------------------------------------------------
+# ACTION: Edit env.SCIC.tcl to set SIM_MODE to rtl
 sim
 
+# Synthesis
+# ---------------------------------------------------------------------------------------------------------------------
 syn
-<Follow command prompt and review timing, power & other constraints in GUI that appears once synthesis is done>
+# ACTION: Follow command prompt and review timing, power & other constraints in GUI that appears once synthesis is done
 
 # Only needs to be done once
 sdf
 
-<Edit env.SCIC.tcl to set SIM_MODE to syn>
+# Post-Synthesis Simulation
+# ---------------------------------------------------------------------------------------------------------------------
+# ACTION: Edit env.SCIC.tcl to set SIM_MODE to syn
 sim
 
 # TODO: Edit stuff here at all?
 
+# Place & Route
+# ---------------------------------------------------------------------------------------------------------------------
 pnr
-<Follow command prompt and review layout after finished>
-<Quit encounter once layout is complete>
+# ACTION: Follow command prompt and review layout after finished
+# ACTION: Quit encounter once layout is complete
 
+# Final Steps
+# ---------------------------------------------------------------------------------------------------------------------
 edi2ic
 edi2sch
 
 icd_ams
-<Go to ediLib, select SCIC, double-click layout>
-
-<Run LVS & DRC on layout to check for errors>
+# ACTION: Go to ediLib -> SCIC, double-click layout
+# ACTION: Run LVS & DRC on layout to check for errors
 ```
 
 # Simulating with Icarus Verilog
