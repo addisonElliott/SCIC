@@ -310,6 +310,8 @@ icd_ams
 
 # Simulating with Icarus Verilog
 
+Performing a simulation with Icarus Verilog is great because it is an easy-to-install tool that provides cross-platform support. This is good to use when debugging and developing your Verilog project without access to the Cadence toolset.
+
 **Note:** If this is your first time installing [Icarus Verilog](http://iverilog.icarus.com/), then you will need to make sure that the binary path is in your PATH variable. This will allow you to run the commands *iverilog*, *vvp* and *gtkwave* in your repository path. During installation, you will want to check the option to install gtkwave as well. Icarus Verilog must **not** be installed in a path with spaces or else the commands will fail. The following two paths must be added to your PATH variable:
 * \<IVERILOG PATH>/bin (e.g. C:/iverilog/bin)
 * \<IVERILOG PATH>/gtkwave/bin (e.g. C:/iverilog/gtkwave/bin)
