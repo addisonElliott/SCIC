@@ -205,7 +205,12 @@ See the results section for screenshots of what you **should** see for this step
 
 # Place & Route
 
-Uses Cadence Encounter tools
+The place & route stage is when the magic begins to happen taking a Verilog design and placing all the necessary transistors as well as connecting them up correctly. It is a complex process, consisting of many stages, to ensure that timing and other constraints specified in the SDC file are met. As a result, this part of the process may also take the **longest** (expect somewhere between 10minutes to an hour depending on constraints specified). Obviously, the stricter the constraints on the design, such as timing specifications, area, spacing between rows for wires, will mean that the place & route tool will take longer to complete. The place & route tool created by Cadence is *Encounter* (enc).
+
+After running a RTL simulation to verify the functionality of the project (TODO: Link to results here), the next step is to synthesize the design using the *RTL Compiler* (rc). Synthesizing the design, in this context, means to take Verilog and turn it into a purely structural design in terms of the standard cells available to the process (e.g. AOI22, NAND22, NOR22, inverter, D flip-flop). If the Verilog code is already purely structural, then the synthesize tool will not be able to optimize the design much.
+
+
+
 
 Creates floorplan of design and places pins. Review it and type resume.
 
