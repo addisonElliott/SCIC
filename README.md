@@ -115,6 +115,8 @@ sim
 
 Cadence's simulator software *SimVision* should pop up. There will not be a detailed discussion on using SimVision, since it is fairly self explanatory. You can navigate through the Design Browser on the left to find wires that you want to add to the waveform window. You can add them by right-clicking and select "Send to Waveform Window". Once you have all the wires you want in the Waveform Window, you cans elect the "Play" icon in the toolbar to run the simulation. There is a bar at the bottom that can be dragged to change at what point of time you are viewing. See screenshots below for details on the process described.
 
+**Note:** To make your life easier, you can save your current setup in the waveform window by clicking **File -> Save Command Script** and save the file as restore.tcl which will automatically be loaded each time a simulation is ran. This saves you the trouble of having to add the same wires to the waveform window.
+
 ![Image 2](https://github.com/addisonElliott/SCIC/blob/master/images/image2.png?raw=true)
 ![Image 3](https://github.com/addisonElliott/SCIC/blob/master/images/image3.png?raw=true)
 
