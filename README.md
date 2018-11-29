@@ -255,8 +255,7 @@ edi2sch
 
 Now the layout & schematic can be opened in Virtuoso like any design. Start Virtuoso (using *icd_ams* command) and select *ediLib -> SCIC* and double-click on the layout. Run LVS and DRC checks to ensure there are no issues.
 
-TODO: Show images of icd_ams
-
+![Virtuoso](https://github.com/addisonElliott/SCIC/blob/master/images/finalsteps_virtuoso.png?raw=true)
 ![Image 8](https://github.com/addisonElliott/SCIC/blob/master/images/image8.png?raw=true)
 ![Image 9](https://github.com/addisonElliott/SCIC/blob/master/images/image9.png?raw=true)
 
