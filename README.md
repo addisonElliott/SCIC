@@ -7,6 +7,7 @@ Project of Addison Elliott and Dan Ashbaugh to create IC layout of 32-bit custom
 - [SIUE CPU IC (SCIC)](#siue-cpu-ic-scic)
 - [Table of Contents](#table-of-contents)
 - [Overview](#overview)
+        - [Block Diagram](#block-diagram)
 - [Setup](#setup)
 - [Workflow](#workflow)
 - [Simulation](#simulation)
@@ -72,6 +73,10 @@ Address range for the memory controller is as follows:
 Test ROM Program to fully test all the instructions:
 
 ![Test ROM Program](https://github.com/addisonElliott/SCIC/blob/master/images/test_rom_program.png?raw=true)
+
+### Block Diagram
+
+![Block Diagram](https://github.com/addisonElliott/SCIC/blob/master/images/block_diagram.png?raw=true)
 
 # Setup
 
