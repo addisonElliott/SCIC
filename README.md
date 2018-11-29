@@ -1,6 +1,8 @@
 # SIUE CPU IC (SCIC)
 Project of Addison Elliott and Dan Ashbaugh to create IC layout of 32-bit custom CPU used in teaching digital design at SIUE.
 
+**Note:** This guide contains information based on Addison and Dan's experience with the Cadence tools during the 1 month period spent on the project. As a result, this guide may contain mistakes or incorrect information and pull requests are welcome to fix any issues.
+
 # Table of Contents
 
 TODO: Do me!
@@ -121,6 +123,14 @@ Cadence's simulator software *SimVision* should pop up. There will not be a deta
 ![Image 3](https://github.com/addisonElliott/SCIC/blob/master/images/image3.png?raw=true)
 
 # Synthesis
+
+After running a RTL simulation to verify the functionality of the project (TODO: Link to results here), the next step is to synthesize the design. Synthesizing the design, in this context, means to take Verilog and turn it into a purely structural design in terms of the standard cells available to the process (e.g. AOI22, NAND22, NOR22, inverter, D flip-flop). If the Verilog code is already purely structural, then the synthesize tool will not be able to optimize the design much.
+
+Additionally, the synthesize step will also calculate the worst case timing path, total consumed area for each Verilog module instance, total consumed power for each Verilog module instance and much more. This is the point in the design where you can analyze the design and see if the area, power, timing meets your requirements.
+
+In simple terms, the synthesize step encompasses figuring out all the gates, flip flops and components that are required and how they should be connected to achieve certain constraints. The synthesize step does **not** take into account wiring resistance or capacitance.
+
+One important component for the synthesize step is the *SCIC.sdc* file, which is a TCL script that specifies constraints for the synthesize tool.
 
 Once the design is logically correct, the next step is synthesizing the design into gates and analyzing this design. This does not include wiring capacitances or resistance because the gates are not placed yet, that is handled in the place & route tool. This synthesis will provide information such as power usage, worst-case timing path, number of gates used, area used and much more. The *SCIC.sdc* file will be used in the synthesis to gather information about clock speed, input/output capacitance and delay and more.
 
