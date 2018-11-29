@@ -81,6 +81,11 @@ If you want to verify that the symlinks were made, take a look at the figure bel
 
 ![Image 1](https://github.com/addisonElliott/SCIC/blob/master/images/image1.png?raw=true)
 
+Finally, one remaining step must be done each time a Terminal is opened. `sb` is a script written by Dr. Engel and is short for **set base** to set the base project. The argument to this script is the name of any project contained in the `verilog.src` folder. To see the current project, you can type `b` for the **base** project. The workflow commands used below use the current "base project" to perform their respective actions on.
+```
+sb SCIC
+```
+
 # Workflow
 
 # Simulation
@@ -93,10 +98,9 @@ We need to edit the TCL file to set the simulation mode: rtl, syn or pnr. When d
 
 Editing the env.SCIC.tcl file can be done using your favorite text editor (gedit, vim, nano, etc). Change the line `SIM_MODE` to `rtl`. In the remainder of this document, we will tell you to change the SIM_MODE to a different value and you will need to open this file using a text editor and change the value appropriately.
 
-Finally, we are ready to run our simulation on the project. Run the commands below. `sb` is a script written by Dr. Engel and is short for **set base** to set the base project. The argument to this script is the name of any project contained in the `verilog.src` folder. To see the current project, you can type `b` for the **base** project.
+Finally, we are ready to run our simulation on the project. Run the commands below. There is no need to run the *cd* command if you are already at *$PHOME*.
 ```
 cd $PHOME
-sb SCIC
 sim
 ```
 
