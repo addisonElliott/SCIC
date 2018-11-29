@@ -117,7 +117,6 @@ amsFillcore
 print $log  "Executing amsTA (postRoute timing analysis)" {color_blue}
 amsTa postRoute
 
-
 # Verifying geometry and connectivity
 
 print $log  "Executing Encounter verifyGeometry command" {color_blue}
@@ -126,9 +125,23 @@ verifyGeometry
 print $log  "Executing Encounter verifyConnectivity -type all command" {color_blue}
 verifyConnectivity -type all
 
-print    $log  "---> Type resume to continue after making sure there are no DRC or LVS errors!
-" {color_red}
+print    $log  "---> Type resume to continue after making sure there are no DRC or LVS errors!" {color_red}
+print    $log  "If errors are present, try typing \"route wroute\" or \"route nano\" to attempt to fix them" {color_blue}
 win
+
+# Process to route again and automatically call verify geometry and connectivity afterwards
+proc route {type} {
+    global log
+
+    amsRoute $type
+
+    print $log  "Executing Encounter verifyGeometry command" {color_blue}
+    verifyGeometry
+
+    print $log  "Executing Encounter verifyConnectivity -type all command" {color_blue}
+    verifyConnectivity -type all
+}
+
 suspend
 fit
 
