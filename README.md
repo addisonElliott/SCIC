@@ -162,14 +162,40 @@ See the results section for screenshots of what you **should** see for this step
 TODO: Fix me up!
 
 * Report
+    * Datapath
+        * **Area**
+        * **Component**
+        * **Muxes**
+    * DFT
+        * **Violations**
+        * **Scan Chans**
+        * **Fail TDRC**
+        * **Level Sensitive**
+        * **Lockup Elements**
+        * **Pass TDRC**
+        * **Preserved**
+    * Netlist
+        * **Area**
+        * **Mapped Gates**
+        * **Statistics**
+        * **Violations**
+    * Power
+        * **Detailed Report**
+        * **RTL Power**
+        * **Library Domains**
+        * **Power Domains**
+        * **Instance Power Usage**
+        * **Net Power Usage**
+        * **Probability Histogram**
+        * **Toggle Rate Histogram**
     * Timing
-        * Worst Timing Path
-        * Endpoint Timing
-* DFT
-    * Unknown
-* Violations
-    * Unknown
-    * Object Browser too
+        * **Endpoint Histogram**
+        * **Lint Report**
+        * **Worst Path**
+* Tools
+    * **Object Browser** 
+* File
+    * **Source Script** - Can be used to load an existing synthesis. For any project, the script you want to load is */opt/home/campus/<USERNAME>/cds/ece484/syn_dir/dsn/<PROJECT NAME, SCIC for this project>/<PROJECT NAME>.rc_setup.tcl*
 
 # Place & Route
 
