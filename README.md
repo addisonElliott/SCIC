@@ -223,26 +223,23 @@ pnr
 
 Similar to the *syn* command, the *pnr* script was written by Dr. Engel and his graduate students. The encounter log window keeps you informed as to exactly what the tool is doing but you will also see a bunch of text spewing across your terminal. Multiple times throughout the script, the script will be suspended and will wait for user input to continue. If you follow the instructions on the log window, you will be fine!
 
+The script will start by creating and setting up a floorplan before stopping to ask for user input. At this point, your job is to review the floorplan and make sure you're happy with it. Open the Encounter window (should pop up on its own) and zoom in to the rows. You want to verify that you have enough space between the rows of transistors (we made ours 30um). Additionally, zoom in at the top of the design and you should see the pins placed. You want to verify you have enough spacing between the pins to allow for routing and also enough spacing from where the pins are to where the design starts, i.e. core to boundary distance. Type 'resume' when you're happy with everything.
+
+![Image 7](https://github.com/addisonElliott/SCIC/blob/master/images/image7.png?raw=true)
+![Image 6](https://github.com/addisonElliott/SCIC/blob/master/images/image6.png?raw=true)
+
+The next part of the script will take the longest because it is actually placing the transistors and routing them. The next time the script stops is after everything is completed to allow you to check for DRC violations. Throughout most of this step, there should be text spewing out on the terminal window describing what is going on. At one stage, it will attempt to meet timing constraints and will iteratively print out slack (remember, negative slack is bad!) and will slowly attempt to make the slack positive (0.1ns). If your timing constraints are too strict, then this will take awhile and will eventually give up and stick with the negative slack. If you're not paying attention to the screen at this moment, there is no further indication that timing was not met, so keep that in mind. For this project, we have a period of 10ns (100MHz) and this process stops around -2.5ns slack. This means that the maximum clock speed we can have is 80MHz (12.5ns period).
 
 
 
-The script will finish running and then a schematic window will appear. You can double click on any of the blocks in the hierarchy to view a schematic for them. In addition, the "Report" menu provides useful options for analyzing various aspects of the design (power, area, timing, etc).
+
+
+
+
 
 See the results section for screenshots of what you **should** see for this step. The synthesis should only take around 5-10minutes to complete. TODO: Link here Don't forget to run Post-Synthesis simulation to verify the synthesis is working correctly. The simulation should show delays between signals now.
 
-
-
-Creates floorplan of design and places pins. Review it and type resume.
-
-Next, it optimizes the design and starts to place & route the items. There is a section where it will check the timing 
-
-This can take anywhere from 1-15minutes depending on the design. At the very least, there should be text printing out to the console log. One part of the design is it will try to meet timing constraints and will keep printing out the slack (negative is bad!) and will slowly optimize to try and get it positive (to 0.1ns). If your timing constraints are too much, then this will take awhile and will eventually quit with negative slack. In our case, it will stop around -2.5ns slack. This means the minimum clock speed you can use is the clock period plus the 2.5ns of slack (12.5ns in this instance).
-
 Maybe include comment about set_clock_uncertainty and removing from updated SDC file... Got to see if this affects anything first
-
-Include command for running it, pnr basically
-
-Include comments about routers, wroute vs nano
 
 After awhile, the routing will be done and it will suspend again waiting for the user's response. At this point, you want to look at the console and check for geometry or connectivity violations. You don't want any geometry violations, but a few connectivity violations may be okay depending on the errors. If you have DRC violations in Encounter, then when you get it into IC station, it will likely have LVS or DRC errors as well! But this is not always the case, user discretion is necessary to read and understand the errors.
 
