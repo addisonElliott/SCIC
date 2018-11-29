@@ -304,7 +304,7 @@ The important peice to note here is that the results are the same from the RTL s
 
 ## Place & Route
 
-Zero DRC violations when running nano router after wroute. See the steps above for more information. Design looks good and seems well routed. However, minimum slack was -2.5ns which means we can only run this at about 80MHz. In addition, there are 3 minor LVS errors that need to be resolved.
+Zero DRC violations when running nano router after wroute. See the steps above for more information. Design looks good and seems well routed. However, minimum slack was -2.5ns which means we can only run this at about 80MHz. In addition, there are 3 minor LVS errors that need to be resolved. DRC errors are just the benign typical ones, thus DRC was successful.
 
 ![Place & Route 1](https://github.com/addisonElliott/SCIC/blob/master/images/pnr_1.png?raw=true)
 ![Place & Route 2](https://github.com/addisonElliott/SCIC/blob/master/images/pnr_2.png?raw=true)
