@@ -221,6 +221,16 @@ cd $PHOME
 pnr
 ```
 
+Similar to the *syn* command, the *pnr* script was written by Dr. Engel and his graduate students. The encounter log window keeps you informed as to exactly what the tool is doing but you will also see a bunch of text spewing across your terminal. Multiple times throughout the script, the script will be suspended and will wait for user input to continue. If you follow the instructions on the log window, you will be fine!
+
+
+
+
+The script will finish running and then a schematic window will appear. You can double click on any of the blocks in the hierarchy to view a schematic for them. In addition, the "Report" menu provides useful options for analyzing various aspects of the design (power, area, timing, etc).
+
+See the results section for screenshots of what you **should** see for this step. The synthesis should only take around 5-10minutes to complete. TODO: Link here Don't forget to run Post-Synthesis simulation to verify the synthesis is working correctly. The simulation should show delays between signals now.
+
+
 
 Creates floorplan of design and places pins. Review it and type resume.
 
