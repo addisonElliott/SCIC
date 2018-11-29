@@ -269,7 +269,7 @@ The remainder of this document is additional information and results from this p
 
 ## RTL Simulation
 
-Within the RTL simulation, the only thing you are checking is if the design is working as intended. 
+Keep in mind that the only purpose of the RTL simulation is to verify the functionality of your design. From the images below, it is clear that the CPU is working as intended. The *fetch_or_execute* register is switching between fetching and executing, the PC is incrementing every 2nd clock cycle and the IR is loaded with each program instruction correctly. The AC register is displaying the correct results for each of the operations.
 
 ![RTL Simulation 1](https://github.com/addisonElliott/SCIC/blob/master/images/rtl_simulation_1.png?raw=true)
 ![RTL Simulation 1](https://github.com/addisonElliott/SCIC/blob/master/images/rtl_simulation_2.png?raw=true)
