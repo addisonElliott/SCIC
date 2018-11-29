@@ -174,18 +174,9 @@ TODO: Fix me up!
 
 TODO: Do this
 
-# Simulating with Icarus Verilog
+# Final Steps
 
-**Note:** If this is your first time installing [Icarus Verilog](http://iverilog.icarus.com/), then you will need to make sure that the binary path is in your PATH variable. This will allow you to run the commands *iverilog*, *vvp* and *gtkwave* in your repository path. During installation, you will want to check the option to install gtkwave as well. Icarus Verilog must **not** be installed in a path with spaces or else the commands will fail. The following two paths must be added to your PATH variable:
-* \<IVERILOG PATH>/bin (e.g. C:/iverilog/bin)
-* \<IVERILOG PATH>/gtkwave/bin (e.g. C:/iverilog/gtkwave/bin)
-
-Open a command prompt (cmd.exe for Windows, Terminal on Linux), navigate to this repository and run the following commands:
-```
-iverilog -o out.o CPU.v memory_controller.v Mux4to1.v RAM.v ROM.v SCIC.v io_controller.v SCIC_tb.v
-vvp out.o
-gtkwave SCIC.vcd
-```
+TODO: Do this
 
 # Results
 
@@ -241,4 +232,17 @@ icd_ams
 <Go to ediLib, select SCIC, double-click layout>
 
 <Run LVS & DRC on layout to check for errors>
+```
+
+# Simulating with Icarus Verilog
+
+**Note:** If this is your first time installing [Icarus Verilog](http://iverilog.icarus.com/), then you will need to make sure that the binary path is in your PATH variable. This will allow you to run the commands *iverilog*, *vvp* and *gtkwave* in your repository path. During installation, you will want to check the option to install gtkwave as well. Icarus Verilog must **not** be installed in a path with spaces or else the commands will fail. The following two paths must be added to your PATH variable:
+* \<IVERILOG PATH>/bin (e.g. C:/iverilog/bin)
+* \<IVERILOG PATH>/gtkwave/bin (e.g. C:/iverilog/gtkwave/bin)
+
+Open a command prompt (cmd.exe for Windows, Terminal on Linux), navigate to this repository and run the following commands:
+```
+iverilog -o out.o CPU.v memory_controller.v Mux4to1.v RAM.v ROM.v SCIC.v io_controller.v SCIC_tb.v
+vvp out.o
+gtkwave SCIC.vcd
 ```
