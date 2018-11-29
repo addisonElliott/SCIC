@@ -245,8 +245,6 @@ See the results section for screenshots of what you **should** see for this step
 
 # Final Steps
 
-TODO: Put language for all code blocks
-
 This completes the use of the Encounter Digital Implementation (EDI) tools. The final step is to convert the layout & schematic to Cadence Virtuoso. This can be done with two simple commands, given below. **Note:** You **must** call *edi2ic* first because it wipes the *ediLib* section while *edi2sch* does not.
 ```bash
 edi2ic
