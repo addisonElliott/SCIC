@@ -20,7 +20,7 @@ set CLOCK_PERIOD 10
 
 # Percentage of clock period to add to the minimum slack required
 # In other words, the RTL compiler will attempt to get a worst-case slack of SLACK_MARGIN * CLOCK_PERIOD
-set SLACK_MARGIN 0.05
+set SLACK_MARGIN 0.10
 # ------------------------------------------------------------------------------------------------------
 
 set_max_fanout $MAX_FAN_OUT [current_design]

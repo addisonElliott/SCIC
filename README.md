@@ -230,16 +230,14 @@ The script will start by creating and setting up a floorplan before stopping to 
 
 The next part of the script will take the longest because it is actually placing the transistors and routing them. The next time the script stops is after everything is completed to allow you to check for DRC violations. Throughout most of this step, there should be text spewing out on the terminal window describing what is going on. At one stage, it will attempt to meet timing constraints and will iteratively print out slack (remember, negative slack is bad!) and will slowly attempt to make the slack positive (0.1ns). If your timing constraints are too strict, then this will take awhile and will eventually give up and stick with the negative slack. If you're not paying attention to the screen at this moment, there is no further indication that timing was not met, so keep that in mind. For this project, we have a period of 10ns (100MHz) and this process stops around -2.5ns slack. This means that the maximum clock speed we can have is 80MHz (12.5ns period).
 
+**Note:** During the synthesis step, the RTL compiler attempts to achieve minimal positive slack and then minimize area. This is not ideal because the place & route tool will have a harder time to keep the positive slack. As a result, one workaround is to use the *set_clock_uncertainty* SDC command to add a "margin" to the slack in the synthesis tool. In theory, this should make it easier for the place & route tool. However, during our project, this did not seem to help reduce the slack much. One possible reason is that the SDC file is also used in the place & route tool and the *set_clock_uncertainty* is copied again. Separate SDC files for the synthesis and place & route step may be one solution but further testing is warranted.
 
-
-
+After the script has stopped again, you will want to look at the terminal for geometry or connectivity violations (i.e. DRC violations). If there are issues here, there will likely be LVS or DRC errors later on.
 
 
 
 
 See the results section for screenshots of what you **should** see for this step. The synthesis should only take around 5-10minutes to complete. TODO: Link here Don't forget to run Post-Synthesis simulation to verify the synthesis is working correctly. The simulation should show delays between signals now.
-
-Maybe include comment about set_clock_uncertainty and removing from updated SDC file... Got to see if this affects anything first
 
 After awhile, the routing will be done and it will suspend again waiting for the user's response. At this point, you want to look at the console and check for geometry or connectivity violations. You don't want any geometry violations, but a few connectivity violations may be okay depending on the errors. If you have DRC violations in Encounter, then when you get it into IC station, it will likely have LVS or DRC errors as well! But this is not always the case, user discretion is necessary to read and understand the errors.
 
@@ -268,8 +266,11 @@ Run LVS & DRC checks. This is what really matters in the end! If you get issues,
 # Code Explanation
 
 TODO: Talk about SCIC.sdc
+
 TODO: Talk about env.SCIC.tcl
+
 TODO: Talk about CPU.v
+
 TODO: Talk about memory_controller.v
 
 # Results
