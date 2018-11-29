@@ -139,9 +139,9 @@ In simple terms, the synthesize step encompasses figuring out all the gates, fli
 
 One important component for the synthesis step is the *SCIC.sdc* file, which is a TCL script that specifies constraints for the synthesize tool. A detailed explanation of the SDC file can be seen in (TODO: Link here).
 
-**Note:** The synthesis tool does **a lot** of optimization and will remove unused registers, unused wires and any other logic unused. The tool attempts to meet all constraints in the SDC file first and it's next priority is minimizing area. An example of this that puzzled us at first was the synthesis of an adder. If the clock speed was slow enough then a ripple-carry adder would be used because it minimizes area **and** meets timing constraints. However, as the clock speed reaches a certain point, the ripple-carry adder becomes too slow and the synthesizer optimizes to use a carry lookahead adder.
+The synthesis tool does **a lot** of optimization such as removing unused registers, unused wires and any other unused logic. The tool attempts to meet all constraints in the SDC file first and it's next priority is minimizing area. An example of this that puzzled us at first was the synthesis of an adder. If the clock speed was slow enough then a ripple-carry adder would be used because it minimizes area **and** meets timing constraints. However, as the clock speed reaches a certain point, the ripple-carry adder becomes too slow and the synthesizer optimizes to use a carry lookahead adder.
 
-Another frustration with the synthesis tool with optimization is that it can be difficult to probe the testbench wires because some of the wires may disappear, be high impedance or changed due to the fact that the synthesis tool optimized them away. The best way I found to counteract this effect is to use the *set_dont_touch* command on the net in the SDC file, but even then it was a bit buggy with the results.
+Another frustration with the synthesis tool with optimization is that it can be difficult to probe the testbench wires because some of the wires may disappear, become high impedance or change due to the fact that the synthesis tool optimized them away. The best way I found to counteract this effect is to use the *set_dont_touch* command on the net in the SDC file, but even then it was a bit buggy with the results.
 
 Run these commands from your terminal to launch the RTL compiler:
 ```
@@ -157,8 +157,8 @@ See the results section for screenshots of what you **should** see for this step
 
 ![Image 5](https://github.com/addisonElliott/SCIC/blob/master/images/image5.png?raw=true)
 
-TODO: Fix me up!
-List of XXX:
+## Reports & Menus
+
 * Report
     * Timing
         * Worst Timing Path
