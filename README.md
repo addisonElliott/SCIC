@@ -51,8 +51,6 @@ Address range for the memory controller is as follows:
 | RAM  |  0020-003F  |      32      | 0000 0000 0010 0000 -> 0000 0000 0011 1111 |
 | I/O  |  0040-005F  |      32      | 0000 0000 0100 0000 -> 0000 0000 0101 1111 |
 
-A detailed explanation of the code is given in the section TODO: ME below.
-
 # Setup
 
 **Note:** This was run using Dr. Engel's special workflow with custom TCL scripts. You must do this using the lab machines with their custom scripts in order for this tutorial to work.
@@ -137,7 +135,7 @@ Additionally, the synthesize step will also calculate the worst case timing path
 
 In simple terms, the synthesize step encompasses figuring out all the gates, flip flops and components that are required and how they should be connected to achieve certain constraints. The synthesize step does **not** take into account wiring resistance or capacitance.
 
-One important component for the synthesis step is the *SCIC.sdc* file, which is a TCL script that specifies constraints for the synthesize tool. A detailed explanation of the SDC file can be seen in (TODO: Link here).
+One important component for the synthesis step is the *SCIC.sdc* file, which is a TCL script that specifies constraints for the synthesize tool. Please see the comments of the SDC file for detailed explanation of the commands ([https://github.com/addisonElliott/SCIC/blob/master/SCIC.sdc](https://github.com/addisonElliott/SCIC/blob/master/SCIC.sdc)).
 
 The synthesis tool does **a lot** of optimization such as removing unused registers, unused wires and any other unused logic. The tool attempts to meet all constraints in the SDC file first and it's next priority is minimizing area. An example of this that puzzled us at first was the synthesis of an adder. If the clock speed was slow enough then a ripple-carry adder would be used because it minimizes area **and** meets timing constraints. However, as the clock speed reaches a certain point, the ripple-carry adder becomes too slow and the synthesizer optimizes to use a carry lookahead adder.
 
@@ -207,7 +205,7 @@ Once Dr. Engel's custom place & route script is done running, one important comm
 
 Based on my personal experience of the software, some designs may end up with DRC violations after the process is done. The automatic router is not perfect and can leave violations after completion. Keep this in mind and be prepared to fix small issues if necessary. 
 
-There are some 'knobs' that one can tweak in the *env.SCIC.tcl* file for adjusting how the place & route tool will operate. These options are discussed in further detail in (TODO: Link here). Briefly, the important parameters that we tuned in this project were the router used (nano or wroute), aspect ratio, core to boundary distance, utilization (i.e. row density) factor, row spacing between transistors and pin spacing.
+There are some 'knobs' that one can tweak in the *env.SCIC.tcl* file for adjusting how the place & route tool will operate. These options are discussed in further detail in the comments of the file ([https://github.com/addisonElliott/SCIC/blob/master/env.SCIC.tcl](https://github.com/addisonElliott/SCIC/blob/master/env.SCIC.tcl)). Briefly, the important parameters that we tuned in this project were the router used (nano or wroute), aspect ratio, core to boundary distance, utilization (i.e. row density) factor, row spacing between transistors and pin spacing.
 
 One frustration that we ran into during this project is that after completion, there would be on the order of hundreds of DRC violations. After much experimentation and review of our Verilog code, we came to the conclusion that has something to do with the router used. The default router used is *wroute* which is Cadence's old tool and was superseded by *nano*. According to Cadence's documentation, *nano* is recommended for sub-180nm processes or larger projects with more than 300K instances. Dr. Engel also informed us that the *nano* router was recommended by the AMS engineers over the *wroute* router (even though our process is 0.35um). But, Dr. Engel and his students empirically found that *wroute* yielded better results than *nano*. With all this in mind, the important thing to take away is to try multiple routers and try running route multiple times. Using the *nano* router in this project solved all DRC violations in Encounter.
 
@@ -261,17 +259,7 @@ Now the layout & schematic can be opened in Virtuoso like any design. Start Virt
 
 :sparkles: :sparkles: :sparkles: :sparkles: :sparkles: :sparkles: **You are finished with your design!** :sparkles: :sparkles: :sparkles: :sparkles: :sparkles: :sparkles:
 
-The remainder of this document is explaining the code and displaying our results.
-
-# Code Explanation
-
-## SCIC.sdc
-
-TODO: Talk about SCIC.sdc
-
-## env.SCIC.tcl
-
-TODO: Talk about env.SCIC.tcl
+The remainder of this document is additional information and results from this project.
 
 # Results
 
