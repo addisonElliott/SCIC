@@ -178,7 +178,7 @@ TODO: Fix me up!
         * **Mapped Gates** - Lists each gate used, the number of instances in the design and the area these take
 ![Mapped Gates](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_mapped_gates.png?raw=true)
         * **Statistics** - Displays area and percentages of sequential, inverter, buffer & combinational logic
-![Statistics](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_violations.png?raw=true)
+![Statistics](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_statistics.png?raw=true)
         * **Violations** - Displays any DRC violations that occurred during synthesis
     * Power
         * **Detailed Report**
