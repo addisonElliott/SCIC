@@ -29,12 +29,15 @@ set_max_fanout $MAX_FAN_OUT [current_design]
 set_max_capacitance $MAX_CAPACITANCE [current_design]
 set_load -pin_load $OUTPUT_PINS_CAPACITANCE [all_outputs]
 
-# TODO: Explain this in detail
-# Explain that doing set_dont_touch on instances did not work for me, in my case PC_reg
-# If I don't call set_dont_touch on these nets, then when I go to do Post-synthesis simulation, there will be some high impedance lines because Cadence will optimize out the nets.
-# The IR wire and AC wires are optimized out. However, set_dont_touch on AC wires does not work because the nets do not exist. Rather, one can observe the data_out wires since they are the same.
-# But the interesting thing is that putting set_dont_touch for the data_out wires will preserve some of the AC nets and also will optimize some out. I think this also messes up data_out wire. So it's a bit odd and I'm not sure how to get around this.
-# TODO: Might want to try removing this when not doing post-synthesis simulation
+# set_dont_touch is used to signal that a particular instance or net should not be altered
+# This was added for some of the CPU wires because they were being optimized away during synthesis due to certain bits not being used
+# The optimization is fine to do except that we want to view these wires in our post-synthesis testbench and this cannot be done if they are optimized away (or optimized to be high impedance)
+# The arguments for the command are the wires that connect to the registers themselves. For example, the RTL compiler will turn a register named XY
+# into a register named XY_reg and a wire named XY that connects to the register. However, sometimes it optimizes and does not connect the wire to the
+# register. So, the registers themselves are preserved but the wires that connect to them are not which makes it difficult to do a post-synthesis simulation
+# The only issue with this is that it is not fully consistent. One example is the AC register. Since we directly assign data_out to be AC, the RTL compiler will
+# remove the AC wires completely before even reading the SDC file. So, the only way this will work is by checking the data_out wire for the value of AC.
+# Further experimentation is warranted to determine if there is another alternative to preserve AC wires
 set_dont_touch [find / -net PC*]
 set_dont_touch [find / -net IR*]
 # set_dont_touch [find / -net AC*]
