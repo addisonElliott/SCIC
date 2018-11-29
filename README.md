@@ -160,7 +160,6 @@ See the results section for screenshots of what you **should** see for this step
 ### Reports & Menus
 
 TODO: Might want to tell the user how to use the synthesis RTL compiler GUI. Just stuff like double clicking on instances will make them appear in the viewer.
-TODO: Fix me up!
 
 * Report
     * Datapath
@@ -194,9 +193,11 @@ TODO: Fix me up!
         * **Probability Histogram** - Causes RTL Compiler to crash
         * **Toggle Rate Histogram** - Causes RTL Compiler to crash
     * Timing
-        * **Endpoint Histogram**
-        * **Lint Report**
-        * **Worst Path**
+        * **Endpoint Histogram** - Displays a histogram with the slack values for each path and number of occurrences
+![Timing Histogram](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_timing_hist.png?raw=true)
+        * **Lint Report** - Displays any issues with meeting timing constraints
+        * **Worst Path** - Displays slack for worst case path
+![Timing Worst Path](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_timing.png?raw=true)
 * Tools
     * **Object Browser** - Allows browsing of the synthesized logic, includes every single net, instance, flip flop and gate that is used and allows for easy traversal.
 ![Object Browser](https://github.com/addisonElliott/SCIC/blob/master/images/synthesis_object_browser.png?raw=true)
